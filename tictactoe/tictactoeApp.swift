@@ -11,7 +11,8 @@ import SwiftUI
 struct tictactoeApp: App {
     var body: some Scene {
         WindowGroup {
-            GameView()
+            MainMenu()
+//            ContentView()
         }
     }
 }

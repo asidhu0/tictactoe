@@ -9,7 +9,7 @@ import SwiftUI
 
 var moves: [Move?] = Array(repeating: nil , count: 9)
 
-struct GameView: View {
+struct MediumMode: View {
     let layout  = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -23,6 +23,7 @@ struct GameView: View {
         GeometryReader  { geometry in
             VStack{
                 Spacer()
+                Text("medium mode")
                 LazyVGrid(columns: layout, spacing: 10) {
                     ForEach(0..<9)  { i in
                         
@@ -58,7 +59,7 @@ struct GameView: View {
                             
                             // computer's move
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                computerMove(in: moves)
+                                mediumComputerMove(in: moves)
                                 
                                 // check for computer win
                                 if checkForWinComputer(in: moves) {
@@ -86,27 +87,12 @@ struct GameView: View {
             })
         }
     }
-
 }
 
-enum Player {
-    case human, computer
-}
-
-struct Move: Identifiable {
-    let id = UUID()
-    let player: Player
-    let boardIndex: Int
-    var checkIfOccupied: Bool = false
-    var indicator: String {
-        return player == .human ? "xmark" : "circle"
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
+struct MediumMode_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            GameView()
+            MediumMode()
         }
     }
 }
