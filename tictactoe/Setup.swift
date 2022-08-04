@@ -15,8 +15,17 @@ struct Move: Identifiable {
     let id = UUID()
     let player: Player
     let boardIndex: Int
-    var checkIfOccupied: Bool = false
     var indicator: String {
         return player == .human ? "xmark" : "circle"
     }
 }
+
+struct scores {
+    var playerScoreEasy: Int
+    var playerScoreMedium: Int
+    var playerScoreHard: Int
+    var computerScoreEasy: Int
+    var computerScoreMedium: Int
+    var computerScoreHard: Int
+}
+

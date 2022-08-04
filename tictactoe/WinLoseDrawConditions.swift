@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-func checkForDraw(in move: [Move?]) -> Bool{
+func checkForDraw(move: [Move?]) -> Bool{
     var count: Int = 0
     for i in 0...8 {
-        if ((move[i]?.checkIfOccupied) != nil) {
+        if (move[i] != nil) {
             count = count + 1
         }
     }
@@ -20,11 +20,11 @@ func checkForDraw(in move: [Move?]) -> Bool{
     return false
 }
 
-func checkForWinHuman(in move: [Move?]) -> Bool {
+func checkForWinHuman(move: [Move?]) -> Bool {
     var win: Bool = false
     let winPatterns: [[Int]] = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5], [2,5,8], [6,7,8]]
     for i in 0...8 {
-        win = winCombinationsHuman(in: winPatterns[i], in: move)
+        win = winCombinationsHuman(combos: winPatterns[i], moves: move)
         if win {
             break
         }
@@ -32,11 +32,11 @@ func checkForWinHuman(in move: [Move?]) -> Bool {
     return win
 }
 
-func checkForWinComputer(in move: [Move?]) -> Bool {
+func checkForWinComputer(move: [Move?]) -> Bool {
     var win: Bool = false
     let winPatterns: [[Int]] = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5], [2,5,8], [6,7,8]]
     for i in 0...8 {
-        win = winCombinationsComputer(in: winPatterns[i], in: move)
+        win = winCombinationsComputer(combos: winPatterns[i], moves: move)
         if win {
             break
         }
@@ -44,20 +44,20 @@ func checkForWinComputer(in move: [Move?]) -> Bool {
     return win
 }
 
-func winCombinationsHuman(in combos: [Int], in moves: [Move?]) -> Bool {
+func winCombinationsHuman(combos: [Int], moves: [Move?]) -> Bool {
     if (moves[combos[0]]?.indicator == "xmark" && moves[combos[1]]?.indicator == "xmark" && moves[combos[2]]?.indicator == "xmark")  {
         return true
     }
     return false
 }
 
-func winCombinationsComputer(in combos: [Int], in moves: [Move?]) -> Bool {
+func winCombinationsComputer(combos: [Int], moves: [Move?]) -> Bool {
     if (moves[combos[0]]?.indicator == "circle" && moves[combos[1]]?.indicator == "circle" && moves[combos[2]]?.indicator == "circle") {
         return true
     }
     return false
 }
 
-func resetGame() {
+func resetGame(moves: inout [Move?]) {
     moves =  Array(repeating: nil, count: 9)
 }

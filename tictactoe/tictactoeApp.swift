@@ -12,7 +12,6 @@ struct tictactoeApp: App {
     var body: some Scene {
         WindowGroup {
             MainMenu()
-//            ContentView()
         }
     }
 }
