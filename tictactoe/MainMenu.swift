@@ -50,12 +50,6 @@ struct MainMenu: View {
                 }
                 Spacer()
             }
-//            .toolbar {
-//                Image(systemName: "gear")
-//            }
-//            .onTapGesture {
-//                <#code#>
-//            }
         }
     }
     

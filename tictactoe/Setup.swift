@@ -22,16 +22,16 @@ struct Move: Identifiable {
 }
 
 struct scores {
-    var playerScoreEasy: Int
-    var playerScoreMedium: Int
-    var playerScoreHard: Int
-    var playerScoreImpossible: Int
-    var computerScoreEasy: Int
-    var computerScoreMedium: Int
-    var computerScoreHard: Int
-    var computerScoreImpossible: Int
-    var twoPlayer1: Int
-    var twoPlayer2: Int
+    var playerScoreEasy: Double
+    var playerScoreMedium: Double
+    var playerScoreHard: Double
+    var playerScoreImpossible: Double
+    var computerScoreEasy: Double
+    var computerScoreMedium: Double
+    var computerScoreHard: Double
+    var computerScoreImpossible: Double
+    var twoPlayer1: Double
+    var twoPlayer2: Double
 }
 
 

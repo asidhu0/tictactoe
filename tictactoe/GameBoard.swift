@@ -20,6 +20,14 @@ struct GameBoard: View {
     @State private var alertItem: AlertItem?
     @State var moves: [Move?] = Array(repeating: nil , count: 9)
     @State private var twoPlayerTurnDecider: Bool = true
+    @State var line: Int = 0
+    @State private var leftdwin: Bool = false
+    @State private var rightdwin: Bool = false
+    @State private var horizwin: Bool = false
+    @State private var vertwin: Bool = false
+    @State private var draw: Bool = false
+    @State private var computerWin: Bool = false
+    @State private var userMovewin: Bool = false
 
     @Binding var score: scores
     @Binding var sound: Bool
@@ -30,39 +38,111 @@ struct GameBoard: View {
         GeometryReader  { geometry in
             VStack {
                 Spacer()
-                LazyVGrid(columns: layout, spacing: 10) {
-                    ForEach(0..<9)  { i in
-                        
-                        ZStack  {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(.blue)
-                                .frame(width: geometry.size.width/3 - 15,
-                                       height: geometry.size.width/3 - 15)
-                            if (moves[i] != nil) {
-                                if moves[i]?.indicator == "xmark" {
-                                    AnimatedXmarkView(sound: $sound)
+                ZStack {
+                    LazyVGrid(columns: layout, spacing: 10) {
+                        ForEach(0..<9)  { i in
+                            
+                            ZStack  {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(.blue)
+                                    .frame(width: geometry.size.width/3 - 15,
+                                           height: geometry.size.width/3 - 15)
+                                if (moves[i] != nil) {
+                                    if moves[i]?.indicator == "xmark" {
+                                        AnimatedXmarkView(sound: $sound)
+                                    }
+                                    else if moves[i]?.indicator == "circle" {
+                                        AnimatedCircleView(sound: $sound)
+                                    }
                                 }
-                                else if moves[i]?.indicator == "circle" {
-                                    AnimatedCircleView(sound: $sound)
+                            }
+                            .onTapGesture {
+                                
+                                // TWO PLAYER MODE
+                                if modeOfDifficulty == "twoplayer" {
+                                    if twoPlayerMode(index: i, turnDecider: &twoPlayerTurnDecider) {
+                                        twoPlayerTurnDecider.toggle()
+                                    }
+                                    if twoPlayerModeGameEndChecker(turnDecider: &twoPlayerTurnDecider) {
+                                        if draw {
+                                            return
+                                        }
+                                        else if line == 0 || line == 1 || line == 2 {
+                                            horizwin = true
+                                        }
+                                        else if line == 3 || line == 4 || line == 5 {
+                                            vertwin = true
+                                        }
+                                        else if line == 6 {
+                                            leftdwin = true
+                                        }
+                                        else if line == 7 {
+                                            rightdwin = true
+                                        }
+                                        return
+                                    }
                                 }
-                             }
+                                
+                                // ONE PLAYER MODE
+                                
+                                else {
+                                    if userMove(index: i) {
+                                        return
+                                    }
+                                    
+                                    if userMoveWinChecker() {
+                                        if draw {
+                                            return
+                                        }
+                                        if line == 0 || line == 1 || line == 2 {
+                                            horizwin = true
+                                        }
+                                        else if line == 3 || line == 4 || line == 5 {
+                                            vertwin = true
+                                        }
+                                        else if line == 6 {
+                                            leftdwin = true
+                                        }
+                                        else if line == 7 {
+                                            rightdwin = true
+                                        }
+                                        return
+                                    }
+                                    // computer's move
+                                    computerMove()
+                                }
+                            }
                         }
-                        .onTapGesture {
-                            if modeOfDifficulty == "twoplayer" {
-                                if twoPlayerMode(index: i, turnDecider: &twoPlayerTurnDecider) {
-                                    twoPlayerTurnDecider.toggle()
-                                }
-                                if twoPlayerModeWinChecker(turnDecider: &twoPlayerTurnDecider) {
-                                    return
-                                }
-                            }
-                            else {
-                                if userMove(index: i) {
-                                    return
-                                }
-                                // computer's move
-                                computerMove()
-                            }
+                    }
+                    
+                    /// END OF LAZY V GRID
+                    
+                    if leftdwin {
+                        LeftDiagonalWin()
+                    }
+                    else if rightdwin {
+                        RightDiagonalWin()
+                    }
+                    else if horizwin {
+                        if line == 0 {
+                            HorizontalWin(spacing: -120)
+                        }
+                        else if line == 1 {
+                            HorizontalWin(spacing: 0)
+                        }
+                        else if line == 2 {
+                            HorizontalWin(spacing: 120)
+                        }
+                    }
+                    else if vertwin {
+                        if line == 3 {
+                            VerticalWin(spacing: -120)
+                        }
+                        else if line == 4 {
+                            VerticalWin(spacing: 0)
+                        }
+                        else if line == 5 {
+                            VerticalWin(spacing: 120)
                         }
                     }
                 }
@@ -129,9 +209,19 @@ struct GameBoard: View {
                     if sound {
                         MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background")
                     }
+                    if leftdwin { leftdwin = false }
+                    if rightdwin { rightdwin = false }
+                    if horizwin { horizwin = false }
+                    if vertwin { vertwin = false }
+                    if draw { draw = false }
                 }))
             })
         }
+    }
+    
+    func resetGame(moves: inout [Move?]) {  // FIXME
+        moves = Array(repeating: nil, count: 9)
+        
     }
     
     func resetScore() {
@@ -163,37 +253,46 @@ struct GameBoard: View {
         }
         else {
         moves[index] = Move(player: .human, boardIndex: index)
-
-            // check for human win
-            if checkForWin(move: moves, piece: "xmark") {
-                // draw winning line
-                alertItem = AlertContext.humanWin
-
-                if modeOfDifficulty == "easy" {
-                    score.playerScoreEasy += 1
-                }
-                else if modeOfDifficulty == "medium" {
-                    score.playerScoreMedium += 1
-                }
-                else if modeOfDifficulty == "hard" {
-                    score.playerScoreHard += 1
-                }
-                else if modeOfDifficulty == "impossible" {
-                    score.playerScoreImpossible += 1
-                }
-                if sound {
-                    MusicPlayer.shared.playSoundEffect(soundEffect: "win")
-                }
-                return true
+            if userMoveWinChecker() {
+                isGameBoardDisabled = false
             }
-            else if checkForDraw(move: moves) {
-                alertItem = AlertContext.draw
-                if sound {
-                    MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
-                }
-                return true
+            else {
+                isGameBoardDisabled = true
             }
-            isGameBoardDisabled = true
+        }
+        return false
+    }
+    
+    func userMoveWinChecker() -> Bool {
+        if checkForWin(move: moves, piece: "xmark", line: &line) {
+            userMovewin = true
+
+            alertItem = AlertContext.humanWin
+
+            if modeOfDifficulty == "easy" {
+                score.playerScoreEasy += 0.5
+            }
+            else if modeOfDifficulty == "medium" {
+                score.playerScoreMedium += 0.5
+            }
+            else if modeOfDifficulty == "hard" {
+                score.playerScoreHard += 0.5
+            }
+            else if modeOfDifficulty == "impossible" {
+                score.playerScoreImpossible += 0.5
+            }
+            if sound {
+                MusicPlayer.shared.playSoundEffect(soundEffect: "win")
+            }
+            return true
+        }
+        else if checkForDraw(move: moves) {
+            draw = true
+            alertItem = AlertContext.draw
+            if sound {
+                MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
+            }
+            return true
         }
         return false
     }
@@ -214,10 +313,25 @@ struct GameBoard: View {
             }
             
             // check for computer win
-            if checkForWin(move: moves, piece: "circle") {
-                // draw winning line
+            if checkForWin(move: moves, piece: "circle", line: &line) {
+                computerWin = true
+                if computerWin {
+                    if draw {
+                    }
+                    else if line == 0 || line == 1 || line == 2 {
+                        horizwin = true
+                    }
+                    else if line == 3 || line == 4 || line == 5 {
+                        vertwin = true
+                    }
+                    else if line == 6 {
+                        leftdwin = true
+                    }
+                    else if line == 7 {
+                        rightdwin = true
+                    }
+                }
                 alertItem = AlertContext.computerWin
-                
                 if modeOfDifficulty == "easy" {
                     score.computerScoreEasy += 1
                 }
@@ -255,8 +369,8 @@ struct GameBoard: View {
         return true
     }
     
-    func twoPlayerModeWinChecker(turnDecider: inout Bool) -> Bool {
-        if checkForWin(move: moves, piece: "xmark") {
+    func twoPlayerModeGameEndChecker(turnDecider: inout Bool) -> Bool {
+        if checkForWin(move: moves, piece: "xmark", line: &line) {
             alertItem = AlertContext.player1win
             score.twoPlayer1 += 1
             turnDecider = true
@@ -265,7 +379,7 @@ struct GameBoard: View {
             }
             return true
         }
-        else if checkForWin(move: moves, piece: "circle") {
+        else if checkForWin(move: moves, piece: "circle", line: &line) {
             score.twoPlayer2 += 1
             alertItem = AlertContext.player2win
             turnDecider = true
@@ -277,6 +391,7 @@ struct GameBoard: View {
         else if checkForDraw(move: moves) {
             alertItem = AlertContext.draw
             turnDecider = true
+            draw = true
             if sound {
                 MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
             }
@@ -284,8 +399,7 @@ struct GameBoard: View {
         }
         return false
     }
-
-
+    
 }
 //
 //struct AllModesDiff_Previews: PreviewProvider {

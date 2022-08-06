@@ -12,12 +12,12 @@ struct AnimatedCircleView: View {
     @State private var outerTrimEnd: CGFloat = 0
     @Binding var sound: Bool
     var body: some View {
-            ZStack {
+//            ZStack {
                 Circle()
                     .trim(from: 0, to: outerTrimEnd)
                     .stroke(Color.black, lineWidth: 3)
                     .rotationEffect(.degrees(-90))
-            }
+//            }
             .frame(width: 40, height: 40)
             .onAppear() {
                 animate()

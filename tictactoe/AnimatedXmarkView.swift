@@ -12,12 +12,12 @@ struct AnimatedXmarkView: View {
     var animationDuration: Double = 0.35
     @Binding var sound: Bool
     var body: some View {
-        VStack {
+//        VStack {
             Xmark()
                 .trim(from: 0, to: innerTrimEnd)
                 .stroke(Color.black, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
                 .frame(width: 40, height: 40)
-        }
+//        }
         .onAppear() {
             innerTrimEnd = 0
             animate()
