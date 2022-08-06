@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-struct AnimatedCircleView: View {
+struct SwiftUIView: View {
     var animationDuration: Double = 0.35
     @State private var outerTrimEnd: CGFloat = 0
-    @Binding var sound: Bool
     var body: some View {
             ZStack {
                 Circle()
@@ -27,14 +26,13 @@ struct AnimatedCircleView: View {
         withAnimation(.linear(duration: animationDuration)) {
             outerTrimEnd = 1.0
         }
-        if sound {
-            SoundManager.instance.playSound(sound: .circle)
-        }
+        SoundManager.instance.playSound(sound: .pop)
     }
 }
 
-//struct AnimatedCheckmarkView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AnimatedCircleView()
-//    }
-//}
+struct AnimatedCheckmarkView_Previews1: PreviewProvider {
+    static var previews: some View {
+        SwiftUIView()
+    }
+}
+

@@ -9,26 +9,25 @@ import SwiftUI
 
 struct SelectDifficulty: View {
     @Binding var score: scores
+    @Binding var sound: Bool
+    @Binding var numPlayers: Int
     var body: some View {
             VStack {
                 Spacer()
                 Text("Select Difficulty")
                     .font(.title)
                     .padding()
-                NavigationLink(destination: GameBoard(
-                    score: $score,
-                    modeOfDifficulty: "easy")) {
+                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "easy")) {
                     Text("Easy")
                 }
-                NavigationLink(destination: GameBoard(
-                    score: $score,
-                    modeOfDifficulty: "medium")) {
+                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "medium")) {
                     Text("Medium")
                 }
-                NavigationLink(destination: GameBoard(
-                    score: $score,
-                    modeOfDifficulty: "hard")) {
+                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "hard")) {
                     Text("Hard")
+                }
+                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "impossible")) {
+                    Text("Impossible")
                 }
                 Spacer()
             }
@@ -37,7 +36,7 @@ struct SelectDifficulty: View {
 
 //struct SelectDifficulty_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SelectDifficulty(score: $score)
+//        SelectDifficulty(score: scores)
 //    }
 //}
 

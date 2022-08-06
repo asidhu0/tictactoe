@@ -10,6 +10,7 @@ import SwiftUI
 struct AnimatedXmarkView: View {
     @State private var innerTrimEnd: CGFloat = 1.0
     var animationDuration: Double = 0.35
+    @Binding var sound: Bool
     var body: some View {
         VStack {
             Xmark()
@@ -26,14 +27,17 @@ struct AnimatedXmarkView: View {
         withAnimation(.linear(duration: animationDuration)) {
             innerTrimEnd = 1.0
         }
+        if sound {
+            SoundManager.instance.playSound(sound: .pop)
+        }
     }
 }
 
-struct AnimatedXmarkView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnimatedXmarkView()
-    }
-}
+//struct AnimatedXmarkView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AnimatedXmarkView()
+//    }
+//}
 
 struct Xmark: Shape {
     func path(in rect: CGRect) -> Path {

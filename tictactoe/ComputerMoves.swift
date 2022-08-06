@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 /*
 Board Indices:
     0 1 2
@@ -14,12 +15,6 @@ Board Indices:
  */
 
 func easyComputerMove(move: inout [Move?]) {
-    if computerCanWin(move: &move) {
-        return
-    }
-    if computerCanBlock(move: &move) {
-        return
-    }
     randomComputerMove(moves: &move)
 }
 
@@ -27,53 +22,69 @@ func mediumComputerMove(move: inout [Move?]) {
     if computerCanWin(move: &move) {
         return
     }
-    if computerCanBlock(move: &move) {
+    else if computerCanBlock(move: &move) {
         return
     }
-    if computerTakeMiddleSquare(moves: &move) {
-        return
+    else {
+        randomComputerMove(moves: &move)
     }
-    randomComputerMove(moves: &move)
 }
 
 func hardComputerMove(move: inout [Move?]) {
     if computerCanWin(move: &move) {
         return
     }
-    if computerCanBlock(move: &move) {
+    else if computerCanBlock(move: &move) {
         return
     }
-    if computerTakeMiddleSquare(moves: &move) {
+    else if computerTakeMiddleSquare(moves: &move) {
         return
     }
-    if playerTakesIndex4First(moves: &move) {  // center
+    else {
+        randomComputerMove(moves: &move)
+    }
+}
+
+func impossibleComputerMove(move: inout [Move?]) {
+    if computerCanWin(move: &move) {
         return
     }
-    if playerTakesIndex0First(moves: &move) {  // upper left hand corner
+    else if computerCanBlock(move: &move) {
         return
     }
-    if playerTakesIndex2First(moves: &move) {  // upper right hand corner
+    else if computerTakeMiddleSquare(moves: &move) {
         return
     }
-    if playerTakesIndex6First(moves: &move) {  // lower left hand corner
+    else if playerTakesIndex0First(moves: &move) {  // upper left hand corner
         return
     }
-    if playerTakesIndex8First(moves: &move) {  // lower right hand corner
+    else if playerTakesIndex1First(moves: &move) {
         return
     }
-    if playerTakesIndex1First(moves: &move) {
+    else if playerTakesIndex2First(moves: &move) {  // upper right hand corner
         return
     }
-    if playerTakesIndex3First(moves: &move) {
+    else if playerTakesIndex3First(moves: &move) {
         return
     }
-    if playerTakesIndex5First(moves: &move) {
+    else if playerTakesIndex4First(moves: &move) {  // center
         return
     }
-    if playerTakesIndex7First(moves: &move) {
+    else if playerTakesIndex5First(moves: &move) {
         return
     }
-    randomComputerMove(moves: &move)
+    else if playerTakesIndex6First(moves: &move) {  // lower left hand corner
+        return
+    }
+    else if playerTakesIndex7First(moves: &move) {
+        return
+    }
+    else if playerTakesIndex8First(moves: &move) {  // lower right hand corner
+        return
+    }
+    else {
+        randomComputerMove(moves: &move)
+    }
 }
 
 func computerCanWin(move: inout [Move?]) -> Bool {
@@ -148,12 +159,12 @@ func randomComputerMove(moves: inout [Move?]) {
             computerPosition = Int.random(in: 0..<9)
         }
         else {
-        moves[computerPosition] = Move(player: .computer,
-                                       boardIndex: computerPosition)
+        moves[computerPosition] = Move(player: .computer, boardIndex: computerPosition)
             positionCheckComputer = false
         }
     }
 }
+
 // playerTakesIndex0First: player takes index 0, AI takes index 4
 // playerTakesIndex0First #1: Player takes index 8
 // playerTakesIndex0First #2: Player takes index 5
@@ -162,19 +173,16 @@ func randomComputerMove(moves: inout [Move?]) {
 func playerTakesIndex0First(moves: inout [Move?]) -> Bool{  // index 0 is taken by player and index 4 is taken by AI
         if moves[0]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[8]?.indicator == "xmark" && moves[1] == nil && moves[2] == nil && moves[3] == nil &&
             moves[5] == nil && moves[6] == nil && moves[7] == nil {  // playerTakesIndex0First #1
-            let combo: [Int] = [1, 3, 5, 7]
-            let computerPosition = Int.random(in: 0..<4)
-            moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+            makeMove(moves: &moves, availableIndices: [1, 3, 5, 7])
             return true
         }
-        if moves[0]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&
+        else if moves[0]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&
             moves[1] == nil && moves[2] == nil && moves[3] == nil &&
             moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex0First #2
             moves[8] = Move(player: .computer, boardIndex: 8)
             return true
         }
-        // case 1_3
-        if moves[0]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&
+        else if moves[0]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&
             moves[1] == nil && moves[2] == nil && moves[3] == nil &&
             moves[5] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex0First #3
             moves[8] = Move(player: .computer, boardIndex: 8)
@@ -192,18 +200,16 @@ func playerTakesIndex2First(moves: inout [Move?]) -> Bool {  // index 2 is taken
         if moves[2]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[6]?.indicator == "xmark" &&
             moves[0] == nil && moves[1] == nil && moves[3] == nil &&
             moves[5] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex2First #1
-            let combo: [Int] = [1, 3, 5, 7]
-            let computerPosition = Int.random(in: 0..<4)
-            moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+            makeMove(moves: &moves, availableIndices: [1, 3, 5, 7])
             return true
         }
-        if moves[2]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[3]?.indicator == "xmark" &&
+        else if moves[2]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[3]?.indicator == "xmark" &&
             moves[0] == nil && moves[1] == nil && moves[5] == nil &&
             moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex2First #2
             moves[6] = Move(player: .computer, boardIndex: 6)
             return true
         }
-        if moves[2]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&
+        else if moves[2]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&
             moves[0] == nil && moves[1] == nil && moves[3] == nil &&
             moves[5] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex2First #3
             moves[6] = Move(player: .computer, boardIndex: 6)
@@ -220,18 +226,16 @@ func playerTakesIndex2First(moves: inout [Move?]) -> Bool {  // index 2 is taken
 func playerTakesIndex8First(moves: inout [Move?]) -> Bool {  // index 8 is taken by player and index 4 is taken by AI
         if moves[8]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[0]?.indicator == "xmark" &&         moves[1] == nil && moves[2] == nil && moves[3] == nil &&
             moves[5] == nil && moves[6] == nil && moves[7] == nil {  // playerTakesIndex8First #1
-            let combo: [Int] = [1, 3, 5, 7]
-            let computerPosition = Int.random(in: 0..<4)
-            moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+            makeMove(moves: &moves, availableIndices: [1, 3, 5, 7])
             return true
         }
-        if moves[8]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[3]?.indicator == "xmark" &&
+        else if moves[8]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[3]?.indicator == "xmark" &&
             moves[0] == nil && moves[1] == nil && moves[2] == nil &&
             moves[5] == nil && moves[6] == nil && moves[7] == nil {  // playerTakesIndex8First #2
             moves[0] = Move(player: .computer, boardIndex: 0)
             return true
         }
-        if moves[8]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[1]?.indicator == "xmark" &&
+        else if moves[8]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[1]?.indicator == "xmark" &&
             moves[0] == nil && moves[2] == nil && moves[3] == nil &&
             moves[5] == nil && moves[6] == nil && moves[7] == nil {  // playerTakesIndex8First #3
             moves[0] = Move(player: .computer, boardIndex: 0)
@@ -248,20 +252,18 @@ func playerTakesIndex8First(moves: inout [Move?]) -> Bool {  // index 8 is taken
 func playerTakesIndex6First(moves: inout [Move?]) -> Bool {  // index 6 is taken by player and index 4 is taken by AI
         if moves[6]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[2]?.indicator == "xmark" &&
             moves[0] == nil && moves[1] == nil && moves[3] == nil &&
-            moves[5] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First 4_1
-            let combo: [Int] = [1, 3, 5, 7]
-            let computerPosition = Int.random(in: 0..<4)
-            moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+            moves[5] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #1
+            makeMove(moves: &moves, availableIndices: [1, 3, 5, 7])
             return true
         }
-        if moves[6]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&
+        else if moves[6]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&
             moves[0] == nil && moves[1] == nil && moves[2] == nil &&
-            moves[3] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First 4_2
+            moves[3] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #2
             moves[2] = Move(player: .computer, boardIndex: 2)
             return true
         }
-        if moves[6]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[1]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
-            moves[5] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First 4_3
+        else if moves[6]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[1]?.indicator == "xmark" &&      moves[0] == nil && moves[2] == nil && moves[3] == nil &&
+            moves[5] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #3
             moves[2] = Move(player: .computer, boardIndex: 2)
             return true
         }
@@ -271,41 +273,31 @@ func playerTakesIndex6First(moves: inout [Move?]) -> Bool {  // index 6 is taken
 func playerTakesIndex4First(moves: inout [Move?]) -> Bool {
     if moves[4]?.indicator == "xmark" && moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[3] == nil && moves[5] == nil && moves[6] == nil && moves[7] == nil && moves[8] == nil {
-        let combo: [Int] = [0, 2, 6, 8]
-        let computerPosition = Int.random(in: 0..<4)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 6, 8])
         return true
     }
-    if moves[4]?.indicator == "xmark" && moves[0]?.indicator == "circle" && moves[8]?.indicator == "xmark" &&
+    else if moves[4]?.indicator == "xmark" && moves[0]?.indicator == "circle" && moves[8]?.indicator == "xmark" &&
         moves[1] == nil && moves[2] == nil && moves[3] == nil &&
         moves[5] == nil && moves[6] == nil && moves[7] == nil {
-        let combo: [Int] = [2, 6]
-        let computerPosition = Int.random(in: 0..<2)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [2, 6])
         return true
     }
-    if moves[4]?.indicator == "xmark" && moves[2]?.indicator == "circle" && moves[6]?.indicator == "xmark" &&
+    else if moves[4]?.indicator == "xmark" && moves[2]?.indicator == "circle" && moves[6]?.indicator == "xmark" &&
         moves[0] == nil && moves[1] == nil && moves[3] == nil &&
         moves[5] == nil && moves[7] == nil && moves[8] == nil {
-        let combo: [Int] = [0, 8]
-        let computerPosition = Int.random(in: 0..<2)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 8])
         return true
     }
-    if moves[4]?.indicator == "xmark" && moves[6]?.indicator == "circle" && moves[2]?.indicator == "xmark" &&
+    else if moves[4]?.indicator == "xmark" && moves[6]?.indicator == "circle" && moves[2]?.indicator == "xmark" &&
         moves[0] == nil && moves[1] == nil && moves[3] == nil &&
         moves[5] == nil && moves[7] == nil && moves[8] == nil {
-        let combo: [Int] = [0, 8]
-        let computerPosition = Int.random(in: 0..<2)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 8])
         return true
     }
-    if moves[4]?.indicator == "xmark" && moves[8]?.indicator == "circle" && moves[0]?.indicator == "xmark" &&
+    else if moves[4]?.indicator == "xmark" && moves[8]?.indicator == "circle" && moves[0]?.indicator == "xmark" &&
         moves[1] == nil && moves[2] == nil && moves[3] == nil &&
         moves[5] == nil && moves[6] == nil && moves[7] == nil {
-        let combo: [Int] = [2, 6]
-        let computerPosition = Int.random(in: 0..<2)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [2, 6])
         return true
     }
     return false
@@ -323,37 +315,27 @@ func playerTakesIndex4First(moves: inout [Move?]) -> Bool {
 func playerTakesIndex3First(moves: inout [Move?]) -> Bool {
     if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[1]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[5] == nil &&
         moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #2
-        let combo: [Int] = [0, 2, 6]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 6])
         return true
     }
-    if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[2]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[5] == nil &&
+    else if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[2]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[5] == nil &&
         moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #3
-        let combo: [Int] = [0, 6, 7]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 6, 7])
         return true
     }
-    if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
+    else if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #4
-        let combo: [Int] = [0, 2, 6, 8]
-        let computerPosition = Int.random(in: 0..<4)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 6, 8])
         return true
     }
-    if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
+    else if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[5] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex6First #6
-        let combo: [Int] = [0, 6, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 6, 8])
         return true
     }
-    if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[8]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
+    else if moves[3]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[8]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[5] == nil && moves[6] == nil && moves[7] == nil {  // playerTakesIndex6First #7
-        let combo: [Int] = [0, 1, 6]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 1, 6])
         return true
     }
     return false
@@ -371,37 +353,27 @@ func playerTakesIndex3First(moves: inout [Move?]) -> Bool {
 func playerTakesIndex5First(moves: inout [Move?]) -> Bool {
     if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[1]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
         moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #2
-        let combo: [Int] = [0, 2, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 8])
         return true
     }
-    if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[0]?.indicator == "xmark" &&         moves[1] == nil && moves[2] == nil && moves[3] == nil &&
+    else if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[0]?.indicator == "xmark" &&         moves[1] == nil && moves[2] == nil && moves[3] == nil &&
         moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #3
-        let combo: [Int] = [2, 7, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [2, 7, 8])
         return true
     }
-    if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[3]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
+    else if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[3]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #4
-        let combo: [Int] = [0, 2, 6, 8]
-        let computerPosition = Int.random(in: 0..<4)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 6, 8])
         return true
     }
-    if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[6]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
+    else if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[6]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[3] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #6
-        let combo: [Int] = [1, 2, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [1, 2, 8])
         return true
     }
-    if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
+    else if moves[5]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[3] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex6First #7
-        let combo: [Int] = [2, 6, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [2, 6, 8])
         return true
     }
     return false
@@ -419,37 +391,27 @@ func playerTakesIndex5First(moves: inout [Move?]) -> Bool {
 func playerTakesIndex1First(moves: inout [Move?]) -> Bool {
     if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[3]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[5] == nil &&
         moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #2
-        let combo: [Int] = [0, 2, 6]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 6])
         return true
     }
-    if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[6]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
+    else if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[6]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
         moves[5] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #3
-        let combo: [Int] = [0, 2, 5]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 5])
         return true
     }
-    if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
+    else if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[7]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
         moves[5] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex6First #4
-        let combo: [Int] = [0, 2, 6, 8]
-        let computerPosition = Int.random(in: 0..<4)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 6, 8])
         return true
     }
-    if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[8]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
+    else if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[8]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
         moves[5] == nil && moves[6] == nil && moves[7] == nil {  // playerTakesIndex6First #6
-        let combo: [Int] = [0, 2, 3]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 3])
         return true
     }
-    if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
+    else if moves[1]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
         moves[6] == nil && moves[7] == nil && moves[8] == nil {  // playerTakesIndex6First #7
-        let combo: [Int] = [0, 2, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 8])
         return true
     }
     return false
@@ -467,38 +429,33 @@ func playerTakesIndex1First(moves: inout [Move?]) -> Bool {
 func playerTakesIndex7First(moves: inout [Move?]) -> Bool {
     if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[3]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[5] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex6First #3
-        let combo: [Int] = [0, 6, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 6, 8])
         return true
     }
-    if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[0]?.indicator == "xmark" &&         moves[1] == nil && moves[2] == nil && moves[3] == nil &&
+    else if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[0]?.indicator == "xmark" &&         moves[1] == nil && moves[2] == nil && moves[3] == nil &&
         moves[5] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex6First #4
-        let combo: [Int] = [5, 6, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [5, 6, 8])
         return true
     }
-    if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[1]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
+    else if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[1]?.indicator == "xmark" &&         moves[0] == nil && moves[2] == nil && moves[3] == nil &&
         moves[5] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex6First #5
-        let combo: [Int] = [0, 2, 6, 8]
-        let computerPosition = Int.random(in: 0..<4)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [0, 2, 6, 8])
         return true
     }
-    if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[2]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[3] == nil &&
+    else if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[2]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[3] == nil &&
         moves[5] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex6First #6
-        let combo: [Int] = [3, 6, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [3, 6, 8])
         return true
     }
-    if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
+    else if moves[7]?.indicator == "xmark" && moves[4]?.indicator == "circle" && moves[5]?.indicator == "xmark" &&         moves[0] == nil && moves[1] == nil && moves[2] == nil &&
         moves[3] == nil && moves[6] == nil && moves[8] == nil {  // playerTakesIndex6First #7
-        let combo: [Int] = [2, 6, 8]
-        let computerPosition = Int.random(in: 0..<3)
-        moves[combo[computerPosition]] = Move(player: .computer, boardIndex: combo[computerPosition])
+        makeMove(moves: &moves, availableIndices: [2,6,8])
         return true
     }
     return false
+}
+
+func makeMove(moves: inout [Move?], availableIndices: [Int]) {
+    let computerPosition = Int.random(in: 0..<availableIndices.count)
+    moves[availableIndices[computerPosition]] = Move(player: .computer, boardIndex: availableIndices[computerPosition])
 }

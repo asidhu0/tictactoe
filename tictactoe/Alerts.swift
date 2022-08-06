@@ -25,9 +25,9 @@ struct AlertContext {
                                 message: Text("No good"),
                                 buttonTitle: Text("Try Again"))
     static let player1win  = AlertItem(title: Text("Player 1 Wins!"),
-                                      message: Text("Wow!"),
-                                      buttonTitle: Text("Try Again"))
+                                message: Text("Wow!"),
+                                buttonTitle: Text("Try Again"))
     static let player2win  = AlertItem(title: Text("Player 2 Wins!"),
-                                      message: Text("Wow!"),
-                                      buttonTitle: Text("Try Again"))
+                                message: Text("Wow!"),
+                                buttonTitle: Text("Try Again"))
 }

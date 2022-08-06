@@ -8,56 +8,26 @@
 import SwiftUI
 
 func checkForDraw(move: [Move?]) -> Bool{
-    var count: Int = 0
-    for i in 0...8 {
-        if (move[i] != nil) {
-            count = count + 1
-        }
-    }
-    if count == 9 {
-        return true
-    }
-    return false
+    return move.allSatisfy { $0 != nil }
 }
 
-func checkForWinHuman(move: [Move?]) -> Bool {
+func checkForWin(move: [Move?], piece: String) -> Bool {
     var win: Bool = false
     let winPatterns: [[Int]] = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5], [2,5,8], [6,7,8]]
     for i in 0...8 {
-        win = winCombinationsHuman(combos: winPatterns[i], moves: move)
-        if win {
-            break
-        }
-    }
-    return win
-}
-
-func checkForWinComputer(move: [Move?]) -> Bool {
-    var win: Bool = false
-    let winPatterns: [[Int]] = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5], [2,5,8], [6,7,8]]
-    for i in 0...8 {
-        win = winCombinationsComputer(combos: winPatterns[i], moves: move)
-        if win {
-            break
-        }
-    }
-    return win
-}
-
-func winCombinationsHuman(combos: [Int], moves: [Move?]) -> Bool {
-    if (moves[combos[0]]?.indicator == "xmark" && moves[combos[1]]?.indicator == "xmark" && moves[combos[2]]?.indicator == "xmark")  {
-        return true
+            win = winCombinations(combos: winPatterns[i], moves: move, piece: piece)
+            if win {
+                return true
+            }
     }
     return false
 }
 
-func winCombinationsComputer(combos: [Int], moves: [Move?]) -> Bool {
-    if (moves[combos[0]]?.indicator == "circle" && moves[combos[1]]?.indicator == "circle" && moves[combos[2]]?.indicator == "circle") {
-        return true
-    }
-    return false
+func winCombinations(combos: [Int], moves: [Move?], piece: String) -> Bool {
+    return (moves[combos[0]]?.indicator == piece && moves[combos[1]]?.indicator == piece && moves[combos[2]]?.indicator == piece)
 }
+
 
 func resetGame(moves: inout [Move?]) {
-    moves =  Array(repeating: nil, count: 9)
+    moves = Array(repeating: nil, count: 9)
 }

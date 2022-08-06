@@ -11,17 +11,25 @@
 		532FB7D0289621DC009E7DFB /* WinLoseDrawConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7CF289621DC009E7DFB /* WinLoseDrawConditions.swift */; };
 		532FB7D228962473009E7DFB /* ComputerMoves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7D128962473009E7DFB /* ComputerMoves.swift */; };
 		532FB7E228978BDC009E7DFB /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7E128978BDC009E7DFB /* MainMenu.swift */; };
-		532FB7E42897912B009E7DFB /* TwoPlayerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7E32897912B009E7DFB /* TwoPlayerMode.swift */; };
-		532FB7E628979826009E7DFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7E528979826009E7DFB /* ContentView.swift */; };
 		532FB7EC2897AE77009E7DFB /* SelectDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7EB2897AE76009E7DFB /* SelectDifficulty.swift */; };
 		532FB7EE2897B08C009E7DFB /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7ED2897B08C009E7DFB /* Setup.swift */; };
-		532FB7F02898B3D7009E7DFB /* TWOPLSWORK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7EF2898B3D7009E7DFB /* TWOPLSWORK.swift */; };
 		532FB7F4289A16E1009E7DFB /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7F3289A16E1009E7DFB /* GameBoard.swift */; };
 		532FB7FA289B71FE009E7DFB /* AnimatedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7F9289B71FE009E7DFB /* AnimatedCircleView.swift */; };
 		532FB7FC289B7923009E7DFB /* AnimatedXmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7FB289B7923009E7DFB /* AnimatedXmarkView.swift */; };
+		532FB801289BC124009E7DFB /* moo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 532FB800289BC124009E7DFB /* moo.mp3 */; };
+		532FB803289C447C009E7DFB /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 532FB802289C447C009E7DFB /* pop.mp3 */; };
+		532FB805289C7FFE009E7DFB /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 532FB804289C7FFE009E7DFB /* win.mp3 */; };
 		53A4C52D2895BC7E00499BB8 /* tictactoeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */; };
 		53A4C5312895BC8000499BB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A4C5302895BC8000499BB8 /* Assets.xcassets */; };
 		53A4C5342895BC8000499BB8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */; };
+		53E27971289D962D009A538D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E27970289D962D009A538D /* AVKit.framework */; };
+		53E27973289D9DB1009A538D /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27972289D9DB1009A538D /* circle.mp3 */; };
+		53E27975289D9F26009A538D /* xmark.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27974289D9F26009A538D /* xmark.mp3 */; };
+		53E27977289DABE0009A538D /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E27976289DABE0009A538D /* BackgroundMusic.swift */; };
+		53E27979289DADD9009A538D /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27978289DADD9009A538D /* lose.mp3 */; };
+		53E2797B289DC0DF009A538D /* tie1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E2797A289DC0DF009A538D /* tie1.mp3 */; };
+		53E2797D289DC1BF009A538D /* tie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E2797C289DC1BF009A538D /* tie.mp3 */; };
+		53E2797F289DC376009A538D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E2797E289DC376009A538D /* background.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,18 +37,26 @@
 		532FB7CF289621DC009E7DFB /* WinLoseDrawConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLoseDrawConditions.swift; sourceTree = "<group>"; };
 		532FB7D128962473009E7DFB /* ComputerMoves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMoves.swift; sourceTree = "<group>"; };
 		532FB7E128978BDC009E7DFB /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		532FB7E32897912B009E7DFB /* TwoPlayerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerMode.swift; sourceTree = "<group>"; };
-		532FB7E528979826009E7DFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		532FB7EB2897AE76009E7DFB /* SelectDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDifficulty.swift; sourceTree = "<group>"; };
 		532FB7ED2897B08C009E7DFB /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
-		532FB7EF2898B3D7009E7DFB /* TWOPLSWORK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWOPLSWORK.swift; sourceTree = "<group>"; };
 		532FB7F3289A16E1009E7DFB /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		532FB7F9289B71FE009E7DFB /* AnimatedCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCircleView.swift; sourceTree = "<group>"; };
 		532FB7FB289B7923009E7DFB /* AnimatedXmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedXmarkView.swift; sourceTree = "<group>"; };
+		532FB800289BC124009E7DFB /* moo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moo.mp3; sourceTree = "<group>"; };
+		532FB802289C447C009E7DFB /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
+		532FB804289C7FFE009E7DFB /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		53A4C5292895BC7E00499BB8 /* tictactoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tictactoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tictactoeApp.swift; sourceTree = "<group>"; };
 		53A4C5302895BC8000499BB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		53E27970289D962D009A538D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		53E27972289D9DB1009A538D /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
+		53E27974289D9F26009A538D /* xmark.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xmark.mp3; sourceTree = "<group>"; };
+		53E27976289DABE0009A538D /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
+		53E27978289DADD9009A538D /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
+		53E2797A289DC0DF009A538D /* tie1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tie1.mp3; sourceTree = "<group>"; };
+		53E2797C289DC1BF009A538D /* tie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tie.mp3; sourceTree = "<group>"; };
+		53E2797E289DC376009A538D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,17 +64,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E27971289D962D009A538D /* AVKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		532FB7FF289BC0FF009E7DFB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				532FB802289C447C009E7DFB /* pop.mp3 */,
+				532FB800289BC124009E7DFB /* moo.mp3 */,
+				532FB804289C7FFE009E7DFB /* win.mp3 */,
+				53E27972289D9DB1009A538D /* circle.mp3 */,
+				53E27974289D9F26009A538D /* xmark.mp3 */,
+				53E27978289DADD9009A538D /* lose.mp3 */,
+				53E2797A289DC0DF009A538D /* tie1.mp3 */,
+				53E2797C289DC1BF009A538D /* tie.mp3 */,
+				53E2797E289DC376009A538D /* background.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		53A4C5202895BC7E00499BB8 = {
 			isa = PBXGroup;
 			children = (
 				53A4C52B2895BC7E00499BB8 /* tictactoe */,
 				53A4C52A2895BC7E00499BB8 /* Products */,
+				53E2796F289D962D009A538D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,14 +112,13 @@
 				532FB7F3289A16E1009E7DFB /* GameBoard.swift */,
 				532FB7F9289B71FE009E7DFB /* AnimatedCircleView.swift */,
 				532FB7FB289B7923009E7DFB /* AnimatedXmarkView.swift */,
-				532FB7E32897912B009E7DFB /* TwoPlayerMode.swift */,
-				532FB7EF2898B3D7009E7DFB /* TWOPLSWORK.swift */,
-				532FB7E528979826009E7DFB /* ContentView.swift */,
+				532FB7CD2895D7E1009E7DFB /* Alerts.swift */,
+				53E27976289DABE0009A538D /* BackgroundMusic.swift */,
+				532FB7ED2897B08C009E7DFB /* Setup.swift */,
 				532FB7D128962473009E7DFB /* ComputerMoves.swift */,
 				532FB7CF289621DC009E7DFB /* WinLoseDrawConditions.swift */,
-				532FB7CD2895D7E1009E7DFB /* Alerts.swift */,
-				532FB7ED2897B08C009E7DFB /* Setup.swift */,
 				53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */,
+				532FB7FF289BC0FF009E7DFB /* Sounds */,
 				53A4C5302895BC8000499BB8 /* Assets.xcassets */,
 				53A4C5322895BC8000499BB8 /* Preview Content */,
 			);
@@ -98,6 +131,14 @@
 				53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		53E2796F289D962D009A538D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53E27970289D962D009A538D /* AVKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,8 +199,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E2797B289DC0DF009A538D /* tie1.mp3 in Resources */,
+				53E2797D289DC1BF009A538D /* tie.mp3 in Resources */,
+				53E27973289D9DB1009A538D /* circle.mp3 in Resources */,
+				53E27979289DADD9009A538D /* lose.mp3 in Resources */,
+				532FB805289C7FFE009E7DFB /* win.mp3 in Resources */,
+				532FB803289C447C009E7DFB /* pop.mp3 in Resources */,
+				532FB801289BC124009E7DFB /* moo.mp3 in Resources */,
+				53E2797F289DC376009A538D /* background.mp3 in Resources */,
 				53A4C5342895BC8000499BB8 /* Preview Assets.xcassets in Resources */,
 				53A4C5312895BC8000499BB8 /* Assets.xcassets in Resources */,
+				53E27975289D9F26009A538D /* xmark.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,9 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				532FB7F02898B3D7009E7DFB /* TWOPLSWORK.swift in Sources */,
 				532FB7E228978BDC009E7DFB /* MainMenu.swift in Sources */,
-				532FB7E42897912B009E7DFB /* TwoPlayerMode.swift in Sources */,
 				532FB7EC2897AE77009E7DFB /* SelectDifficulty.swift in Sources */,
 				532FB7CE2895D7E1009E7DFB /* Alerts.swift in Sources */,
 				532FB7FC289B7923009E7DFB /* AnimatedXmarkView.swift in Sources */,
@@ -180,8 +228,8 @@
 				532FB7F4289A16E1009E7DFB /* GameBoard.swift in Sources */,
 				532FB7D0289621DC009E7DFB /* WinLoseDrawConditions.swift in Sources */,
 				532FB7EE2897B08C009E7DFB /* Setup.swift in Sources */,
+				53E27977289DABE0009A538D /* BackgroundMusic.swift in Sources */,
 				532FB7D228962473009E7DFB /* ComputerMoves.swift in Sources */,
-				532FB7E628979826009E7DFB /* ContentView.swift in Sources */,
 				53A4C52D2895BC7E00499BB8 /* tictactoeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

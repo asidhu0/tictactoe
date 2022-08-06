@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct MainMenu: View {
-    @State var score: scores = scores(playerScoreEasy: 0, playerScoreMedium: 0, playerScoreHard: 0, computerScoreEasy: 0, computerScoreMedium: 0, computerScoreHard: 0)
+    @State var score: scores = scores(playerScoreEasy: 0, playerScoreMedium: 0, playerScoreHard: 0, playerScoreImpossible: 0, computerScoreEasy: 0, computerScoreMedium: 0, computerScoreHard: 0, computerScoreImpossible: 0, twoPlayer1: 0, twoPlayer2: 0)
+    @State var sound: Bool = true
+    @State var numPlayers: Int = 0
     var body: some View {
         NavigationView {
             VStack {
@@ -16,19 +18,41 @@ struct MainMenu: View {
                 Text("Tic Tac Toe")
                     .font(.title)
                     .padding()
-                NavigationLink(destination: SelectDifficulty(score: $score)) {
+                NavigationLink(destination: SelectDifficulty(score: $score, sound: $sound, numPlayers: $numPlayers)) {
                     Text("One Player")
                 }
-//                NavigationLink(destination: SelectDifficulty()) {
-//                    Text("Two Player")
-//                }
-                Image(systemName: "speaker")
-                    .padding(.top, 15)
+                .simultaneousGesture(TapGesture().onEnded({ _ in
+                    numPlayers = 1
+                }))
+                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer")) {
+                    Text("Two Player")
+                }
+                .simultaneousGesture(TapGesture().onEnded({ _ in
+                    numPlayers = 2
+                }))
+                Button {
+                    sound.toggle()
+                    if sound {
+                        MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background")
+                    }
+                    else if !sound {
+                        MusicPlayer.shared.stopBackgroundMusic()
+                    }
+                } label: {
+                    if sound {
+                        Image(systemName: "speaker.wave.3.fill")
+                            .padding(.top, 15)
+                    }
+                    else if !sound {
+                        Image(systemName: "speaker.fill")
+                            .padding(.top, 15)
+                    }
+                }
                 Spacer()
             }
-            .toolbar {
-                Image(systemName: "gear")
-            }
+//            .toolbar {
+//                Image(systemName: "gear")
+//            }
 //            .onTapGesture {
 //                <#code#>
 //            }
@@ -36,9 +60,9 @@ struct MainMenu: View {
     }
     
 }
-
-struct MainMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        MainMenu()
-    }
-}
+//
+//struct MainMenu_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainMenu()
+//    }
+//}
