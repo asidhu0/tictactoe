@@ -11,6 +11,7 @@ struct MainMenu: View {
     @State var score: scores = scores(playerScoreEasy: 0, playerScoreMedium: 0, playerScoreHard: 0, playerScoreImpossible: 0, computerScoreEasy: 0, computerScoreMedium: 0, computerScoreHard: 0, computerScoreImpossible: 0, twoPlayer1: 0, twoPlayer2: 0)
     @State var sound: Bool = true
     @State var numPlayers: Int = 0
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -18,13 +19,13 @@ struct MainMenu: View {
                 Text("Tic Tac Toe")
                     .font(.title)
                     .padding()
-                NavigationLink(destination: SelectDifficulty(score: $score, sound: $sound, numPlayers: $numPlayers)) {
+                NavigationLink(destination: OptionsOnePlayer(score: $score, sound: $sound, numPlayers: $numPlayers)) {
                     Text("One Player")
                 }
                 .simultaneousGesture(TapGesture().onEnded({ _ in
                     numPlayers = 1
                 }))
-                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer")) {
+                NavigationLink(destination: OptionsTwoPlayers(score: $score, sound: $sound)) {
                     Text("Two Player")
                 }
                 .simultaneousGesture(TapGesture().onEnded({ _ in

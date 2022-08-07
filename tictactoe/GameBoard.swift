@@ -20,6 +20,7 @@ struct GameBoard: View {
     @State private var alertItem: AlertItem?
     @State var moves: [Move?] = Array(repeating: nil , count: 9)
     @State private var twoPlayerTurnDecider: Bool = true
+    @State private var count: Int = 0
     @State var line: Int = 0
     @State private var leftdwin: Bool = false
     @State private var rightdwin: Bool = false
@@ -32,7 +33,11 @@ struct GameBoard: View {
     @Binding var score: scores
     @Binding var sound: Bool
     
-    let modeOfDifficulty: String  // init()
+    // init()
+    let modeOfDifficulty: String
+    let onePlayerPieceDecider: Bool
+    let player1Name: String
+    let player2Name: String
     
     var body: some View {
         GeometryReader  { geometry in
@@ -151,40 +156,46 @@ struct GameBoard: View {
                     Spacer()
                     VStack {
                         if modeOfDifficulty == "easy" {
-                            Text("\(score.playerScoreEasy)")
+                            Text("\(Int(score.playerScoreEasy))")
                         }
                         else if modeOfDifficulty == "medium" {
-                            Text("\(score.playerScoreMedium)")
+                            Text("\(Int(score.playerScoreMedium))")
                         }
                         else if modeOfDifficulty == "hard" {
-                            Text("\(score.playerScoreHard)")
+                            Text("\(Int(score.playerScoreHard))")
                         }
                         else if modeOfDifficulty == "impossible" {
-                            Text("\(score.playerScoreImpossible)")
+                            Text("\(Int(score.playerScoreImpossible))")
                         }
                         else if modeOfDifficulty == "twoplayer" {
-                            Text("\(score.twoPlayer1)")
+                            Text("\(Int(score.twoPlayer1))")
                         }
-                        Text("Player")
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        Text(player1Name)
                     }
                     Spacer()
                     VStack {
                         if modeOfDifficulty == "easy" {
-                            Text("\(score.computerScoreEasy)")
+                            Text("\(Int(score.computerScoreEasy))")
                         }
                         else if modeOfDifficulty == "medium" {
-                            Text("\(score.computerScoreMedium)")
+                            Text("\(Int(score.computerScoreMedium))")
                         }
                         else if modeOfDifficulty == "hard" {
-                            Text("\(score.computerScoreHard)")
+                            Text("\(Int(score.computerScoreHard))")
                         }
                         else if modeOfDifficulty == "impossible" {
-                            Text("\(score.computerScoreImpossible)")
+                            Text("\(Int(score.computerScoreImpossible))")
                         }
                         else if modeOfDifficulty == "twoplayer" {
-                            Text("\(score.twoPlayer2)")
+                            Text("\(Int(score.twoPlayer2))")
                         }
-                        Text("Computer")
+                        Image(systemName: "circle")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        Text(player2Name)
                     }
                     Spacer()
                 }
@@ -195,7 +206,7 @@ struct GameBoard: View {
                     }
                     Spacer()
                     Button("Reset Game") {
-                        resetGame(moves: &moves)
+                        resetGame(moves: &moves, turn: &twoPlayerTurnDecider)
                     }
                 }
                 Spacer()
@@ -205,7 +216,7 @@ struct GameBoard: View {
             .alert(item: $alertItem, content: {alertItem in
                 Alert(title: alertItem.title, message: alertItem.message, dismissButton: .default(alertItem.buttonTitle, action:
                     {
-                    resetGame(moves: &moves)
+                    resetGame(moves: &moves, turn: &twoPlayerTurnDecider)
                     if sound {
                         MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background")
                     }
@@ -217,11 +228,6 @@ struct GameBoard: View {
                 }))
             })
         }
-    }
-    
-    func resetGame(moves: inout [Move?]) {  // FIXME
-        moves = Array(repeating: nil, count: 9)
-        
     }
     
     func resetScore() {
@@ -251,8 +257,9 @@ struct GameBoard: View {
         if (moves[index] != nil) {
             return true
         }
-        else {
-        moves[index] = Move(player: .human, boardIndex: index)
+        else {  // turnDecider ? .human : .computer
+//        moves[index] = Move(player: .human, boardIndex: index)
+            moves[index] = Move(player: onePlayerPieceDecider ? .human : .computer, boardIndex: index)
             if userMoveWinChecker() {
                 isGameBoardDisabled = false
             }
@@ -264,7 +271,7 @@ struct GameBoard: View {
     }
     
     func userMoveWinChecker() -> Bool {
-        if checkForWin(move: moves, piece: "xmark", line: &line) {
+        if checkForWin(move: moves, piece: "xmark", line: &line) {  // CHANGED: || checkForWin(move: moves, piece: "circle", line: &line)
             userMovewin = true
 
             alertItem = AlertContext.humanWin
@@ -286,6 +293,28 @@ struct GameBoard: View {
             }
             return true
         }
+        if checkForWin(move: moves, piece: "circle", line: &line) {  // CHANGED: checkForWin(move: moves, piece: "xmark", line: &line) ||
+            userMovewin = true
+
+            alertItem = AlertContext.humanWin
+
+            if modeOfDifficulty == "easy" {
+                score.computerScoreEasy += 0.5
+            }
+            else if modeOfDifficulty == "medium" {
+                score.computerScoreMedium += 0.5
+            }
+            else if modeOfDifficulty == "hard" {
+                score.computerScoreHard += 0.5
+            }
+            else if modeOfDifficulty == "impossible" {
+                score.computerScoreImpossible += 0.5
+            }
+            if sound {
+                MusicPlayer.shared.playSoundEffect(soundEffect: "win")
+            }
+            return true
+        }
         else if checkForDraw(move: moves) {
             draw = true
             alertItem = AlertContext.draw
@@ -300,20 +329,20 @@ struct GameBoard: View {
     func computerMove()  {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if modeOfDifficulty == "easy" {
-                easyComputerMove(move: &moves)
+                easyComputerMove(move: &moves, turn: onePlayerPieceDecider)
             }
             else if modeOfDifficulty == "medium" {
-                mediumComputerMove(move: &moves)
+                mediumComputerMove(move: &moves, turn: onePlayerPieceDecider)
             }
             else if modeOfDifficulty == "hard" {
-                hardComputerMove(move: &moves)
+                hardComputerMove(move: &moves, turn: onePlayerPieceDecider)
             }
             else if modeOfDifficulty == "impossible" {
-                impossibleComputerMove(move: &moves)
+                impossibleComputerMove(move: &moves, turn: onePlayerPieceDecider)
             }
             
             // check for computer win
-            if checkForWin(move: moves, piece: "circle", line: &line) {
+            if checkForWin(move: moves, piece: "circle", line: &line) { // CHANGED: || checkForWin(move: moves, piece: "xmark", line: &line)
                 computerWin = true
                 if computerWin {
                     if draw {
@@ -343,6 +372,43 @@ struct GameBoard: View {
                 }
                 else if modeOfDifficulty == "impossible" {
                     score.computerScoreImpossible += 1
+                }
+                isGameBoardDisabled = false
+                if sound {
+                    MusicPlayer.shared.playSoundEffect(soundEffect: "lose")
+                }
+                return
+            }
+            if checkForWin(move: moves, piece: "xmark", line: &line) { // CHANGED: || checkForWin(move: moves, piece: "circle", line: &line)
+                computerWin = true
+                if computerWin {
+                    if draw {
+                    }
+                    else if line == 0 || line == 1 || line == 2 {
+                        horizwin = true
+                    }
+                    else if line == 3 || line == 4 || line == 5 {
+                        vertwin = true
+                    }
+                    else if line == 6 {
+                        leftdwin = true
+                    }
+                    else if line == 7 {
+                        rightdwin = true
+                    }
+                }
+                alertItem = AlertContext.computerWin
+                if modeOfDifficulty == "easy" {
+                    score.playerScoreEasy += 1
+                }
+                else if modeOfDifficulty == "medium" {
+                    score.playerScoreMedium += 1
+                }
+                else if modeOfDifficulty == "hard" {
+                    score.playerScoreHard += 1
+                }
+                else if modeOfDifficulty == "impossible" {
+                    score.playerScoreImpossible += 1
                 }
                 isGameBoardDisabled = false
                 if sound {

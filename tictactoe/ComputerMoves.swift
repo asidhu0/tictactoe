@@ -14,11 +14,11 @@ Board Indices:
     6 7 8
  */
 
-func easyComputerMove(move: inout [Move?]) {
-    randomComputerMove(moves: &move)
+func easyComputerMove(move: inout [Move?], turn: Bool) {
+    randomComputerMove(moves: &move, turn: turn)
 }
 
-func mediumComputerMove(move: inout [Move?]) {
+func mediumComputerMove(move: inout [Move?], turn: Bool) {
     if computerCanWin(move: &move) {
         return
     }
@@ -26,11 +26,11 @@ func mediumComputerMove(move: inout [Move?]) {
         return
     }
     else {
-        randomComputerMove(moves: &move)
+        randomComputerMove(moves: &move, turn: turn)
     }
 }
 
-func hardComputerMove(move: inout [Move?]) {
+func hardComputerMove(move: inout [Move?], turn: Bool) {
     if computerCanWin(move: &move) {
         return
     }
@@ -41,11 +41,11 @@ func hardComputerMove(move: inout [Move?]) {
         return
     }
     else {
-        randomComputerMove(moves: &move)
+        randomComputerMove(moves: &move, turn: turn)
     }
 }
 
-func impossibleComputerMove(move: inout [Move?]) {
+func impossibleComputerMove(move: inout [Move?], turn: Bool) {
     if computerCanWin(move: &move) {
         return
     }
@@ -83,7 +83,7 @@ func impossibleComputerMove(move: inout [Move?]) {
         return
     }
     else {
-        randomComputerMove(moves: &move)
+        randomComputerMove(moves: &move, turn: turn)
     }
 }
 
@@ -151,7 +151,7 @@ func computerTakeMiddleSquare(moves: inout [Move?]) -> Bool {
     return false
 }
 
-func randomComputerMove(moves: inout [Move?]) {
+func randomComputerMove(moves: inout [Move?], turn: Bool) {
     var computerPosition = Int.random(in: 0..<9)
     var positionCheckComputer: Bool = true
     while positionCheckComputer {
@@ -159,7 +159,8 @@ func randomComputerMove(moves: inout [Move?]) {
             computerPosition = Int.random(in: 0..<9)
         }
         else {
-        moves[computerPosition] = Move(player: .computer, boardIndex: computerPosition)
+//        moves[computerPosition] = Move(player: .computer, boardIndex: computerPosition)
+            moves[computerPosition] = Move(player: !turn ? .human : .computer, boardIndex: computerPosition)
             positionCheckComputer = false
         }
     }
