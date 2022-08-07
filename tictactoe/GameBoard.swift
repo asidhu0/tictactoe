@@ -19,7 +19,7 @@ struct GameBoard: View {
     @State private var isGameBoardDisabled = false
     @State private var alertItem: AlertItem?
     @State var moves: [Move?] = Array(repeating: nil , count: 9)
-    @State private var twoPlayerTurnDecider: Bool = true
+//    @State private var twoPlayerTurnDecider: Bool = true
     @State private var count: Int = 0
     @State var line: Int = 0
     @State private var leftdwin: Bool = false
@@ -37,7 +37,10 @@ struct GameBoard: View {
     let modeOfDifficulty: String
     let onePlayerPieceDecider: Bool
     let player1Name: String
-    let player2Name: String
+//    let pieceType: String
+    let player2Name: String  // THIS IS WHATEVER PIECE PLAYER 1 PICKED
+    @State var twoPlayerTurnDecider: Bool
+    @State var twoPlayerTurnDeciderForResetFunc: Bool
     
     var body: some View {
         GeometryReader  { geometry in
@@ -65,10 +68,31 @@ struct GameBoard: View {
                                 
                                 // TWO PLAYER MODE
                                 if modeOfDifficulty == "twoplayer" {
-                                    if twoPlayerMode(index: i, turnDecider: &twoPlayerTurnDecider) {
-                                        twoPlayerTurnDecider.toggle()
+//                                    if twoPlayerMode(index: i, turnDecider: &twoPlayerTurnDecider) {
+//                                        twoPlayerTurnDecider.toggle()
+//                                    }
+                                    if twoPlayerMode(index: i, turnDecider: &twoPlayerTurnDeciderForResetFunc) {
+                                        twoPlayerTurnDeciderForResetFunc.toggle()
                                     }
-                                    if twoPlayerModeGameEndChecker(turnDecider: &twoPlayerTurnDecider) {
+//                                    if twoPlayerModeGameEndChecker(turnDecider: &twoPlayerTurnDecider) {
+//                                        if draw {
+//                                            return
+//                                        }
+//                                        else if line == 0 || line == 1 || line == 2 {
+//                                            horizwin = true
+//                                        }
+//                                        else if line == 3 || line == 4 || line == 5 {
+//                                            vertwin = true
+//                                        }
+//                                        else if line == 6 {
+//                                            leftdwin = true
+//                                        }
+//                                        else if line == 7 {
+//                                            rightdwin = true
+//                                        }
+//                                        return
+//                                    }
+                                    if twoPlayerModeGameEndChecker(turnDecider: &twoPlayerTurnDeciderForResetFunc) {
                                         if draw {
                                             return
                                         }
@@ -114,7 +138,7 @@ struct GameBoard: View {
                                         return
                                     }
                                     // computer's move
-                                    computerMove()
+                                    computerMove(computerPiece: player2Name == "xmark" ? "circle" : "xmark")
                                 }
                             }
                         }
@@ -173,7 +197,18 @@ struct GameBoard: View {
                         Image(systemName: "xmark")
                             .resizable()
                             .frame(width: 50, height: 50)
-                        Text(player1Name)
+                        if modeOfDifficulty == "twoplayer" {
+                            Text(player1Name)
+                        }
+                        else {
+                            if player2Name == "xmark" {
+                                Text(player1Name)
+                            }
+                            else {
+                                Text("Computer")
+                            }
+                        }
+//                        Text(player1Name)
                     }
                     Spacer()
                     VStack {
@@ -195,7 +230,18 @@ struct GameBoard: View {
                         Image(systemName: "circle")
                             .resizable()
                             .frame(width: 50, height: 50)
-                        Text(player2Name)
+                        if modeOfDifficulty == "twoplayer" {
+                            Text(player2Name)
+                        }
+                        else {
+                            if player2Name == "circle" {
+                                Text(player1Name)
+                            }
+                            else {
+                                Text("Computer")
+                            }
+                        }
+//                        Text(player2Name)
                     }
                     Spacer()
                 }
@@ -206,7 +252,8 @@ struct GameBoard: View {
                     }
                     Spacer()
                     Button("Reset Game") {
-                        resetGame(moves: &moves, turn: &twoPlayerTurnDecider)
+//                        resetGame(moves: &moves, turn: &twoPlayerTurnDecider)
+                        resetGame(moves: &moves)
                     }
                 }
                 Spacer()
@@ -216,7 +263,8 @@ struct GameBoard: View {
             .alert(item: $alertItem, content: {alertItem in
                 Alert(title: alertItem.title, message: alertItem.message, dismissButton: .default(alertItem.buttonTitle, action:
                     {
-                    resetGame(moves: &moves, turn: &twoPlayerTurnDecider)
+//                    resetGame(moves: &moves, turn: &twoPlayerTurnDecider)
+                    resetGame(moves: &moves)
                     if sound {
                         MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background")
                     }
@@ -228,6 +276,12 @@ struct GameBoard: View {
                 }))
             })
         }
+    }
+    
+    func resetGame(moves: inout [Move?]) {
+        moves = Array(repeating: nil, count: 9)
+        twoPlayerTurnDeciderForResetFunc = twoPlayerTurnDecider
+    //    turn = true
     }
     
     func resetScore() {
@@ -326,19 +380,19 @@ struct GameBoard: View {
         return false
     }
     
-    func computerMove()  {
+    func computerMove(computerPiece: String)  {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if modeOfDifficulty == "easy" {
-                easyComputerMove(move: &moves, turn: onePlayerPieceDecider)
+                easyComputerMove(move: &moves, turn: onePlayerPieceDecider, computerPiece: computerPiece, playerPiece: player2Name)
             }
             else if modeOfDifficulty == "medium" {
-                mediumComputerMove(move: &moves, turn: onePlayerPieceDecider)
+                mediumComputerMove(move: &moves, turn: onePlayerPieceDecider, computerPiece: computerPiece, playerPiece: player2Name)
             }
             else if modeOfDifficulty == "hard" {
-                hardComputerMove(move: &moves, turn: onePlayerPieceDecider)
+                hardComputerMove(move: &moves, turn: onePlayerPieceDecider, computerPiece: computerPiece, playerPiece: player2Name)
             }
             else if modeOfDifficulty == "impossible" {
-                impossibleComputerMove(move: &moves, turn: onePlayerPieceDecider)
+                impossibleComputerMove(move: &moves, turn: onePlayerPieceDecider, computerPiece: computerPiece, playerPiece: player2Name)
             }
             
             // check for computer win

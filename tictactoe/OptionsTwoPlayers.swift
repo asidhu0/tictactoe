@@ -12,8 +12,12 @@ struct OptionsTwoPlayers: View {
     @Binding var sound: Bool
     @State var textFieldText1: String = ""
     @State var textFieldText2: String = ""
+    @State var turnPicker: Bool
+    @State private var pickedX: Bool = false
+    @State private var pickedO: Bool = false
     var body: some View {
         VStack {
+            Spacer()
             Text("Change Name")
                 .font(.title)
                 .padding()
@@ -41,9 +45,53 @@ struct OptionsTwoPlayers: View {
                     .padding(.trailing, nil)
                 .font(.headline)
             }
-            NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2)) {
+            Spacer()
+            Text("Pick who goes first")
+                .font(.title)
+                .padding()
+            HStack {
+                Spacer()
+                Button {
+                    turnPicker = true
+                    pickedX = true
+                    pickedO = false
+                } label: {
+                    ZStack {
+                        if pickedX {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "xmark")
+                            .resizable()
+                        .frame(width: 50, height: 50)
+                    }
+                }
+                Spacer()
+                Button {
+                    turnPicker = false
+                    pickedX = false
+                    pickedO = true
+                } label: {
+                    ZStack {
+                        if pickedO {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                        .frame(width: 50, height: 50)
+                    }
+                }
+                Spacer()
+            }
+            NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
                 Text("Continue")
             }
+            Spacer()
         }
     }
 }

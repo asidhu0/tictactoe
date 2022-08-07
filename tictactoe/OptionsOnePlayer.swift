@@ -13,7 +13,8 @@ struct OptionsOnePlayer: View {
     @Binding var sound: Bool
     @Binding var numPlayers: Int
     @State var textFieldText1: String = ""
-    @State var textFieldText2: String = ""
+    @State var pieceType: String = ""
+//    @State var textFieldText2: String = ""
     @State var modeOfDifficulty: String = ""
     @State var xORo: Bool = true
     @State var clickedX: Bool = false
@@ -100,37 +101,6 @@ struct OptionsOnePlayer: View {
             }
             Spacer()
             VStack {
-                Text("Change Name")
-                    .font(.title)
-                    .padding()
-                HStack {
-                    Image(systemName: "xmark")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .padding(.leading, nil)
-                    TextField("Player", text: $textFieldText1)
-                        .padding()
-                        .background(Color.gray.opacity(0.3).cornerRadius(10))
-                        .padding(.leading, nil)
-                        .padding(.trailing, nil)
-                        .font(.headline)
-                }
-                HStack {
-                    Image(systemName: "circle")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .padding(.leading, nil)
-                    TextField("Computer", text: $textFieldText2)
-                        .padding()
-                        .background(Color.gray.opacity(0.3).cornerRadius(10))
-                        .padding(.leading, nil)
-                        .padding(.trailing, nil)
-                    .font(.headline)
-                }
-                
-            }
-            Spacer()
-            VStack {
                 Text("Pick a Side")
                     .font(.title)
                     .padding()
@@ -140,6 +110,7 @@ struct OptionsOnePlayer: View {
                         clickedX = true
                         clickedO = false
                         xORo = true
+                        pieceType = "xmark"
                         score.computerScoreEasy = 0
                         score.computerScoreMedium = 0
                         score.computerScoreHard = 0
@@ -166,6 +137,7 @@ struct OptionsOnePlayer: View {
                         clickedO = true
                         clickedX = false
                         xORo = false
+                        pieceType = "circle"
                         score.computerScoreEasy = 0
                         score.computerScoreMedium = 0
                         score.computerScoreHard = 0
@@ -191,10 +163,89 @@ struct OptionsOnePlayer: View {
                 }
             }
             Spacer()
+            if clickedO {
+                VStack {
+                    Text("Change Name")
+                        .font(.title)
+                    .padding()
+                    HStack {
+                        Image(systemName: "circle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .padding(.leading, nil)
+                        TextField("Player", text: $textFieldText1)
+                            .padding()
+                            .background(Color.gray.opacity(0.3).cornerRadius(10))
+                            .padding(.leading, nil)
+                            .padding(.trailing, nil)
+                            .font(.headline)
+                    }
+                }
+                
+            }
+            else if clickedX {
+                Text("Change Name")
+                    .font(.title)
+                    .padding()
+                HStack {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .padding(.leading, nil)
+                    TextField("Player", text: $textFieldText1)
+                        .padding()
+                        .background(Color.gray.opacity(0.3).cornerRadius(10))
+                        .padding(.leading, nil)
+                        .padding(.trailing, nil)
+                        .font(.headline)
+                }
+            }
+//            VStack {
+//                Text("Change Name")
+//                    .font(.title)
+//                    .padding()
+//                HStack {
+//                    Image(systemName: "xmark")
+//                        .resizable()
+//                        .frame(width: 20, height: 20)
+//                        .padding(.leading, nil)
+//                    TextField("Player", text: $textFieldText1)
+//                        .padding()
+//                        .background(Color.gray.opacity(0.3).cornerRadius(10))
+//                        .padding(.leading, nil)
+//                        .padding(.trailing, nil)
+//                        .font(.headline)
+//                }
+//                HStack {
+//                    Image(systemName: "circle")
+//                        .resizable()
+//                        .frame(width: 20, height: 20)
+//                        .padding(.leading, nil)
+//                    TextField("Computer", text: $textFieldText2)
+//                        .padding()
+//                        .background(Color.gray.opacity(0.3).cornerRadius(10))
+//                        .padding(.leading, nil)
+//                        .padding(.trailing, nil)
+//                        .font(.headline)
+//                }
+                
+//            }
+//            Spacer()
             VStack {
-                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: modeOfDifficulty, onePlayerPieceDecider: xORo, player1Name: textFieldText1, player2Name: textFieldText2)) {
+//                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: modeOfDifficulty, onePlayerPieceDecider: xORo, player1Name: textFieldText1, player2Name: textFieldText2, twoPlayerTurnDecider: true)) {
+//                    Text("Continue")
+//                }
+                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: modeOfDifficulty, onePlayerPieceDecider: xORo, player1Name: textFieldText1, player2Name: pieceType, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
                     Text("Continue")
                 }
+//                .simultaneousGesture(TapGesture().onEnded({ _ in
+//                    if textFieldText1 == "" {
+//                        textFieldText1 = "Computer"
+//                    }
+//                    else if textFieldText2 == "" {
+//                        textFieldText2 = "Computer"
+//                    }
+//                }))
             }
         }
     }

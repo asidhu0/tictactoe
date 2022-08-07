@@ -34,7 +34,12 @@ func winCombinations(combos: [Int], moves: [Move?], piece: String) -> Bool {
     return (moves[combos[0]]?.indicator == piece && moves[combos[1]]?.indicator == piece && moves[combos[2]]?.indicator == piece)
 }
 
-func resetGame(moves: inout [Move?], turn: inout Bool) {
-    moves = Array(repeating: nil, count: 9)
-    turn = true
-}
+//func resetGame(moves: inout [Move?], turn: inout Bool) {
+//    moves = Array(repeating: nil, count: 9)
+//    turn = true
+//}
+
+//func resetGame(moves: inout [Move?]) {
+//    moves = Array(repeating: nil, count: 9)
+////    turn = true
+//}

@@ -25,7 +25,7 @@ struct MainMenu: View {
                 .simultaneousGesture(TapGesture().onEnded({ _ in
                     numPlayers = 1
                 }))
-                NavigationLink(destination: OptionsTwoPlayers(score: $score, sound: $sound)) {
+                NavigationLink(destination: OptionsTwoPlayers(score: $score, sound: $sound, turnPicker: true)) {
                     Text("Two Player")
                 }
                 .simultaneousGesture(TapGesture().onEnded({ _ in
