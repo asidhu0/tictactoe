@@ -27,6 +27,8 @@
 		53A4C52D2895BC7E00499BB8 /* tictactoeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */; };
 		53A4C5312895BC8000499BB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A4C5302895BC8000499BB8 /* Assets.xcassets */; };
 		53A4C5342895BC8000499BB8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */; };
+		53C87CEC28A0519900FC5D40 /* GAMERIA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C87CEB28A0519900FC5D40 /* GAMERIA.ttf */; };
+		53C87CEF28A0664500FC5D40 /* Castle-Rock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C87CEE28A0664500FC5D40 /* Castle-Rock.ttf */; };
 		53E27971289D962D009A538D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E27970289D962D009A538D /* AVKit.framework */; };
 		53E27973289D9DB1009A538D /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27972289D9DB1009A538D /* circle.mp3 */; };
 		53E27975289D9F26009A538D /* xmark.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27974289D9F26009A538D /* xmark.mp3 */; };
@@ -59,6 +61,9 @@
 		53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tictactoeApp.swift; sourceTree = "<group>"; };
 		53A4C5302895BC8000499BB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		53C87CEB28A0519900FC5D40 /* GAMERIA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GAMERIA.ttf; sourceTree = "<group>"; };
+		53C87CED28A0554B00FC5D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		53C87CEE28A0664500FC5D40 /* Castle-Rock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Castle-Rock.ttf"; sourceTree = "<group>"; };
 		53E27970289D962D009A538D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		53E27972289D9DB1009A538D /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		53E27974289D9F26009A538D /* xmark.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xmark.mp3; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 		53A4C52B2895BC7E00499BB8 /* tictactoe */ = {
 			isa = PBXGroup;
 			children = (
+				53C87CED28A0554B00FC5D40 /* Info.plist */,
 				532FB7ED2897B08C009E7DFB /* Setup.swift */,
 				532FB7E128978BDC009E7DFB /* MainMenu.swift */,
 				532FB7EB2897AE76009E7DFB /* OptionsOnePlayer.swift */,
@@ -133,6 +139,7 @@
 				532FB7D128962473009E7DFB /* ComputerMoves.swift */,
 				532FB7CF289621DC009E7DFB /* WinLoseDrawConditions.swift */,
 				53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */,
+				53C87CEA28A050D100FC5D40 /* Fonts */,
 				532FB7FF289BC0FF009E7DFB /* Sounds */,
 				53A4C5302895BC8000499BB8 /* Assets.xcassets */,
 				53A4C5322895BC8000499BB8 /* Preview Content */,
@@ -146,6 +153,15 @@
 				53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		53C87CEA28A050D100FC5D40 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				53C87CEB28A0519900FC5D40 /* GAMERIA.ttf */,
+				53C87CEE28A0664500FC5D40 /* Castle-Rock.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		53E2796F289D962D009A538D /* Frameworks */ = {
@@ -215,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E2797B289DC0DF009A538D /* tie1.mp3 in Resources */,
+				53C87CEC28A0519900FC5D40 /* GAMERIA.ttf in Resources */,
 				53E2797D289DC1BF009A538D /* tie.mp3 in Resources */,
 				53E27973289D9DB1009A538D /* circle.mp3 in Resources */,
 				53E27979289DADD9009A538D /* lose.mp3 in Resources */,
@@ -225,6 +242,7 @@
 				53A4C5342895BC8000499BB8 /* Preview Assets.xcassets in Resources */,
 				53A4C5312895BC8000499BB8 /* Assets.xcassets in Resources */,
 				53E27975289D9F26009A538D /* xmark.mp3 in Resources */,
+				53C87CEF28A0664500FC5D40 /* Castle-Rock.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +399,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"tictactoe/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = tictactoe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -409,6 +428,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"tictactoe/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = tictactoe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
