@@ -186,10 +186,14 @@ struct GameBoard: View {
                                 .resizable()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(colorX)
-//                                .foregroundColor(.blue)
                                 .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
                             if modeOfDifficulty == "twoplayer" {
-                                Text(player1Name)
+                                if player1Name == "" {
+                                    Text("Player 1")
+                                }
+                                else {
+                                    Text(player1Name)
+                                }
                             }
                             else {
                                 if player2Name == "xmark" {
@@ -221,10 +225,14 @@ struct GameBoard: View {
                                 .resizable()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(color0)
-//                                .foregroundColor(.blue)
                                 .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
                             if modeOfDifficulty == "twoplayer" {
-                                Text(player2Name)
+                                if player2Name == "" {
+                                    Text("Player 2")
+                                }
+                                else {
+                                    Text(player2Name)
+                                }
                             }
                             else {
                                 if player2Name == "circle" {

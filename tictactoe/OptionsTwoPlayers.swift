@@ -15,88 +15,537 @@ struct OptionsTwoPlayers: View {
     @State var turnPicker: Bool
     @State private var pickedX: Bool = false
     @State private var pickedO: Bool = false
+    let background = LinearGradient(colors: [Color(#colorLiteral(red: 0.955021441, green: 0.7766728401, blue: 0.6494518518, alpha: 1)), Color(#colorLiteral(red: 0.9614726901, green: 0.8826437593, blue: 0.651904881, alpha: 1))], startPoint: .top, endPoint: .bottom)
+    @State var colorButtonClickedO: [Bool] = Array(repeating: false, count: 10)
+    @State var colorButtonClickedX: [Bool] = Array(repeating: false, count: 10)
+    @State var color0: Color = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+    @State var colorX: Color = Color.blue
+    @State var isShowingO: Bool = false
+    @State var isShowingX: Bool = false
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Change Name")
-                .font(.title)
-                .padding()
-            HStack {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .padding(.leading, nil)
-                TextField("Player 1", text: $textFieldText1)
-                    .padding()
-                    .background(Color.gray.opacity(0.3).cornerRadius(10))
-                    .padding(.leading, nil)
-                    .padding(.trailing, nil)
-                    .font(.headline)
-            }
-            HStack {
-                Image(systemName: "circle")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .padding(.leading, nil)
-                TextField("Player 2", text: $textFieldText2)
-                    .padding()
-                    .background(Color.gray.opacity(0.3).cornerRadius(10))
-                    .padding(.leading, nil)
-                    .padding(.trailing, nil)
-                .font(.headline)
-            }
-            Spacer()
-            Text("Pick who goes first")
-                .font(.title)
-                .padding()
-            HStack {
+        ZStack {
+            background
+                .ignoresSafeArea(.all)
+            VStack {
                 Spacer()
-                Button {
-                    turnPicker = true
-                    pickedX = true
-                    pickedO = false
-                } label: {
-                    ZStack {
-                        if pickedX {
-                            Rectangle()
-                                .stroke(.black)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+                        .frame(width: 280, height: 120)
+                    Text("Pick who goes first")
+                        .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+                        .foregroundColor(.cyan)
+                        .padding()
+                }
+                HStack {
+                    Spacer()
+                    Button {
+                        turnPicker = true
+                        pickedX = true
+                        pickedO = false
+                        isShowingX = true
+                    } label: {
+                        ZStack {
+                            if pickedX {
+                                Capsule()
+                                    .frame(width: 70, height: 6)
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6344175935, green: 0.4580050707, blue: 0.8420854211, alpha: 1)))
+                                    .offset(y: 40)
+                            }
+                            Image(systemName: "xmark")
+                                .resizable()
                                 .frame(width: 60, height: 60)
-                                .foregroundColor(.white)
+                                .foregroundColor(colorX)
+                                .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
                         }
-                        Image(systemName: "xmark")
-                            .resizable()
-                        .frame(width: 50, height: 50)
                     }
+                    Spacer()
+                    Button {
+                        turnPicker = false
+                        pickedX = false
+                        pickedO = true
+                        isShowingO = true
+                    } label: {
+                        ZStack {
+                            if pickedO {
+                                Capsule()
+                                    .frame(width: 70, height: 6)
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6344175935, green: 0.4580050707, blue: 0.8420854211, alpha: 1)))
+                                    .offset(y: 40)
+                            }
+                            Image(systemName: "circle")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(color0)
+                                .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
+                        }
+                    }
+                    Spacer()
+                }
+                .padding()
+                Spacer()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+                        .frame(width: 290, height: 80)
+                    Text("Change Name")
+                        .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+                        .foregroundColor(.cyan)
+                        .padding()
+                }
+                HStack {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(colorX)
+                        .padding(.leading, nil)
+                    TextField("Player 1", text: $textFieldText1)
+                        .overlay(
+                            VStack{
+                                Divider()
+                                    .overlay(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                                    .offset(x: 0, y: 15)
+                            }
+                        )
+                        .padding()
+                        .accentColor(.blue)
+                        .padding(.trailing, nil)
+                        .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
+                        .foregroundColor(Color.gray)
+                }
+                HStack {
+                    Image(systemName: "circle")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(color0)
+                        .padding(.leading, nil)
+                    TextField("Player 2", text: $textFieldText2)
+                        .overlay(
+                            VStack{
+                                Divider()
+                                    .overlay(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                                    .offset(x: 0, y: 15)
+                            }
+                        )
+                        .padding()
+                        .accentColor(.blue)
+                        .padding(.trailing, nil)
+                        .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
+                        .foregroundColor(Color.gray)
                 }
                 Spacer()
+                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, color0: color0, colorX: colorX, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
+                    Text("Continue")
+                        .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+                        .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                }
+                Spacer()
+            }
+            colorCombinationPicker
+        }
+        .navigationTitle("")
+    }
+    
+    var colorCombinationPicker: some View {
+        ZStack(alignment: .bottom) {
+            if isShowingO {
+                Color.black.opacity(0.3)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    isShowingO = false
+                }
+                circleColors
+                .transition(.move(edge: .bottom))
+            }
+            if isShowingX {
+                Color.black.opacity(0.3)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    isShowingX = false
+                }
+                xmarkColors
+                .transition(.move(edge: .bottom))
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        .ignoresSafeArea()
+        .animation(.easeInOut)
+    }
+    
+    var circleColors: some View {
+        VStack {
+            Capsule()
+                .frame(width: 40, height: 6)
+                .padding(.top, nil)
+            Spacer()
+            HStack {
                 Button {
-                    turnPicker = false
-                    pickedX = false
-                    pickedO = true
+                    color0 = .black
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[0] = true
                 } label: {
                     ZStack {
-                        if pickedO {
+                        if colorButtonClickedO[0] == true {
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.black)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    color0 = .blue
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[1] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[1] == true {
                             Rectangle()
                                 .stroke(.black)
-                                .frame(width: 60, height: 60)
+                                .frame(width: 50, height: 50)
                                 .foregroundColor(.white)
                         }
                         Image(systemName: "circle")
                             .resizable()
-                        .frame(width: 50, height: 50)
+                            .foregroundColor(.blue)
+                            .frame(width: 90, height: 90)
                     }
                 }
-                Spacer()
+                .padding(5)
+                Button {
+                    color0 = .brown
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[2] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[2] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.brown)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
             }
-//            NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
-//                Text("Continue")
-//            }
-            NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, color0: .orange, colorX: .yellow, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
-                Text("Continue")
+            HStack {
+                Button {
+                    color0 = .cyan
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[3] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[3] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.cyan)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    color0 = .green
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[4] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[4] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.green)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    color0 = .orange
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[6] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[6] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.orange)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+            }
+            HStack {
+                Button {
+//                    color0 = .purple
+                    color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[7] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[7] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+//                            .foregroundColor(.purple)
+                            .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    color0 = .red
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[8] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[8] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.red)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    color0 = .yellow
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[9] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[9] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.yellow)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
             }
             Spacer()
         }
-        .navigationTitle("")
+        .frame(height: 400)
+        .frame(maxWidth: .infinity)
+        .background(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+    }
+    
+    var xmarkColors: some View {
+        VStack {
+            Capsule()
+                .frame(width: 40, height: 6)
+                .padding(.top, nil)
+            Spacer()
+            HStack {
+                Button {
+                    colorX = .black
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[0] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[0] == true {
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.black)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    colorX = .blue
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[1] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[1] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.blue)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    colorX = .brown
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[2] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[2] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.brown)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+            }
+            HStack {
+                Button {
+                    colorX = .cyan
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[3] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[3] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.cyan)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    colorX = .green
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[4] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[4] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.green)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    colorX = .orange
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[6] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[6] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.orange)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+            }
+            HStack {
+                Button {
+//                    color0 = .purple
+                    colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[7] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[7] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+//                            .foregroundColor(.purple)
+                            .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    colorX = .red
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[8] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[8] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.red)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+                Button {
+                    colorX = .yellow
+                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorButtonClickedO[9] = true
+                } label: {
+                    ZStack {
+                        if colorButtonClickedO[9] == true {
+                            Rectangle()
+                                .stroke(.black)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        }
+                        Image(systemName: "circle")
+                            .resizable()
+                            .foregroundColor(.yellow)
+                            .frame(width: 90, height: 90)
+                    }
+                }
+                .padding(5)
+            }
+            Spacer()
+        }
+        .frame(height: 400)
+        .frame(maxWidth: .infinity)
+        .background(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
     }
 }
 //
