@@ -29,6 +29,11 @@
 		53A4C5342895BC8000499BB8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */; };
 		53C87CEC28A0519900FC5D40 /* GAMERIA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C87CEB28A0519900FC5D40 /* GAMERIA.ttf */; };
 		53C87CEF28A0664500FC5D40 /* Castle-Rock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C87CEE28A0664500FC5D40 /* Castle-Rock.ttf */; };
+		53C87CF728A0C85600FC5D40 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C87CF628A0C85600FC5D40 /* test.swift */; };
+		53C87CF928A0C8A100FC5D40 /* test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C87CF828A0C8A100FC5D40 /* test2.swift */; };
+		53C87CFB28A1F5A300FC5D40 /* gametest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C87CFA28A1F5A300FC5D40 /* gametest.swift */; };
+		53C87CFD28A41E1000FC5D40 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C87CFC28A41E0F00FC5D40 /* ModalView.swift */; };
+		53C87CFF28AA1C7000FC5D40 /* WORK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C87CFE28AA1C6F00FC5D40 /* WORK.swift */; };
 		53E27971289D962D009A538D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E27970289D962D009A538D /* AVKit.framework */; };
 		53E27973289D9DB1009A538D /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27972289D9DB1009A538D /* circle.mp3 */; };
 		53E27975289D9F26009A538D /* xmark.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27974289D9F26009A538D /* xmark.mp3 */; };
@@ -64,6 +69,11 @@
 		53C87CEB28A0519900FC5D40 /* GAMERIA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GAMERIA.ttf; sourceTree = "<group>"; };
 		53C87CED28A0554B00FC5D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		53C87CEE28A0664500FC5D40 /* Castle-Rock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Castle-Rock.ttf"; sourceTree = "<group>"; };
+		53C87CF628A0C85600FC5D40 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		53C87CF828A0C8A100FC5D40 /* test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test2.swift; sourceTree = "<group>"; };
+		53C87CFA28A1F5A300FC5D40 /* gametest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gametest.swift; sourceTree = "<group>"; };
+		53C87CFC28A41E0F00FC5D40 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		53C87CFE28AA1C6F00FC5D40 /* WORK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WORK.swift; sourceTree = "<group>"; };
 		53E27970289D962D009A538D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		53E27972289D9DB1009A538D /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		53E27974289D9F26009A538D /* xmark.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xmark.mp3; sourceTree = "<group>"; };
@@ -123,11 +133,16 @@
 			isa = PBXGroup;
 			children = (
 				53C87CED28A0554B00FC5D40 /* Info.plist */,
+				53C87CFE28AA1C6F00FC5D40 /* WORK.swift */,
 				532FB7ED2897B08C009E7DFB /* Setup.swift */,
 				532FB7E128978BDC009E7DFB /* MainMenu.swift */,
 				532FB7EB2897AE76009E7DFB /* OptionsOnePlayer.swift */,
+				53C87CF628A0C85600FC5D40 /* test.swift */,
+				53C87CF828A0C8A100FC5D40 /* test2.swift */,
+				53C87CFC28A41E0F00FC5D40 /* ModalView.swift */,
 				53601DA6289F370800141B50 /* OptionsTwoPlayers.swift */,
 				532FB7F3289A16E1009E7DFB /* GameBoard.swift */,
+				53C87CFA28A1F5A300FC5D40 /* gametest.swift */,
 				53601D92289E1CDD00141B50 /* HorizontalWin.swift */,
 				53601D98289E217300141B50 /* LeftDiagonalWin.swift */,
 				53601D9A289E217D00141B50 /* RightDiagonalWin.swift */,
@@ -254,19 +269,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				53601DA7289F370800141B50 /* OptionsTwoPlayers.swift in Sources */,
+				53C87CF728A0C85600FC5D40 /* test.swift in Sources */,
 				532FB7E228978BDC009E7DFB /* MainMenu.swift in Sources */,
 				532FB7EC2897AE77009E7DFB /* OptionsOnePlayer.swift in Sources */,
+				53C87CFB28A1F5A300FC5D40 /* gametest.swift in Sources */,
 				53601D93289E1CDD00141B50 /* HorizontalWin.swift in Sources */,
 				53601D9D289E26B900141B50 /* VerticalWin.swift in Sources */,
 				532FB7CE2895D7E1009E7DFB /* Alerts.swift in Sources */,
 				532FB7FC289B7923009E7DFB /* AnimatedXmarkView.swift in Sources */,
 				532FB7FA289B71FE009E7DFB /* AnimatedCircleView.swift in Sources */,
 				532FB7F4289A16E1009E7DFB /* GameBoard.swift in Sources */,
+				53C87CF928A0C8A100FC5D40 /* test2.swift in Sources */,
 				532FB7D0289621DC009E7DFB /* WinLoseDrawConditions.swift in Sources */,
 				532FB7EE2897B08C009E7DFB /* Setup.swift in Sources */,
+				53C87CFD28A41E1000FC5D40 /* ModalView.swift in Sources */,
 				53E27977289DABE0009A538D /* BackgroundMusic.swift in Sources */,
 				532FB7D228962473009E7DFB /* ComputerMoves.swift in Sources */,
 				53601D99289E217300141B50 /* LeftDiagonalWin.swift in Sources */,
+				53C87CFF28AA1C7000FC5D40 /* WORK.swift in Sources */,
 				53601D9B289E217D00141B50 /* RightDiagonalWin.swift in Sources */,
 				53A4C52D2895BC7E00499BB8 /* tictactoeApp.swift in Sources */,
 			);

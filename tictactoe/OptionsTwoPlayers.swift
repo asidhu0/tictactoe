@@ -88,11 +88,15 @@ struct OptionsTwoPlayers: View {
                 }
                 Spacer()
             }
-            NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
+//            NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
+//                Text("Continue")
+//            }
+            NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, color0: .orange, colorX: .yellow, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
                 Text("Continue")
             }
             Spacer()
         }
+        .navigationTitle("")
     }
 }
 //

@@ -9,11 +9,13 @@ import SwiftUI
 
 struct LeftDiagonalWin: View {
     @State private var innerTrimEnd: CGFloat = 1.0
+    let color: UIColor = #colorLiteral(red: 0.955021441, green: 0.7766728401, blue: 0.6494518518, alpha: 1)
     
     var body: some View {
         LeftDiagonal()
             .trim(from: 0, to: innerTrimEnd)
             .stroke(Color.black, style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
+//            .stroke(Color.orange, style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
             .frame(width: 310, height: 310)
             .onAppear() {
                 innerTrimEnd = 0

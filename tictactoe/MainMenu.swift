@@ -42,6 +42,8 @@ struct MainMenu: View {
                                     .foregroundColor(.cyan)
                                     .padding()
                             }
+                            .navigationBarHidden(true)
+                            .navigationBarTitleDisplayMode(.inline)
                         }
                         .simultaneousGesture(TapGesture().onEnded({ _ in
                             numPlayers = 1
@@ -57,6 +59,8 @@ struct MainMenu: View {
                                     .padding()
                                 
                             }
+                            .navigationBarHidden(true)
+                            .navigationBarTitleDisplayMode(.inline)
                         }
                         .simultaneousGesture(TapGesture().onEnded({ _ in
                             numPlayers = 2
@@ -95,10 +99,16 @@ struct MainMenu: View {
                         }
                     }
                 }
-                .navigationBarHidden(true)
+                .navigationTitle("")
+
+//                .navigationBarHidden(true)
+//                .navigationViewStyle(.stack)
             }
+//            .navigationViewStyle(.stack)
+            .accentColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+
+        
     }
-    
 }
 
 struct MainMenu_Previews: PreviewProvider {

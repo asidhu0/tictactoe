@@ -11,12 +11,15 @@ struct AnimatedXmarkView: View {
     @State private var innerTrimEnd: CGFloat = 1.0
     var animationDuration: Double = 0.35
     @Binding var sound: Bool
+    let color: Color
     var body: some View {
 //        VStack {
             Xmark()
                 .trim(from: 0, to: innerTrimEnd)
-                .stroke(Color.black, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
-                .frame(width: 40, height: 40)
+//                .stroke(Color.black, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
+                .stroke(color, style: StrokeStyle(lineWidth: 5.0, lineCap: .round))
+//                .stroke(Color.blue, style: StrokeStyle(lineWidth: 5.0, lineCap: .round))
+                .frame(width: 50, height: 50)
 //        }
         .onAppear() {
             innerTrimEnd = 0
@@ -33,11 +36,11 @@ struct AnimatedXmarkView: View {
     }
 }
 
-//struct AnimatedXmarkView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AnimatedXmarkView()
-//    }
-//}
+struct AnimatedXmarkView_Previews: PreviewProvider {
+    static var previews: some View {
+        AnimatedXmarkView(sound: .constant(false), color: .yellow)
+    }
+}
 
 struct Xmark: Shape {
     func path(in rect: CGRect) -> Path {
