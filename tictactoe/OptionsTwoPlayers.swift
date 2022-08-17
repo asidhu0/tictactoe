@@ -19,7 +19,7 @@ struct OptionsTwoPlayers: View {
     @State var colorButtonClickedO: [Bool] = Array(repeating: false, count: 10)
     @State var colorButtonClickedX: [Bool] = Array(repeating: false, count: 10)
     @State var color0: Color = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
-    @State var colorX: Color = Color.blue
+    @State var colorX: Color = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
     @State var isShowingO: Bool = false
     @State var isShowingX: Bool = false
     var body: some View {
@@ -154,7 +154,7 @@ struct OptionsTwoPlayers: View {
                 .onTapGesture {
                     isShowingO = false
                 }
-                circleColors
+                showColors
                 .transition(.move(edge: .bottom))
             }
             if isShowingX {
@@ -163,7 +163,7 @@ struct OptionsTwoPlayers: View {
                 .onTapGesture {
                     isShowingX = false
                 }
-                xmarkColors
+                showColors
                 .transition(.move(edge: .bottom))
             }
         }
@@ -171,375 +171,94 @@ struct OptionsTwoPlayers: View {
         .ignoresSafeArea()
         .animation(.easeInOut)
     }
-    
-    var circleColors: some View {
+        
+    var showColors: some View {
         VStack {
             Capsule()
                 .frame(width: 40, height: 6)
                 .padding(.top, nil)
-            Spacer()
-            HStack {
-                Button {
-                    color0 = .black
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[0] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[0] == true {
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.black)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    color0 = .blue
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[1] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[1] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.blue)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    color0 = .brown
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[2] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[2] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.brown)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-            }
-            HStack {
-                Button {
-                    color0 = .cyan
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[3] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[3] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.cyan)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    color0 = .green
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[4] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[4] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.green)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    color0 = .orange
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[6] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[6] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.orange)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-            }
-            HStack {
-                Button {
-//                    color0 = .purple
-                    color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[7] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[7] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-//                            .foregroundColor(.purple)
-                            .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    color0 = .red
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[8] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[8] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.red)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    color0 = .yellow
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[9] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[9] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.yellow)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-            }
-            Spacer()
-        }
-        .frame(height: 400)
-        .frame(maxWidth: .infinity)
-        .background(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
-    }
-    
-    var xmarkColors: some View {
-        VStack {
-            Capsule()
-                .frame(width: 40, height: 6)
+            Text("Pick a Color Combination")
+                .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+                .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
                 .padding(.top, nil)
             Spacer()
-            HStack {
+            VStack {
+                Spacer()
                 Button {
-                    colorX = .black
-                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorX = Color.blue
+                    color0 = Color.blue
+                    colorButtonClickedO = Array(repeating: false, count: 3)
                     colorButtonClickedO[0] = true
                 } label: {
-                    ZStack {
-                        if colorButtonClickedO[0] == true {
+                    VStack {
+                        HStack {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .foregroundColor(.blue)
+                                .frame(width: 70, height: 70)
+                            Image(systemName: "circle")
+                                .resizable()
+                                .foregroundColor(.blue)
+                                .frame(width: 70, height: 70)
                         }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.black)
-                            .frame(width: 90, height: 90)
+                        if colorButtonClickedO[0] == true {
+                              Capsule()
+                                  .frame(width: 150, height: 4)
+                                  .foregroundColor(Color.black)
+                          }
                     }
                 }
-                .padding(5)
+                Spacer()
                 Button {
-                    colorX = .blue
-                    colorButtonClickedO = Array(repeating: false, count: 10)
+                    colorX = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                    color0 = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                    colorButtonClickedO = Array(repeating: false, count: 3)
                     colorButtonClickedO[1] = true
                 } label: {
-                    ZStack {
+                    VStack {
+                        HStack {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .foregroundColor(Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
+                                .frame(width: 70, height: 70)
+                            Image(systemName: "circle")
+                                .resizable()
+                                .foregroundColor(Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
+                                .frame(width: 70, height: 70)
+                        }
                         if colorButtonClickedO[1] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.blue)
-                            .frame(width: 90, height: 90)
+                              Capsule()
+                                  .frame(width: 150, height: 4)
+                                  .foregroundColor(Color.black)
+                          }
                     }
                 }
-                .padding(5)
+                Spacer()
                 Button {
-                    colorX = .brown
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[2] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[2] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.brown)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-            }
-            HStack {
-                Button {
-                    colorX = .cyan
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[3] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[3] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.cyan)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    colorX = .green
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[4] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[4] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.green)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    colorX = .orange
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[6] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[6] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.orange)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-            }
-            HStack {
-                Button {
-//                    color0 = .purple
                     colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[7] = true
+                    color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                    colorButtonClickedO = Array(repeating: false, count: 3)
+                    colorButtonClickedO[2] = true
                 } label: {
-                    ZStack {
-                        if colorButtonClickedO[7] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
+                    VStack {
+                        HStack {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                                .frame(width: 70, height: 70)
+                            Image(systemName: "circle")
+                                .resizable()
+                                .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                                .frame(width: 70, height: 70)
                         }
-                        Image(systemName: "circle")
-                            .resizable()
-//                            .foregroundColor(.purple)
-                            .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
-                            .frame(width: 90, height: 90)
+                        if colorButtonClickedO[2] == true {
+                              Capsule()
+                                  .frame(width: 150, height: 4)
+                                  .foregroundColor(Color.black)
+                          }
                     }
                 }
-                .padding(5)
-                Button {
-                    colorX = .red
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[8] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[8] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.red)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
-                Button {
-                    colorX = .yellow
-                    colorButtonClickedO = Array(repeating: false, count: 10)
-                    colorButtonClickedO[9] = true
-                } label: {
-                    ZStack {
-                        if colorButtonClickedO[9] == true {
-                            Rectangle()
-                                .stroke(.black)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                        }
-                        Image(systemName: "circle")
-                            .resizable()
-                            .foregroundColor(.yellow)
-                            .frame(width: 90, height: 90)
-                    }
-                }
-                .padding(5)
+                Spacer()
             }
             Spacer()
         }

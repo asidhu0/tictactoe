@@ -13,14 +13,14 @@ struct OptionsOnePlayer: View {
     @Binding var sound: Bool
     @Binding var numPlayers: Int
     @State var textFieldText1: String = ""
-    @State var pieceType: String = ""
+    @State var pieceType: String = "xmark"  // Deafult peice is xmark if user does not pick
     @State var modeOfDifficulty: String = ""
     @State var xORo: Bool = true
     @State var clickedX: Bool = false
     @State var clickedO: Bool = false
     @State var isShowing: Bool = false
     @State var color0: Color = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
-    @State var colorX: Color = Color.blue
+    @State var colorX: Color = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
     @State var colorButtonClickedO: [Bool] = Array(repeating: false, count: 3)
     @State var offset: CGFloat = 0
     let background = LinearGradient(colors: [Color(#colorLiteral(red: 0.955021441, green: 0.7766728401, blue: 0.6494518518, alpha: 1)), Color(#colorLiteral(red: 0.9614726901, green: 0.8826437593, blue: 0.651904881, alpha: 1))], startPoint: .top, endPoint: .bottom)
@@ -253,8 +253,8 @@ var showColors: some View {
                 VStack {
                     Spacer()
                     Button {
-                        colorX = Color.red
-                        color0 = Color.orange
+                        colorX = Color.blue
+                        color0 = Color.blue
                         colorButtonClickedO = Array(repeating: false, count: 3)
                         colorButtonClickedO[0] = true
                     } label: {
@@ -262,11 +262,11 @@ var showColors: some View {
                             HStack {
                                 Image(systemName: "xmark")
                                     .resizable()
-                                    .foregroundColor(.red)
+                                    .foregroundColor(.blue)
                                     .frame(width: 70, height: 70)
                                 Image(systemName: "circle")
                                     .resizable()
-                                    .foregroundColor(.orange)
+                                    .foregroundColor(.blue)
                                     .frame(width: 70, height: 70)
                             }
                             if colorButtonClickedO[0] == true {
@@ -278,8 +278,8 @@ var showColors: some View {
                     }
                     Spacer()
                     Button {
-                        colorX = .yellow
-                        color0 = .green
+                        colorX = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                        color0 = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
                         colorButtonClickedO = Array(repeating: false, count: 3)
                         colorButtonClickedO[1] = true
                     } label: {
@@ -287,11 +287,11 @@ var showColors: some View {
                             HStack {
                                 Image(systemName: "xmark")
                                     .resizable()
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
                                     .frame(width: 70, height: 70)
                                 Image(systemName: "circle")
                                     .resizable()
-                                    .foregroundColor(.green)
+                                    .foregroundColor(Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
                                     .frame(width: 70, height: 70)
                             }
                             if colorButtonClickedO[1] == true {
@@ -303,7 +303,7 @@ var showColors: some View {
                     }
                     Spacer()
                     Button {
-                        colorX = .blue
+                        colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
                         color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
                         colorButtonClickedO = Array(repeating: false, count: 3)
                         colorButtonClickedO[2] = true
@@ -312,7 +312,7 @@ var showColors: some View {
                             HStack {
                                 Image(systemName: "xmark")
                                     .resizable()
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
                                     .frame(width: 70, height: 70)
                                 Image(systemName: "circle")
                                     .resizable()

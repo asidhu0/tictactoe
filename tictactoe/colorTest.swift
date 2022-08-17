@@ -1,21 +1,19 @@
 //
-//  AllModesDiff.swift
+//  colorTest.swift
 //  tictactoe
 //
-//  Created by Avnoor Singh Sidhu on 8/2/22.
+//  Created by Avnoor Singh Sidhu on 8/16/22.
 //
 
 import SwiftUI
-import Foundation
-import AVFoundation
 
-struct GameBoard: View {
-    let layout: [GridItem]  = [
+struct colorTest: View {
+    let layout: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-
+    @State var score: scores = scores(playerScoreEasy: 0, playerScoreMedium: 0, playerScoreHard: 0, playerScoreImpossible: 0, computerScoreEasy: 0, computerScoreMedium: 0, computerScoreHard: 0, computerScoreImpossible: 0, twoPlayer1: 0, twoPlayer2: 0)
     @State private var isGameBoardDisabled = false
     @State private var alertItem: AlertItem?
     @State var moves: [Move?] = Array(repeating: nil , count: 9)
@@ -29,9 +27,6 @@ struct GameBoard: View {
     @State private var computerWin: Bool = false
     @State private var userMovewin: Bool = false
     let background = LinearGradient(colors: [Color(#colorLiteral(red: 0.955021441, green: 0.7766728401, blue: 0.6494518518, alpha: 1)), Color(#colorLiteral(red: 0.9614726901, green: 0.8826437593, blue: 0.651904881, alpha: 1))], startPoint: .top, endPoint: .bottom)
-
-    @Binding var score: scores
-    @Binding var sound: Bool
     
     // init()
     let modeOfDifficulty: String
@@ -44,7 +39,6 @@ struct GameBoard: View {
     
     @State var twoPlayerTurnDecider: Bool
     @State var twoPlayerTurnDeciderForResetFunc: Bool
-    
     var body: some View {
         ZStack {
             background
@@ -64,12 +58,10 @@ struct GameBoard: View {
                                         .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
                                     if (moves[i] != nil) {
                                         if moves[i]?.indicator == "xmark" {
-//                                            AnimatedXmarkView(sound: $sound)
                                             AnimatedXmarkView(color: colorX)
                                         }
                                         else if moves[i]?.indicator == "circle" {
                                             AnimatedCircleView(color: color0)
-//                                            AnimatedCircleView(sound: $sound)
                                         }
                                     }
                                 }
@@ -169,7 +161,7 @@ struct GameBoard: View {
                         VStack {
                             Image(systemName: "xmark")
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: 65, height: 65)
                                 .foregroundColor(colorX)
                                 .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
                             HStack {
@@ -179,16 +171,13 @@ struct GameBoard: View {
                                     }
                                     else {
                                         Text(player1Name + " :")
+                                            .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+                                            .foregroundColor(.black.opacity(0.7))
                                     }
                                 }
                                 else {
                                     if player2Name == "xmark" {
-                                        if player1Name == "" {
-                                            Text("Player :")
-                                        }
-                                        else {
-                                            Text(player1Name + " :")
-                                        }
+                                        Text(player1Name + ":")
                                     }
                                     else {
                                         Text("Computer :")
@@ -208,16 +197,16 @@ struct GameBoard: View {
                                 }
                                 else if modeOfDifficulty == "twoplayer" {
                                     Text("\(Int(score.twoPlayer1))")
+                                        .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+                                        .foregroundColor(.black.opacity(0.7))
                                 }
                             }
-                            .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
-                            .foregroundColor(.black.opacity(0.7))
                         }
                         Spacer()
                         VStack {
                             Image(systemName: "circle")
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: 65, height: 65)
                                 .foregroundColor(color0)
                                 .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
                             HStack {
@@ -227,16 +216,13 @@ struct GameBoard: View {
                                     }
                                     else {
                                         Text(player2Name + " :")
+                                            .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+                                            .foregroundColor(.black.opacity(0.7))
                                     }
                                 }
                                 else {
                                     if player2Name == "circle" {
-                                        if player1Name ==  "" {
-                                            Text("Player :")
-                                        }
-                                        else {
-                                            Text(player1Name + " :")
-                                        }
+                                        Text(player1Name + " :")
                                     }
                                     else {
                                         Text("Computer :")
@@ -256,10 +242,10 @@ struct GameBoard: View {
                                 }
                                 else if modeOfDifficulty == "twoplayer" {
                                     Text("\(Int(score.twoPlayer2))")
+                                        .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+                                        .foregroundColor(.black.opacity(0.7))
                                 }
                             }
-                            .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
-                            .foregroundColor(.black.opacity(0.7))
                         }
                         Spacer()
                     }
@@ -268,6 +254,20 @@ struct GameBoard: View {
                         Button {
                             resetScore()
                         } label: {
+//                            ZStack {
+//                                RoundedRectangle(cornerRadius: 15)
+//                                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+//                                    .frame(width: 155, height: 45)
+//                                Text("Reset Score")
+//                                    .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+//                                    .foregroundColor(.cyan)
+//                            }
+                            
+//                            Text("Reset Score")
+//                                .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+//                                .foregroundColor(.cyan)
+                            
+                            // PURPLE COLOR
                             Text("Reset Score")
                                 .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
                                 .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
@@ -276,6 +276,22 @@ struct GameBoard: View {
                         Button {
                             resetGame(moves: &moves)
                         } label: {
+                            
+//                            ZStack {
+//                                RoundedRectangle(cornerRadius: 15)
+//                                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+//                                    .frame(width: 155, height: 45)
+                            
+//                                Text("Reset Game")
+//                                    .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+//                                    .foregroundColor(.cyan)
+//                            }
+                            
+//                            Text("Reset Game")
+//                                .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+//                                .foregroundColor(.cyan)
+                            
+                            // PURPLE COLOR
                             Text("Reset Game")
                                 .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
                                 .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
@@ -290,9 +306,6 @@ struct GameBoard: View {
                     Alert(title: alertItem.title, message: alertItem.message, dismissButton: .default(alertItem.buttonTitle, action:
                         {
                         resetGame(moves: &moves)
-                        if sound {
-                            MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background")
-                        }
                         if leftdwin { leftdwin = false }
                         if rightdwin { rightdwin = false }
                         if horizwin { horizwin = false }
@@ -303,6 +316,7 @@ struct GameBoard: View {
             }
         }
     }
+    
     
     ////////////////////////////////////////////////////////////////      FUNCTIONS //////////////////////////////// ////////////////////////////////
     
@@ -368,9 +382,6 @@ struct GameBoard: View {
             else if modeOfDifficulty == "Impossible" {
                 score.playerScoreImpossible += 0.5
             }
-            if sound {
-                MusicPlayer.shared.playSoundEffect(soundEffect: "win")
-            }
             return true
         }
         if checkForWin(move: moves, piece: "circle", line: &line) {  // CHANGED: checkForWin(move: moves, piece: "xmark", line: &line) ||
@@ -390,17 +401,11 @@ struct GameBoard: View {
             else if modeOfDifficulty == "Impossible" {
                 score.computerScoreImpossible += 0.5
             }
-            if sound {
-                MusicPlayer.shared.playSoundEffect(soundEffect: "win")
-            }
             return true
         }
         else if checkForDraw(move: moves) {
             draw = true
             alertItem = AlertContext.draw
-            if sound {
-                MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
-            }
             return true
         }
         return false
@@ -454,9 +459,6 @@ struct GameBoard: View {
                     score.computerScoreImpossible += 1
                 }
                 isGameBoardDisabled = false
-                if sound {
-                    MusicPlayer.shared.playSoundEffect(soundEffect: "lose")
-                }
                 return
             }
             if checkForWin(move: moves, piece: "xmark", line: &line) { // CHANGED: || checkForWin(move: moves, piece: "circle", line: &line)
@@ -491,16 +493,10 @@ struct GameBoard: View {
                     score.playerScoreImpossible += 1
                 }
                 isGameBoardDisabled = false
-                if sound {
-                    MusicPlayer.shared.playSoundEffect(soundEffect: "lose")
-                }
                 return
             }
             else if checkForDraw(move: moves) {
                 alertItem = AlertContext.draw
-                if sound {
-                    MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
-                }
                 return
             }
             isGameBoardDisabled = false
@@ -520,37 +516,31 @@ struct GameBoard: View {
             alertItem = AlertContext.player1win
             score.twoPlayer1 += 1
             turnDecider = true
-            if sound {
-                MusicPlayer.shared.playSoundEffect(soundEffect: "win")
-            }
             return true
         }
         else if checkForWin(move: moves, piece: "circle", line: &line) {
             score.twoPlayer2 += 1
             alertItem = AlertContext.player2win
             turnDecider = true
-            if sound {
-                MusicPlayer.shared.playSoundEffect(soundEffect: "win")
-            }
             return true
         }
         else if checkForDraw(move: moves) {
             alertItem = AlertContext.draw
             turnDecider = true
             draw = true
-            if sound {
-                MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
-            }
             return true
         }
         return false
     }
-    
 }
-//
-//struct AllModesDiff_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GameBoard(score: Binding<scores>, sound: <#Binding<Bool>#>, modeOfDifficulty: <#String#>)
-//    }
-//}
 
+struct colorTest_Previews: PreviewProvider {
+    static var previews: some View {
+        colorTest(modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: "Avnoor",
+                  player2Name: "Rahul",
+                  color0: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)),
+                  colorX: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)),
+                  twoPlayerTurnDecider: true,
+                  twoPlayerTurnDeciderForResetFunc: true)
+    }
+}
