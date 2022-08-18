@@ -29,7 +29,6 @@
 		53A4C5342895BC8000499BB8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */; };
 		53C87CEC28A0519900FC5D40 /* GAMERIA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C87CEB28A0519900FC5D40 /* GAMERIA.ttf */; };
 		53C87CEF28A0664500FC5D40 /* Castle-Rock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C87CEE28A0664500FC5D40 /* Castle-Rock.ttf */; };
-		53C87D0128AC267100FC5D40 /* colorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C87D0028AC267100FC5D40 /* colorTest.swift */; };
 		53E27971289D962D009A538D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E27970289D962D009A538D /* AVKit.framework */; };
 		53E27973289D9DB1009A538D /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27972289D9DB1009A538D /* circle.mp3 */; };
 		53E27975289D9F26009A538D /* xmark.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53E27974289D9F26009A538D /* xmark.mp3 */; };
@@ -65,7 +64,6 @@
 		53C87CEB28A0519900FC5D40 /* GAMERIA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GAMERIA.ttf; sourceTree = "<group>"; };
 		53C87CED28A0554B00FC5D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		53C87CEE28A0664500FC5D40 /* Castle-Rock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Castle-Rock.ttf"; sourceTree = "<group>"; };
-		53C87D0028AC267100FC5D40 /* colorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorTest.swift; sourceTree = "<group>"; };
 		53E27970289D962D009A538D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		53E27972289D9DB1009A538D /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		53E27974289D9F26009A538D /* xmark.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xmark.mp3; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 				532FB7EB2897AE76009E7DFB /* OptionsOnePlayer.swift */,
 				53601DA6289F370800141B50 /* OptionsTwoPlayers.swift */,
 				532FB7F3289A16E1009E7DFB /* GameBoard.swift */,
-				53C87D0028AC267100FC5D40 /* colorTest.swift */,
 				53601D92289E1CDD00141B50 /* HorizontalWin.swift */,
 				53601D98289E217300141B50 /* LeftDiagonalWin.swift */,
 				53601D9A289E217D00141B50 /* RightDiagonalWin.swift */,
@@ -262,7 +259,6 @@
 				53601D93289E1CDD00141B50 /* HorizontalWin.swift in Sources */,
 				53601D9D289E26B900141B50 /* VerticalWin.swift in Sources */,
 				532FB7CE2895D7E1009E7DFB /* Alerts.swift in Sources */,
-				53C87D0128AC267100FC5D40 /* colorTest.swift in Sources */,
 				532FB7FC289B7923009E7DFB /* AnimatedXmarkView.swift in Sources */,
 				532FB7FA289B71FE009E7DFB /* AnimatedCircleView.swift in Sources */,
 				532FB7F4289A16E1009E7DFB /* GameBoard.swift in Sources */,

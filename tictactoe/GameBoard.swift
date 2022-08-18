@@ -64,12 +64,10 @@ struct GameBoard: View {
                                         .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
                                     if (moves[i] != nil) {
                                         if moves[i]?.indicator == "xmark" {
-//                                            AnimatedXmarkView(sound: $sound)
-                                            AnimatedXmarkView(color: colorX)
+                                            AnimatedXmarkView(sound: $sound, color: colorX)
                                         }
                                         else if moves[i]?.indicator == "circle" {
-                                            AnimatedCircleView(color: color0)
-//                                            AnimatedCircleView(sound: $sound)
+                                            AnimatedCircleView(sound: $sound, color: color0)
                                         }
                                     }
                                 }
