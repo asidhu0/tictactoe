@@ -11,7 +11,6 @@ Developed using SwiftUI
 
 ### One Player: 
 ![Simulator Screen Shot - iPhone 12 mini - 2022-08-18 at 12 18 02](https://user-images.githubusercontent.com/85960421/185479044-168a91ed-ea7d-4bbe-8084-1462613a1d63.png)
-![Simulator Screen Shot - iPhone 12 mini - 2022-08-18 at 11 20 22](https://user-images.githubusercontent.com/85960421/185479140-57331457-782c-4188-9c24-41ea49e03384.png)
 ![Simulator Screen Shot - iPhone 12 mini - 2022-08-18 at 11 20 37](https://user-images.githubusercontent.com/85960421/185479152-4b3374e5-a252-4001-bcee-6af05c883ebe.png)
 ![Simulator Screen Shot - iPhone 12 mini - 2022-08-18 at 11 21 58](https://user-images.githubusercontent.com/85960421/185479159-814dc9fa-75b0-47e2-be1f-cc0967525227.png)
 ![Simulator Screen Shot - iPhone 12 mini - 2022-08-18 at 12 19 16](https://user-images.githubusercontent.com/85960421/185479168-6f691a2e-315f-480f-87f6-ef7149fc6820.png)
