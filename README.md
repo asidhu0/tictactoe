@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-Developed using SwiftUI
+Developed using SwiftUI <br/>
 Sounds from Zapsplat.com
 
 ## Screenshots
