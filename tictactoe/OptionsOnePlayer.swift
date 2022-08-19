@@ -100,6 +100,9 @@ struct OptionsOnePlayer: View {
                             clickedX = true
                             clickedO = false
                             xORo = true
+                            withAnimation(.easeInOut) {
+                                isShowing = true
+                            }
                             isShowing = true
                             pieceType = "xmark"
                             score.computerScoreEasy = 0
@@ -130,7 +133,9 @@ struct OptionsOnePlayer: View {
                             clickedO = true
                             clickedX = false
                             xORo = false
-                            isShowing = true
+                            withAnimation(.easeInOut) {
+                                isShowing = true
+                            }
                             pieceType = "circle"
                             score.computerScoreEasy = 0
                             score.computerScoreMedium = 0
@@ -229,7 +234,9 @@ struct OptionsOnePlayer: View {
                 Color.black.opacity(0.3)
                 .ignoresSafeArea()
                 .onTapGesture {
-                     isShowing = false
+                    withAnimation(.easeInOut) {
+                        isShowing = false
+                    }
                 }
                 showColors
                 .transition(.move(edge: .bottom))
@@ -237,7 +244,6 @@ struct OptionsOnePlayer: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
-        .animation(.easeInOut)
     }
     
 var showColors: some View {

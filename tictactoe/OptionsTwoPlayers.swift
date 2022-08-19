@@ -43,7 +43,9 @@ struct OptionsTwoPlayers: View {
                         turnPicker = true
                         pickedX = true
                         pickedO = false
-                        isShowingX = true
+                        withAnimation(.easeInOut) {
+                            isShowingX = true
+                        }
                     } label: {
                         ZStack {
                             if pickedX {
@@ -64,7 +66,9 @@ struct OptionsTwoPlayers: View {
                         turnPicker = false
                         pickedX = false
                         pickedO = true
-                        isShowingO = true
+                        withAnimation(.easeInOut) {
+                            isShowingO = true
+                        }
                     } label: {
                         ZStack {
                             if pickedO {
@@ -152,7 +156,9 @@ struct OptionsTwoPlayers: View {
                 Color.black.opacity(0.3)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    isShowingO = false
+                    withAnimation(.easeInOut) {
+                        isShowingO = false
+                    }
                 }
                 showColors
                 .transition(.move(edge: .bottom))
@@ -161,7 +167,9 @@ struct OptionsTwoPlayers: View {
                 Color.black.opacity(0.3)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    isShowingX = false
+                    withAnimation(.easeInOut) {
+                        isShowingX = false
+                    }
                 }
                 showColors
                 .transition(.move(edge: .bottom))
@@ -169,7 +177,6 @@ struct OptionsTwoPlayers: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
-        .animation(.easeInOut)
     }
         
     var showColors: some View {
