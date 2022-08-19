@@ -33,13 +33,13 @@ Sounds from Zapsplat.com
 ### Two Player Mode
 
 <p align="center">
-  <img alt="Dark" src="tictactoe/Assets.xcassets/TwoPlayerOptions.imageset/TwoPlayerOptions.png" width="22%">
+  <img alt="Dark" src="tictactoe/Assets.xcassets/TwoPlayerOptions.imageset/TwoPlayerOptions.png" width="21%">
    &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Dark" src="tictactoe/Assets.xcassets/TwoPlayerOptionsSelected.imageset/TwoPlayerOptionsSelected.png" width="22%">
+  <img alt="Dark" src="tictactoe/Assets.xcassets/TwoPlayerOptionsSelected.imageset/TwoPlayerOptionsSelected.png" width="21%">
    &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Dark" src="tictactoe/Assets.xcassets/GameBoardWithPiecseTwoPlayer.imageset/GameBoardWithPiecseTwoPlayer.png" width="22%">
+  <img alt="Dark" src="tictactoe/Assets.xcassets/GameBoardWithPiecseTwoPlayer.imageset/GameBoardWithPiecseTwoPlayer.png" width="21%">
    &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Dark" src="tictactoe/Assets.xcassets/TwoPlayerWin.imageset/TwoPlayerWin.png" width="22%">
+  <img alt="Dark" src="tictactoe/Assets.xcassets/TwoPlayerWin.imageset/TwoPlayerWin.png" width="21%">
 </p>
 
 
