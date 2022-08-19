@@ -30,7 +30,7 @@ Sounds from Zapsplat.com
 
 
 
-### Two Player Mode
+## Two Player Mode
 
 <p align="center">
   <img alt="Dark" src="tictactoe/Assets.xcassets/TwoPlayerOptions.imageset/TwoPlayerOptions.png" width="21%">
