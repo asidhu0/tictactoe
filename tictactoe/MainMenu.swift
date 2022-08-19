@@ -100,11 +100,7 @@ struct MainMenu: View {
                     }
                 }
                 .navigationTitle("")
-
-//                .navigationBarHidden(true)
-//                .navigationViewStyle(.stack)
             }
-//            .navigationViewStyle(.stack)
             .accentColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
 
         

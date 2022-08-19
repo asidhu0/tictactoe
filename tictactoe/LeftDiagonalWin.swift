@@ -15,7 +15,6 @@ struct LeftDiagonalWin: View {
         LeftDiagonal()
             .trim(from: 0, to: innerTrimEnd)
             .stroke(Color.black, style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
-//            .stroke(Color.orange, style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
             .frame(width: 310, height: 310)
             .onAppear() {
                 innerTrimEnd = 0

@@ -4,8 +4,6 @@
 //
 //  Created by Avnoor Singh Sidhu on 7/30/22.
 //
-// player: !turn ? .human : .computer
-// player: !turn ? .human : .computer
 import SwiftUI
 
 /*

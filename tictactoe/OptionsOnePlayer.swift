@@ -40,48 +40,7 @@ struct OptionsOnePlayer: View {
                             .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
                             .foregroundColor(.cyan)
                     }
-                    
-                    // Custom Slider
-                    VStack {
-                        Text(returnDiffLevel())
-                            .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
-                            .foregroundStyle(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
-                            .padding(.top, nil)
-                        ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)) {
-                            Capsule()
-                                .fill(Color.black.opacity(0.15))
-                                .frame(height: 30)
-                            
-                            Capsule()
-                                .fill(Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
-                                .frame(width: offset + 20, height: 33)
-                            
-                            // DOTS
-                            HStack(spacing: (UIScreen.main.bounds.width - 100) / 17) {
-                                ForEach(0..<17, id: \.self) {index in
-                                    Circle()
-                                        .fill(Color.white)
-                                        .frame(width: index % 4 == 0 ? 7 : 4, height: index % 4 == 0 ? 7 : 4)
-                                }
-                            }
-                            
-                            Circle()
-                                .fill(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
-                                .frame(width: 35, height: 35)
-                                .background(
-                                    Circle()
-                                        .stroke(Color.white, lineWidth: 5)
-                                )
-                                .offset(x: offset)
-                                .gesture(DragGesture().onChanged({ (value) in
-                                    if value.location.x >= 20 && value.location.x <= UIScreen.main.bounds.width - 50 {
-                                        offset = value.location.x - 20
-                                    }
-                                }))
-                        }
-                        .padding(.leading, nil)
-                        .padding(.trailing, nil)
-                    }
+                    Slider
                 }
                 Spacer()
                 VStack {
@@ -228,6 +187,49 @@ struct OptionsOnePlayer: View {
         .navigationTitle("")
     }
     
+    var Slider: some View {
+        VStack {
+            Text(returnDiffLevel())
+                .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+                .foregroundStyle(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                .padding(.top, nil)
+            ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)) {
+                Capsule()
+                    .fill(Color.black.opacity(0.15))
+                    .frame(height: 30)
+                
+                Capsule()
+                    .fill(Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
+                    .frame(width: offset + 20, height: 33)
+                
+                // DOTS
+                HStack(spacing: (UIScreen.main.bounds.width - 100) / 17) {
+                    ForEach(0..<17, id: \.self) {index in
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: index % 4 == 0 ? 7 : 4, height: index % 4 == 0 ? 7 : 4)
+                    }
+                }
+                
+                Circle()
+                    .fill(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                    .frame(width: 35, height: 35)
+                    .background(
+                        Circle()
+                            .stroke(Color.white, lineWidth: 5)
+                    )
+                    .offset(x: offset)
+                    .gesture(DragGesture().onChanged({ (value) in
+                        if value.location.x >= 20 && value.location.x <= UIScreen.main.bounds.width - 50 {
+                            offset = value.location.x - 20
+                        }
+                    }))
+            }
+            .padding(.leading, nil)
+            .padding(.trailing, nil)
+        }
+    }
+    
     var colorCombinationPicker: some View {
         ZStack(alignment: .bottom) {
             if isShowing {
@@ -246,7 +248,7 @@ struct OptionsOnePlayer: View {
         .ignoresSafeArea()
     }
     
-var showColors: some View {
+    var showColors: some View {
             VStack {
                 Capsule()
                     .frame(width: 40, height: 6)

@@ -19,7 +19,6 @@ struct GameBoard: View {
     @State private var isGameBoardDisabled = false
     @State private var alertItem: AlertItem?
     @State var moves: [Move?] = Array(repeating: nil , count: 9)
-    @State private var count: Int = 0
     @State var line: Int = 0
     @State private var leftdwin: Bool = false
     @State private var rightdwin: Bool = false
@@ -371,7 +370,7 @@ struct GameBoard: View {
             }
             return true
         }
-        if checkForWin(move: moves, piece: "circle", line: &line) {  // CHANGED: checkForWin(move: moves, piece: "xmark", line: &line) ||
+        if checkForWin(move: moves, piece: "circle", line: &line) {
             userMovewin = true
 
             alertItem = AlertContext.humanWin
@@ -545,10 +544,9 @@ struct GameBoard: View {
     }
     
 }
-//
+
 //struct AllModesDiff_Previews: PreviewProvider {
 //    static var previews: some View {
 //        GameBoard(score: Binding<scores>, sound: <#Binding<Bool>#>, modeOfDifficulty: <#String#>)
 //    }
 //}
-
