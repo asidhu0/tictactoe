@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainMenu: View {
+struct MainMenuView: View {
     @StateObject var viewModel = MainMenuViewModel()
     var body: some View {
             NavigationView {
@@ -16,7 +16,7 @@ struct MainMenu: View {
                         .ignoresSafeArea(.all)
                     VStack {
                         TicTacToeTitle()
-                        NavigationLink(destination: OptionsOnePlayer(viewModel: viewModel)) {
+                        NavigationLink(destination: OnePlayerOptionsView(mainMenuViewModel: viewModel)) {
                             OnePlayerButtonView()
                         }
                         NavigationLink(destination: OptionsTwoPlayers(viewModel: viewModel)) {
@@ -33,12 +33,6 @@ struct MainMenu: View {
                 .navigationTitle("")
             }
             .accentColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
-    }
-}
-
-struct MainMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        MainMenu()
     }
 }
 
@@ -99,5 +93,11 @@ struct SoundButtonView: View {
             .frame(width: 50, height: 50)
             .foregroundColor(Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
             .padding(.top, 15)
+    }
+}
+
+struct MainMenu_Previews: PreviewProvider {
+    static var previews: some View {
+        MainMenuView()
     }
 }

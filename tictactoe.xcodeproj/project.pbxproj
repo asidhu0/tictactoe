@@ -10,8 +10,8 @@
 		532FB7CE2895D7E1009E7DFB /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7CD2895D7E1009E7DFB /* Alerts.swift */; };
 		532FB7D0289621DC009E7DFB /* WinLoseDrawConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7CF289621DC009E7DFB /* WinLoseDrawConditions.swift */; };
 		532FB7D228962473009E7DFB /* ComputerMoves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7D128962473009E7DFB /* ComputerMoves.swift */; };
-		532FB7E228978BDC009E7DFB /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7E128978BDC009E7DFB /* MainMenu.swift */; };
-		532FB7EC2897AE77009E7DFB /* OptionsOnePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7EB2897AE76009E7DFB /* OptionsOnePlayer.swift */; };
+		532FB7E228978BDC009E7DFB /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7E128978BDC009E7DFB /* MainMenuView.swift */; };
+		532FB7EC2897AE77009E7DFB /* OnePlayerOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7EB2897AE76009E7DFB /* OnePlayerOptionsView.swift */; };
 		532FB7EE2897B08C009E7DFB /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7ED2897B08C009E7DFB /* Setup.swift */; };
 		532FB7F4289A16E1009E7DFB /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7F3289A16E1009E7DFB /* GameScreen.swift */; };
 		532FB7FA289B71FE009E7DFB /* AnimatedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FB7F9289B71FE009E7DFB /* AnimatedCircleView.swift */; };
@@ -25,7 +25,9 @@
 		53601D9B289E217D00141B50 /* RightDiagonalWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53601D9A289E217D00141B50 /* RightDiagonalWin.swift */; };
 		53601D9D289E26B900141B50 /* VerticalWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53601D9C289E26B900141B50 /* VerticalWin.swift */; };
 		53601DA7289F370800141B50 /* OptionsTwoPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53601DA6289F370800141B50 /* OptionsTwoPlayers.swift */; };
+		5382000028B2C696000EA0E9 /* ColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFF28B2C696000EA0E9 /* ColorSelectorView.swift */; };
 		5382FFFC28B18AE6000EA0E9 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */; };
+		5382FFFE28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */; };
 		53A4C52D2895BC7E00499BB8 /* tictactoeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */; };
 		53A4C5312895BC8000499BB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A4C5302895BC8000499BB8 /* Assets.xcassets */; };
 		53A4C5342895BC8000499BB8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */; };
@@ -45,8 +47,8 @@
 		532FB7CD2895D7E1009E7DFB /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		532FB7CF289621DC009E7DFB /* WinLoseDrawConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLoseDrawConditions.swift; sourceTree = "<group>"; };
 		532FB7D128962473009E7DFB /* ComputerMoves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMoves.swift; sourceTree = "<group>"; };
-		532FB7E128978BDC009E7DFB /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		532FB7EB2897AE76009E7DFB /* OptionsOnePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsOnePlayer.swift; sourceTree = "<group>"; };
+		532FB7E128978BDC009E7DFB /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		532FB7EB2897AE76009E7DFB /* OnePlayerOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePlayerOptionsView.swift; sourceTree = "<group>"; };
 		532FB7ED2897B08C009E7DFB /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		532FB7F3289A16E1009E7DFB /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		532FB7F9289B71FE009E7DFB /* AnimatedCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCircleView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,8 @@
 		53601D9C289E26B900141B50 /* VerticalWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalWin.swift; sourceTree = "<group>"; };
 		53601DA6289F370800141B50 /* OptionsTwoPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTwoPlayers.swift; sourceTree = "<group>"; };
 		5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
+		5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePlayerOptionsViewModel.swift; sourceTree = "<group>"; };
+		5382FFFF28B2C696000EA0E9 /* ColorSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorView.swift; sourceTree = "<group>"; };
 		53A4C5292895BC7E00499BB8 /* tictactoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tictactoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tictactoeApp.swift; sourceTree = "<group>"; };
 		53A4C5302895BC8000499BB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,9 +132,11 @@
 			children = (
 				53C87CED28A0554B00FC5D40 /* Info.plist */,
 				532FB7ED2897B08C009E7DFB /* Setup.swift */,
-				532FB7E128978BDC009E7DFB /* MainMenu.swift */,
+				532FB7E128978BDC009E7DFB /* MainMenuView.swift */,
 				5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */,
-				532FB7EB2897AE76009E7DFB /* OptionsOnePlayer.swift */,
+				532FB7EB2897AE76009E7DFB /* OnePlayerOptionsView.swift */,
+				5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */,
+				5382FFFF28B2C696000EA0E9 /* ColorSelectorView.swift */,
 				53462E3E28B157AB007C5259 /* GameScreenViewModel.swift */,
 				532FB7F3289A16E1009E7DFB /* GameScreen.swift */,
 				53601DA6289F370800141B50 /* OptionsTwoPlayers.swift */,
@@ -260,8 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				53601DA7289F370800141B50 /* OptionsTwoPlayers.swift in Sources */,
-				532FB7E228978BDC009E7DFB /* MainMenu.swift in Sources */,
-				532FB7EC2897AE77009E7DFB /* OptionsOnePlayer.swift in Sources */,
+				532FB7E228978BDC009E7DFB /* MainMenuView.swift in Sources */,
+				532FB7EC2897AE77009E7DFB /* OnePlayerOptionsView.swift in Sources */,
 				53601D93289E1CDD00141B50 /* HorizontalWin.swift in Sources */,
 				53601D9D289E26B900141B50 /* VerticalWin.swift in Sources */,
 				532FB7CE2895D7E1009E7DFB /* Alerts.swift in Sources */,
@@ -271,11 +277,13 @@
 				532FB7FA289B71FE009E7DFB /* AnimatedCircleView.swift in Sources */,
 				532FB7F4289A16E1009E7DFB /* GameScreen.swift in Sources */,
 				532FB7D0289621DC009E7DFB /* WinLoseDrawConditions.swift in Sources */,
+				5382FFFE28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift in Sources */,
 				532FB7EE2897B08C009E7DFB /* Setup.swift in Sources */,
 				53E27977289DABE0009A538D /* BackgroundMusic.swift in Sources */,
 				532FB7D228962473009E7DFB /* ComputerMoves.swift in Sources */,
 				53601D99289E217300141B50 /* LeftDiagonalWin.swift in Sources */,
 				53601D9B289E217D00141B50 /* RightDiagonalWin.swift in Sources */,
+				5382000028B2C696000EA0E9 /* ColorSelectorView.swift in Sources */,
 				53A4C52D2895BC7E00499BB8 /* tictactoeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
