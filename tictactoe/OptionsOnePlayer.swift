@@ -170,7 +170,7 @@ struct OptionsOnePlayer: View {
                             .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
                             .foregroundColor(Color.gray)
                         }
-                        NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: modeOfDifficulty, onePlayerPieceDecider: xORo, player1Name: textFieldText1, player2Name: pieceType, color0: color0, colorX: colorX, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
+                        NavigationLink(destination: GameScreen(score: $score, sound: $sound, modeOfDifficulty: modeOfDifficulty, onePlayerPieceDecider: xORo, player1Name: textFieldText1, player2Name: pieceType, color0: color0, colorX: colorX, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
                             Text("Continue")
                                 .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
                                 .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))

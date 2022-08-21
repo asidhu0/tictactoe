@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 import AVFoundation
 
-struct GameBoard: View {
+struct GameScreen: View {
     let layout: [GridItem]  = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -547,6 +547,6 @@ struct GameBoard: View {
 
 //struct AllModesDiff_Previews: PreviewProvider {
 //    static var previews: some View {
-//        GameBoard(score: Binding<scores>, sound: <#Binding<Bool>#>, modeOfDifficulty: <#String#>)
+//        GameScreen(score: Binding<scores>, sound: <#Binding<Bool>#>, modeOfDifficulty: <#String#>)
 //    }
 //}

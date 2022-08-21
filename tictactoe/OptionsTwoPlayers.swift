@@ -138,7 +138,7 @@ struct OptionsTwoPlayers: View {
                         .foregroundColor(Color.gray)
                 }
                 Spacer()
-                NavigationLink(destination: GameBoard(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, color0: color0, colorX: colorX, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
+                NavigationLink(destination: GameScreen(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, color0: color0, colorX: colorX, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
                     Text("Continue")
                         .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
                         .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
