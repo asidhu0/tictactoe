@@ -9,9 +9,7 @@ import SwiftUI
 import CoreMedia
 
 struct OptionsOnePlayer: View {
-    @Binding var score: scores
-    @Binding var sound: Bool
-    @Binding var numPlayers: Int
+    @ObservedObject var viewModel: MainMenuViewModel
     @State var textFieldText1: String = ""
     @State var pieceType: String = "xmark"  // Deafult peice is xmark if user does not pick
     @State var modeOfDifficulty: String = ""
@@ -64,14 +62,6 @@ struct OptionsOnePlayer: View {
                             }
                             isShowing = true
                             pieceType = "xmark"
-                            score.computerScoreEasy = 0
-                            score.computerScoreMedium = 0
-                            score.computerScoreHard = 0
-                            score.computerScoreImpossible = 0
-                            score.playerScoreEasy = 0
-                            score.playerScoreMedium = 0
-                            score.playerScoreHard = 0
-                            score.playerScoreImpossible = 0
                         } label: {
                             ZStack {
                                 if clickedX {
@@ -96,14 +86,6 @@ struct OptionsOnePlayer: View {
                                 isShowing = true
                             }
                             pieceType = "circle"
-                            score.computerScoreEasy = 0
-                            score.computerScoreMedium = 0
-                            score.computerScoreHard = 0
-                            score.computerScoreImpossible = 0
-                            score.playerScoreEasy = 0
-                            score.playerScoreMedium = 0
-                            score.playerScoreHard = 0
-                            score.playerScoreImpossible = 0
                         } label: {
                             ZStack {
                                 if clickedO {
@@ -170,7 +152,7 @@ struct OptionsOnePlayer: View {
                             .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
                             .foregroundColor(Color.gray)
                         }
-                        NavigationLink(destination: GameScreen(score: $score, sound: $sound, modeOfDifficulty: modeOfDifficulty, onePlayerPieceDecider: xORo, player1Name: textFieldText1, player2Name: pieceType, color0: color0, colorX: colorX, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
+                        NavigationLink(destination: GameScreen(viewModel: viewModel, modeOfDifficulty: modeOfDifficulty, onePlayerPieceDecider: xORo, player1Name: textFieldText1, player2Name: pieceType, color0: color0, colorX: colorX, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
                             Text("Continue")
                                 .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
                                 .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))

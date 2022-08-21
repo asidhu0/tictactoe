@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct AnimatedCircleView: View {
+        
     var animationDuration: Double = 0.35
     var width: CGFloat = 50
     var height: CGFloat = 50
     var lineWidth: CGFloat = 5
     @State private var outerTrimEnd: CGFloat = 0
-    @Binding var sound: Bool
+    let sound: Bool
     let color: Color
     var body: some View {
         Circle()
@@ -35,8 +36,10 @@ struct AnimatedCircleView: View {
     }
 }
 
-struct AnimatedCheckmarkView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnimatedCircleView(sound: .constant(false), color: .orange)
-    }
-}
+//struct AnimatedCheckmarkView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        AnimatedCircleView(sound: .constant(false), color: .orange)
+////        AnimatedCircleView(sound: false, color: .orange)
+//        AnimatedCircleView(color: .orange)
+//    }
+//}

@@ -16,18 +16,12 @@ struct MainMenu: View {
                         .ignoresSafeArea(.all)
                     VStack {
                         TicTacToeTitle()
-                        NavigationLink(destination: OptionsOnePlayer(score: $viewModel.score, sound: $viewModel.sound, numPlayers: $viewModel.numPlayers)) {
+                        NavigationLink(destination: OptionsOnePlayer(viewModel: viewModel)) {
                             OnePlayerButtonView()
                         }
-                        .simultaneousGesture(TapGesture().onEnded({ _ in
-                            viewModel.numPlayers = 1
-                        }))
-                        NavigationLink(destination: OptionsTwoPlayers(score: $viewModel.score, sound: $viewModel.sound, turnPicker: true)) {
+                        NavigationLink(destination: OptionsTwoPlayers(viewModel: viewModel)) {
                             TwoPlayerButtonView()
                         }
-                        .simultaneousGesture(TapGesture().onEnded({ _ in
-                            viewModel.numPlayers = 2
-                        }))
                         Button {
                             viewModel.sound.toggle()
                             viewModel.sound ? MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background") : MusicPlayer.shared.stopBackgroundMusic()

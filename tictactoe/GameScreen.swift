@@ -28,9 +28,8 @@ struct GameScreen: View {
     @State private var computerWin: Bool = false
     @State private var userMovewin: Bool = false
     let background = LinearGradient(colors: [Color(#colorLiteral(red: 0.955021441, green: 0.7766728401, blue: 0.6494518518, alpha: 1)), Color(#colorLiteral(red: 0.9614726901, green: 0.8826437593, blue: 0.651904881, alpha: 1))], startPoint: .top, endPoint: .bottom)
-
-    @Binding var score: scores
-    @Binding var sound: Bool
+    
+    @ObservedObject var viewModel: MainMenuViewModel
     
     // init()
     let modeOfDifficulty: String
@@ -63,10 +62,10 @@ struct GameScreen: View {
                                         .shadow(color: Color.init(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.16), radius: 5, x: 5, y: 5)
                                     if (moves[i] != nil) {
                                         if moves[i]?.indicator == "xmark" {
-                                            AnimatedXmarkView(sound: $sound, color: colorX)
+                                            AnimatedXmarkView(sound: viewModel.sound, color: colorX)
                                         }
                                         else if moves[i]?.indicator == "circle" {
-                                            AnimatedCircleView(sound: $sound, color: color0)
+                                            AnimatedCircleView(sound: viewModel.sound, color: color0)
                                         }
                                     }
                                 }
@@ -192,19 +191,20 @@ struct GameScreen: View {
                                     }
                                 }
                                 if modeOfDifficulty == "Easy" {
-                                    Text("\(Int(score.playerScoreEasy))")
+//                                    viewModel.getScores()
+                                    Text("\(Int(viewModel.score.playerScoreEasy))")
                                 }
                                 else if modeOfDifficulty == "Medium" {
-                                    Text("\(Int(score.playerScoreMedium))")
+                                    Text("\(Int(viewModel.score.playerScoreMedium))")
                                 }
                                 else if modeOfDifficulty == "Hard" {
-                                    Text("\(Int(score.playerScoreHard))")
+                                    Text("\(Int(viewModel.score.playerScoreHard))")
                                 }
                                 else if modeOfDifficulty == "Impossible" {
-                                    Text("\(Int(score.playerScoreImpossible))")
+                                    Text("\(Int(viewModel.score.playerScoreImpossible))")
                                 }
                                 else if modeOfDifficulty == "twoplayer" {
-                                    Text("\(Int(score.twoPlayer1))")
+                                    Text("\(Int(viewModel.score.twoPlayer1))")
                                 }
                             }
                             .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
@@ -240,19 +240,19 @@ struct GameScreen: View {
                                     }
                                 }
                                 if modeOfDifficulty == "Easy" {
-                                    Text("\(Int(score.computerScoreEasy))")
+                                    Text("\(Int(viewModel.score.computerScoreEasy))")
                                 }
                                 else if modeOfDifficulty == "Medium" {
-                                    Text("\(Int(score.computerScoreMedium))")
+                                    Text("\(Int(viewModel.score.computerScoreMedium))")
                                 }
                                 else if modeOfDifficulty == "Hard" {
-                                    Text("\(Int(score.computerScoreHard))")
+                                    Text("\(Int(viewModel.score.computerScoreHard))")
                                 }
                                 else if modeOfDifficulty == "Impossible" {
-                                    Text("\(Int(score.computerScoreImpossible))")
+                                    Text("\(Int(viewModel.score.computerScoreImpossible))")
                                 }
                                 else if modeOfDifficulty == "twoplayer" {
-                                    Text("\(Int(score.twoPlayer2))")
+                                    Text("\(Int(viewModel.score.twoPlayer2))")
                                 }
                             }
                             .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
@@ -287,7 +287,7 @@ struct GameScreen: View {
                     Alert(title: alertItem.title, message: alertItem.message, dismissButton: .default(alertItem.buttonTitle, action:
                         {
                         resetGame(moves: &moves)
-                        if sound {
+                        if viewModel.sound {
                             MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background")
                         }
                         if leftdwin { leftdwin = false }
@@ -310,24 +310,24 @@ struct GameScreen: View {
     
     func resetScore() {
         if modeOfDifficulty == "Easy" {
-            score.playerScoreEasy = 0
-            score.computerScoreEasy = 0
+            viewModel.score.playerScoreEasy = 0
+            viewModel.score.computerScoreEasy = 0
         }
         else if modeOfDifficulty == "Medium" {
-            score.playerScoreMedium = 0
-            score.computerScoreMedium = 0
+            viewModel.score.playerScoreMedium = 0
+            viewModel.score.computerScoreMedium = 0
         }
         else if modeOfDifficulty == "Hard" {
-            score.playerScoreHard = 0
-            score.computerScoreHard = 0
+            viewModel.score.playerScoreHard = 0
+            viewModel.score.computerScoreHard = 0
         }
         else if modeOfDifficulty == "Impossible" {
-            score.playerScoreImpossible = 0
-            score.computerScoreImpossible = 0
+            viewModel.score.playerScoreImpossible = 0
+            viewModel.score.computerScoreImpossible = 0
         }
         else if modeOfDifficulty == "twoplayer" {
-            score.twoPlayer1 = 0
-            score.twoPlayer2 = 0
+            viewModel.score.twoPlayer1 = 0
+            viewModel.score.twoPlayer2 = 0
         }
     }
     
@@ -354,18 +354,18 @@ struct GameScreen: View {
             alertItem = AlertContext.humanWin
 
             if modeOfDifficulty == "Easy" {
-                score.playerScoreEasy += 0.5
+                viewModel.score.playerScoreEasy += 0.5
             }
             else if modeOfDifficulty == "Medium" {
-                score.playerScoreMedium += 0.5
+                viewModel.score.playerScoreMedium += 0.5
             }
             else if modeOfDifficulty == "Hard" {
-                score.playerScoreHard += 0.5
+                viewModel.score.playerScoreHard += 0.5
             }
             else if modeOfDifficulty == "Impossible" {
-                score.playerScoreImpossible += 0.5
+                viewModel.score.playerScoreImpossible += 0.5
             }
-            if sound {
+            if viewModel.sound {
                 MusicPlayer.shared.playSoundEffect(soundEffect: "win")
             }
             return true
@@ -376,18 +376,18 @@ struct GameScreen: View {
             alertItem = AlertContext.humanWin
 
             if modeOfDifficulty == "Easy" {
-                score.computerScoreEasy += 0.5
+                viewModel.score.computerScoreEasy += 0.5
             }
             else if modeOfDifficulty == "Medium" {
-                score.computerScoreMedium += 0.5
+                viewModel.score.computerScoreMedium += 0.5
             }
             else if modeOfDifficulty == "Hard" {
-                score.computerScoreHard += 0.5
+                viewModel.score.computerScoreHard += 0.5
             }
             else if modeOfDifficulty == "Impossible" {
-                score.computerScoreImpossible += 0.5
+                viewModel.score.computerScoreImpossible += 0.5
             }
-            if sound {
+            if viewModel.sound {
                 MusicPlayer.shared.playSoundEffect(soundEffect: "win")
             }
             return true
@@ -395,7 +395,7 @@ struct GameScreen: View {
         else if checkForDraw(move: moves) {
             draw = true
             alertItem = AlertContext.draw
-            if sound {
+            if viewModel.sound {
                 MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
             }
             return true
@@ -439,19 +439,19 @@ struct GameScreen: View {
                 }
                 alertItem = AlertContext.computerWin
                 if modeOfDifficulty == "Easy" {
-                    score.computerScoreEasy += 1
+                    viewModel.score.computerScoreEasy += 1
                 }
                 else if modeOfDifficulty == "Medium" {
-                    score.computerScoreMedium += 1
+                    viewModel.score.computerScoreMedium += 1
                 }
                 else if modeOfDifficulty == "Hard" {
-                    score.computerScoreHard += 1
+                    viewModel.score.computerScoreHard += 1
                 }
                 else if modeOfDifficulty == "Impossible" {
-                    score.computerScoreImpossible += 1
+                    viewModel.score.computerScoreImpossible += 1
                 }
                 isGameBoardDisabled = false
-                if sound {
+                if viewModel.sound {
                     MusicPlayer.shared.playSoundEffect(soundEffect: "lose")
                 }
                 return
@@ -476,26 +476,26 @@ struct GameScreen: View {
                 }
                 alertItem = AlertContext.computerWin
                 if modeOfDifficulty == "Easy" {
-                    score.playerScoreEasy += 1
+                    viewModel.score.playerScoreEasy += 1
                 }
                 else if modeOfDifficulty == "Medium" {
-                    score.playerScoreMedium += 1
+                    viewModel.score.playerScoreMedium += 1
                 }
                 else if modeOfDifficulty == "Hard" {
-                    score.playerScoreHard += 1
+                    viewModel.score.playerScoreHard += 1
                 }
                 else if modeOfDifficulty == "Impossible" {
-                    score.playerScoreImpossible += 1
+                    viewModel.score.playerScoreImpossible += 1
                 }
                 isGameBoardDisabled = false
-                if sound {
+                if viewModel.sound {
                     MusicPlayer.shared.playSoundEffect(soundEffect: "lose")
                 }
                 return
             }
             else if checkForDraw(move: moves) {
                 alertItem = AlertContext.draw
-                if sound {
+                if viewModel.sound {
                     MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
                 }
                 return
@@ -515,18 +515,18 @@ struct GameScreen: View {
     func twoPlayerModeGameEndChecker(turnDecider: inout Bool) -> Bool {
         if checkForWin(move: moves, piece: "xmark", line: &line) {
             alertItem = AlertContext.player1win
-            score.twoPlayer1 += 1
+            viewModel.score.twoPlayer1 += 1
             turnDecider = true
-            if sound {
+            if viewModel.sound {
                 MusicPlayer.shared.playSoundEffect(soundEffect: "win")
             }
             return true
         }
         else if checkForWin(move: moves, piece: "circle", line: &line) {
-            score.twoPlayer2 += 1
+            viewModel.score.twoPlayer2 += 1
             alertItem = AlertContext.player2win
             turnDecider = true
-            if sound {
+            if viewModel.sound {
                 MusicPlayer.shared.playSoundEffect(soundEffect: "win")
             }
             return true
@@ -535,7 +535,7 @@ struct GameScreen: View {
             alertItem = AlertContext.draw
             turnDecider = true
             draw = true
-            if sound {
+            if viewModel.sound {
                 MusicPlayer.shared.playSoundEffect(soundEffect: "tie")
             }
             return true

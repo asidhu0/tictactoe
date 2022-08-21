@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct OptionsTwoPlayers: View {
-    @Binding var score: scores
-    @Binding var sound: Bool
+    @ObservedObject var viewModel: MainMenuViewModel
     @State var textFieldText1: String = ""
     @State var textFieldText2: String = ""
-    @State var turnPicker: Bool
+    @State var turnPicker: Bool = true
     @State private var pickedX: Bool = false
     @State private var pickedO: Bool = false
     let background = LinearGradient(colors: [Color(#colorLiteral(red: 0.955021441, green: 0.7766728401, blue: 0.6494518518, alpha: 1)), Color(#colorLiteral(red: 0.9614726901, green: 0.8826437593, blue: 0.651904881, alpha: 1))], startPoint: .top, endPoint: .bottom)
@@ -138,7 +137,7 @@ struct OptionsTwoPlayers: View {
                         .foregroundColor(Color.gray)
                 }
                 Spacer()
-                NavigationLink(destination: GameScreen(score: $score, sound: $sound, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, color0: color0, colorX: colorX, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
+                NavigationLink(destination: GameScreen(viewModel: viewModel, modeOfDifficulty: "twoplayer", onePlayerPieceDecider: true, player1Name: textFieldText1, player2Name: textFieldText2, color0: color0, colorX: colorX, twoPlayerTurnDecider: turnPicker, twoPlayerTurnDeciderForResetFunc: turnPicker)) {
                     Text("Continue")
                         .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
                         .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))

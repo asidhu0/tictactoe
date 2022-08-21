@@ -21,7 +21,7 @@ struct Move: Identifiable {
     }
 }
 
-struct scores {
+struct scores: Codable {
     var playerScoreEasy: Double
     var playerScoreMedium: Double
     var playerScoreHard: Double
@@ -33,7 +33,6 @@ struct scores {
     var twoPlayer1: Double
     var twoPlayer2: Double
 }
-
 
 class SoundManager {  // Sounds from Zapsplat.com
     static let instance = SoundManager()

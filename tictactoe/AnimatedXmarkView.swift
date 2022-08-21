@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct AnimatedXmarkView: View {
+        
     @State private var innerTrimEnd: CGFloat = 1.0
     var animationDuration: Double = 0.35
-    @Binding var sound: Bool
+    let sound: Bool
     let color: Color
     var body: some View {
         Xmark()
@@ -32,11 +33,13 @@ struct AnimatedXmarkView: View {
     }
 }
 
-struct AnimatedXmarkView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnimatedXmarkView(sound: .constant(false), color: .yellow)
-    }
-}
+//struct AnimatedXmarkView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        AnimatedXmarkView(sound: .constant(false), color: .yellow)
+////        AnimatedXmarkView(sound: false, color: .yellow)
+//        AnimatedXmarkView(color: .yellow)
+//    }
+//}
 
 struct Xmark: Shape {
     func path(in rect: CGRect) -> Path {
