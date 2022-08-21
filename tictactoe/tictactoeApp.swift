@@ -9,9 +9,6 @@ import SwiftUI
 
 @main
 struct tictactoeApp: App {
-    init() {
-            MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background")
-    }
     var body: some Scene {
         WindowGroup {
             MainMenu()
