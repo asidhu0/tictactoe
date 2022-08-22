@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ColorSelectorView: View {
-    @ObservedObject var optionsOnePlayerViewModel: OnePlayerOptionsViewModel
+    @ObservedObject var onePlayerOptionsViewModel: OnePlayerOptionsViewModel
     @State var colorButtonClicked: [Bool] = Array(repeating: false, count: 3)
     var body: some View {
         VStack {
@@ -23,8 +23,8 @@ struct ColorSelectorView: View {
             VStack {
                 Spacer()
                 Button {
-                    optionsOnePlayerViewModel.colorX = Color.blue
-                    optionsOnePlayerViewModel.color0 = Color.blue
+                    onePlayerOptionsViewModel.colorX = Color.blue
+                    onePlayerOptionsViewModel.color0 = Color.blue
                     colorButtonClicked = Array(repeating: false, count: 3)
                     colorButtonClicked[0] = true
                 } label: {
@@ -40,8 +40,8 @@ struct ColorSelectorView: View {
                 }
                 Spacer()
                 Button {
-                    optionsOnePlayerViewModel.colorX = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
-                    optionsOnePlayerViewModel.color0 = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                    onePlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                    onePlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
                     colorButtonClicked = Array(repeating: false, count: 3)
                     colorButtonClicked[1] = true
                 } label: {
@@ -57,8 +57,8 @@ struct ColorSelectorView: View {
                 }
                 Spacer()
                 Button {
-                    optionsOnePlayerViewModel.colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
-                    optionsOnePlayerViewModel.color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                    onePlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                    onePlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
                     colorButtonClicked = Array(repeating: false, count: 3)
                     colorButtonClicked[2] = true
                 } label: {
@@ -110,8 +110,8 @@ struct UnderlineSelectedColor: View {
     }
 }
 
-struct ColorSelectorView_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorSelectorView(optionsOnePlayerViewModel: OnePlayerOptionsViewModel())
-    }
-}
+//struct ColorSelectorView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ColorSelectorView(onePlayerOptionsViewModel: OnePlayerOptionsViewModel())
+//    }
+//}

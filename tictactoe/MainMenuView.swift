@@ -19,7 +19,7 @@ struct MainMenuView: View {
                         NavigationLink(destination: OnePlayerOptionsView(mainMenuViewModel: viewModel)) {
                             OnePlayerButtonView()
                         }
-                        NavigationLink(destination: OptionsTwoPlayers(viewModel: viewModel)) {
+                        NavigationLink(destination: OptionsTwoPlayers(mainMenuViewModel: viewModel)) {
                             TwoPlayerButtonView()
                         }
                         Button {

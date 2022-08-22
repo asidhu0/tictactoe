@@ -67,14 +67,14 @@ struct OnePlayerOptionsView: View {
                             }
                             TextFieldView(optionsOnePlayerViewModel: viewModel)
                         }
-                        NavigationLink(destination: GameScreen(viewModel: mainMenuViewModel, modeOfDifficulty: viewModel.returnDiffLevel(), onePlayerPieceDecider: viewModel.clickedX, player1Name: viewModel.textFieldText, player2Name: viewModel.pieceType, color0: viewModel.color0, colorX: viewModel.colorX, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
+                        NavigationLink(destination: GameScreen(mainMenuViewModel: mainMenuViewModel, modeOfDifficulty: viewModel.returnDiffLevel(), onePlayerPieceDecider: viewModel.clickedX, player1Name: viewModel.textFieldText, player2Name: viewModel.pieceType, color0: viewModel.color0, colorX: viewModel.colorX, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
                             ContinueView()
                         }
                     }
                 }
                 Spacer()
             }
-            ColorPickerPopup(optionsOnePlayerViewModel: viewModel)
+            ColorPickerPopup(onePlayerOptionsViewModel: viewModel)
         }
         .navigationTitle("")
     }
@@ -278,16 +278,16 @@ struct ContinueView: View {
 }
 
 struct ColorPickerPopup: View {
-    @ObservedObject var optionsOnePlayerViewModel: OnePlayerOptionsViewModel
+    @ObservedObject var onePlayerOptionsViewModel: OnePlayerOptionsViewModel
     var body: some View {
         ZStack(alignment: .bottom) {
-            if optionsOnePlayerViewModel.isShowingColorPopup {
+            if onePlayerOptionsViewModel.isShowingColorPopup {
                 Color.black.opacity(0.3)
                     .ignoresSafeArea()
                     .onTapGesture {
-                        optionsOnePlayerViewModel.animatePopUp()
+                        onePlayerOptionsViewModel.animatePopUp()
                     }
-                ColorSelectorView(optionsOnePlayerViewModel: optionsOnePlayerViewModel)
+                ColorSelectorView(onePlayerOptionsViewModel: onePlayerOptionsViewModel)
                     .transition(.move(edge: .bottom))
             }
         }
@@ -296,8 +296,8 @@ struct ColorPickerPopup: View {
     }
 }
 
-struct OptionsOnePlayer_Previews: PreviewProvider {
-    static var previews: some View {
-        OnePlayerOptionsView(mainMenuViewModel: MainMenuViewModel())
-    }
-}
+//struct OptionsOnePlayer_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnePlayerOptionsView(mainMenuViewModel: MainMenuViewModel())
+//    }
+//}
