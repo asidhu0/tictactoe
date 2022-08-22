@@ -28,6 +28,7 @@
 		5382000028B2C696000EA0E9 /* ColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFF28B2C696000EA0E9 /* ColorSelectorView.swift */; };
 		5382000228B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382000128B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift */; };
 		5382000628B32857000EA0E9 /* Color2SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382000528B32857000EA0E9 /* Color2SelectorView.swift */; };
+		5382000A28B415B4000EA0E9 /* ColorSelectorView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382000928B415B4000EA0E9 /* ColorSelectorView2.swift */; };
 		5382FFFC28B18AE6000EA0E9 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */; };
 		5382FFFE28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */; };
 		53A4C52D2895BC7E00499BB8 /* tictactoeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */; };
@@ -66,6 +67,7 @@
 		53601DA6289F370800141B50 /* TwoPlayerOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerOptionsView.swift; sourceTree = "<group>"; };
 		5382000128B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerOptionsViewModel.swift; sourceTree = "<group>"; };
 		5382000528B32857000EA0E9 /* Color2SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color2SelectorView.swift; sourceTree = "<group>"; };
+		5382000928B415B4000EA0E9 /* ColorSelectorView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorView2.swift; sourceTree = "<group>"; };
 		5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
 		5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePlayerOptionsViewModel.swift; sourceTree = "<group>"; };
 		5382FFFF28B2C696000EA0E9 /* ColorSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				53462E3E28B157AB007C5259 /* GameScreenViewModel.swift */,
 				532FB7F3289A16E1009E7DFB /* GameScreen.swift */,
 				53601DA6289F370800141B50 /* TwoPlayerOptionsView.swift */,
+				5382000928B415B4000EA0E9 /* ColorSelectorView2.swift */,
 				5382000128B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift */,
 				53601D92289E1CDD00141B50 /* HorizontalWin.swift */,
 				53601D98289E217300141B50 /* LeftDiagonalWin.swift */,
@@ -276,6 +279,7 @@
 				532FB7E228978BDC009E7DFB /* MainMenuView.swift in Sources */,
 				532FB7EC2897AE77009E7DFB /* OnePlayerOptionsView.swift in Sources */,
 				53601D93289E1CDD00141B50 /* HorizontalWin.swift in Sources */,
+				5382000A28B415B4000EA0E9 /* ColorSelectorView2.swift in Sources */,
 				53601D9D289E26B900141B50 /* VerticalWin.swift in Sources */,
 				532FB7CE2895D7E1009E7DFB /* Alerts.swift in Sources */,
 				532FB7FC289B7923009E7DFB /* AnimatedXmarkView.swift in Sources */,

@@ -1,14 +1,14 @@
 //
-//  ColorSelector.swift
+//  ColorSelectorView2.swift
 //  tictactoe
 //
-//  Created by Avnoor Singh Sidhu on 8/21/22.
+//  Created by Avnoor Singh Sidhu on 8/22/22.
 //
 
 import SwiftUI
 
-struct ColorSelectorView: View {
-    @ObservedObject var onePlayerOptionsViewModel: OnePlayerOptionsViewModel
+struct ColorSelectorView2: View {
+    @ObservedObject var twoPlayerOptionsViewModel: TwoPlayerOptionsViewModel
     @State var colorButtonClicked: [Bool] = Array(repeating: false, count: 3)
     var body: some View {
         VStack {
@@ -23,52 +23,52 @@ struct ColorSelectorView: View {
             VStack {
                 Spacer()
                 Button {
-                    onePlayerOptionsViewModel.colorX = Color.blue
-                    onePlayerOptionsViewModel.color0 = Color.blue
+                    twoPlayerOptionsViewModel.colorX = Color.blue
+                    twoPlayerOptionsViewModel.color0 = Color.blue
                     colorButtonClicked = Array(repeating: false, count: 3)
                     colorButtonClicked[0] = true
                 } label: {
                     VStack {
                         HStack {
-                            XmarkView(color: .blue)
-                            CircleView(color: .blue)
+                            xmark(color: .blue)
+                            circle(color: .blue)
                         }
                         if colorButtonClicked[0] == true {
-                            UnderlineSelectedColor()
+                            UnderlineSelected()
                           }
                     }
                 }
                 Spacer()
                 Button {
-                    onePlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
-                    onePlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                    twoPlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                    twoPlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
                     colorButtonClicked = Array(repeating: false, count: 3)
                     colorButtonClicked[1] = true
                 } label: {
                     VStack {
                         HStack {
-                            XmarkView(color: Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
-                            CircleView(color: Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
+                            xmark(color: Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
+                            circle(color: Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
                         }
                         if colorButtonClicked[1] == true {
-                            UnderlineSelectedColor()
+                            UnderlineSelected()
                           }
                     }
                 }
                 Spacer()
                 Button {
-                    onePlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
-                    onePlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                    twoPlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                    twoPlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
                     colorButtonClicked = Array(repeating: false, count: 3)
                     colorButtonClicked[2] = true
                 } label: {
                     VStack {
                         HStack {
-                            XmarkView(color: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
-                            CircleView(color: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                            xmark(color: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                            circle(color: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
                         }
                         if colorButtonClicked[2] == true {
-                            UnderlineSelectedColor()
+                            UnderlineSelected()
                           }
                     }
                 }
@@ -82,7 +82,7 @@ struct ColorSelectorView: View {
     }
 }
 
-struct XmarkView: View {
+struct xmark: View {
     var color: Color
     var body: some View {
         Image(systemName: "xmark")
@@ -92,7 +92,7 @@ struct XmarkView: View {
     }
 }
 
-struct CircleView: View {
+struct circle: View {
     var color: Color
     var body: some View {
         Image(systemName: "circle")
@@ -102,7 +102,7 @@ struct CircleView: View {
     }
 }
 
-struct UnderlineSelectedColor: View {
+struct UnderlineSelected: View {
     var body: some View {
         Capsule()
             .frame(width: 150, height: 4)
@@ -110,8 +110,8 @@ struct UnderlineSelectedColor: View {
     }
 }
 
-struct ColorSelectorView_Previews: PreviewProvider {
+struct ColorSelector2_Previews: PreviewProvider {
     static var previews: some View {
-        ColorSelectorView(onePlayerOptionsViewModel: OnePlayerOptionsViewModel())
+        ColorSelectorView2(twoPlayerOptionsViewModel: TwoPlayerOptionsViewModel())
     }
 }

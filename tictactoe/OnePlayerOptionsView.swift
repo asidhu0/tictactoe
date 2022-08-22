@@ -296,8 +296,8 @@ struct ColorPickerPopup: View {
     }
 }
 
-//struct OptionsOnePlayer_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OnePlayerOptionsView(mainMenuViewModel: MainMenuViewModel())
-//    }
-//}
+struct OptionsOnePlayer_Previews: PreviewProvider {
+    static var previews: some View {
+        OnePlayerOptionsView(mainMenuViewModel: MainMenuViewModel())
+    }
+}
