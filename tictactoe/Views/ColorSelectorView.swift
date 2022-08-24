@@ -11,74 +11,75 @@ struct ColorSelectorView: View {
     @ObservedObject var onePlayerOptionsViewModel: OnePlayerOptionsViewModel
     @State var colorButtonClicked: [Bool] = Array(repeating: false, count: 3)
     var body: some View {
-        VStack {
-            Capsule()
-                .frame(width: 40, height: 6)
-                .padding(.top, nil)
-            Text("Pick a Color Combination")
-                .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
-                .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
-                .padding(.top, nil)
-            Spacer()
             VStack {
+                Capsule()
+                    .frame(width: 40, height: 6)
+                    .padding(.top, nil)
+                Text("Pick a Color Combination")
+                    .font(.custom("Castle-Rock", size: 30, relativeTo: .largeTitle))
+                    .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                    .padding(.top, nil)
                 Spacer()
-                Button {
-                    onePlayerOptionsViewModel.colorX = Color.blue
-                    onePlayerOptionsViewModel.color0 = Color.blue
-                    colorButtonClicked = Array(repeating: false, count: 3)
-                    colorButtonClicked[0] = true
-                } label: {
-                    VStack {
-                        HStack {
-                            XmarkView(color: .blue)
-                            CircleView(color: .blue)
+                VStack {
+                    Spacer()
+                    Button {
+                        onePlayerOptionsViewModel.colorX = Color.blue
+                        onePlayerOptionsViewModel.color0 = Color.blue
+                        colorButtonClicked = Array(repeating: false, count: 3)
+                        colorButtonClicked[0] = true
+                    } label: {
+                        VStack {
+                            HStack {
+                                XmarkView(color: .blue)
+                                CircleView(color: .blue)
+                            }
+                            if colorButtonClicked[0] == true {
+                                UnderlineSelectedColor()
+                              }
                         }
-                        if colorButtonClicked[0] == true {
-                            UnderlineSelectedColor()
-                          }
                     }
-                }
-                Spacer()
-                Button {
-                    onePlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
-                    onePlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
-                    colorButtonClicked = Array(repeating: false, count: 3)
-                    colorButtonClicked[1] = true
-                } label: {
-                    VStack {
-                        HStack {
-                            XmarkView(color: Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
-                            CircleView(color: Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
+                    Spacer()
+                    Button {
+                        onePlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                        onePlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1))
+                        colorButtonClicked = Array(repeating: false, count: 3)
+                        colorButtonClicked[1] = true
+                    } label: {
+                        VStack {
+                            HStack {
+                                XmarkView(color: Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
+                                CircleView(color: Color(#colorLiteral(red: 0.9295205474, green: 0.5919809937, blue: 0.7504517436, alpha: 1)))
+                            }
+                            if colorButtonClicked[1] == true {
+                                UnderlineSelectedColor()
+                              }
                         }
-                        if colorButtonClicked[1] == true {
-                            UnderlineSelectedColor()
-                          }
                     }
-                }
-                Spacer()
-                Button {
-                    onePlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
-                    onePlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
-                    colorButtonClicked = Array(repeating: false, count: 3)
-                    colorButtonClicked[2] = true
-                } label: {
-                    VStack {
-                        HStack {
-                            XmarkView(color: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
-                            CircleView(color: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                    Spacer()
+                    Button {
+                        onePlayerOptionsViewModel.colorX = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                        onePlayerOptionsViewModel.color0 = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
+                        colorButtonClicked = Array(repeating: false, count: 3)
+                        colorButtonClicked[2] = true
+                    } label: {
+                        VStack {
+                            HStack {
+                                XmarkView(color: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                                CircleView(color: Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                            }
+                            if colorButtonClicked[2] == true {
+                                UnderlineSelectedColor()
+                              }
                         }
-                        if colorButtonClicked[2] == true {
-                            UnderlineSelectedColor()
-                          }
                     }
+                    Spacer()
                 }
                 Spacer()
             }
-            Spacer()
-        }
-        .frame(height: 400)
-        .frame(maxWidth: .infinity)
-        .background(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            .frame(height: UIScreen.main.bounds.maxY * 0.53)
+            .frame(maxWidth: .infinity)
+            .background(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            .clipShape(RoundedRectangle(cornerRadius: 30))
     }
 }
 

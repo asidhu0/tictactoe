@@ -279,6 +279,7 @@ struct ContinueView: View {
 
 struct ColorPickerPopup: View {
     @ObservedObject var onePlayerOptionsViewModel: OnePlayerOptionsViewModel
+    @State var currentDragOffset: CGFloat = 0
     var body: some View {
         ZStack(alignment: .bottom) {
             if onePlayerOptionsViewModel.isShowingColorPopup {
@@ -289,6 +290,31 @@ struct ColorPickerPopup: View {
                     }
                 ColorSelectorView(onePlayerOptionsViewModel: onePlayerOptionsViewModel)
                     .transition(.move(edge: .bottom))
+                    .offset(y: currentDragOffset)
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                withAnimation(.easeInOut) {
+                                    if currentDragOffset < 0 {
+                                        return
+                                    }
+                                    else {
+                                        currentDragOffset = value.translation.height
+                                    }
+                                }
+                            }
+                            .onEnded { value in
+                                withAnimation(.easeInOut) {
+                                    if currentDragOffset < 0 {
+                                        currentDragOffset = 0
+                                    }
+                                    else {
+                                        currentDragOffset = 0
+                                        onePlayerOptionsViewModel.isShowingColorPopup = false
+                                    }
+                                }
+                            }
+                    )
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)

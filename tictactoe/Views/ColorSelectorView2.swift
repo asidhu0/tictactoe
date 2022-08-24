@@ -76,9 +76,10 @@ struct ColorSelectorView2: View {
             }
             Spacer()
         }
-        .frame(height: 400)
+        .frame(height: UIScreen.main.bounds.maxY * 0.53)
         .frame(maxWidth: .infinity)
         .background(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+        .clipShape(RoundedRectangle(cornerRadius: 30))
     }
 }
 
