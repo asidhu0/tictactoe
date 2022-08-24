@@ -36,10 +36,8 @@ struct AnimatedCircleView: View {
     }
 }
 
-//struct AnimatedCheckmarkView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        AnimatedCircleView(sound: .constant(false), color: .orange)
-////        AnimatedCircleView(sound: false, color: .orange)
-//        AnimatedCircleView(color: .orange)
-//    }
-//}
+struct AnimatedCheckmarkView_Previews: PreviewProvider {
+    static var previews: some View {
+        AnimatedCircleView(sound: true, color: .orange)
+    }
+}

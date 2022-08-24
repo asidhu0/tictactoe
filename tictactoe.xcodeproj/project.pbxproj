@@ -19,7 +19,6 @@
 		532FB801289BC124009E7DFB /* moo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 532FB800289BC124009E7DFB /* moo.mp3 */; };
 		532FB803289C447C009E7DFB /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 532FB802289C447C009E7DFB /* pop.mp3 */; };
 		532FB805289C7FFE009E7DFB /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 532FB804289C7FFE009E7DFB /* win.mp3 */; };
-		53462E3F28B157AB007C5259 /* GameScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53462E3E28B157AB007C5259 /* GameScreenViewModel.swift */; };
 		53601D93289E1CDD00141B50 /* HorizontalWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53601D92289E1CDD00141B50 /* HorizontalWin.swift */; };
 		53601D99289E217300141B50 /* LeftDiagonalWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53601D98289E217300141B50 /* LeftDiagonalWin.swift */; };
 		53601D9B289E217D00141B50 /* RightDiagonalWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53601D9A289E217D00141B50 /* RightDiagonalWin.swift */; };
@@ -27,7 +26,6 @@
 		53601DA7289F370800141B50 /* TwoPlayerOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53601DA6289F370800141B50 /* TwoPlayerOptionsView.swift */; };
 		5382000028B2C696000EA0E9 /* ColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFF28B2C696000EA0E9 /* ColorSelectorView.swift */; };
 		5382000228B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382000128B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift */; };
-		5382000628B32857000EA0E9 /* Color2SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382000528B32857000EA0E9 /* Color2SelectorView.swift */; };
 		5382000A28B415B4000EA0E9 /* ColorSelectorView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382000928B415B4000EA0E9 /* ColorSelectorView2.swift */; };
 		5382FFFC28B18AE6000EA0E9 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */; };
 		5382FFFE28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */; };
@@ -59,14 +57,12 @@
 		532FB800289BC124009E7DFB /* moo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moo.mp3; sourceTree = "<group>"; };
 		532FB802289C447C009E7DFB /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		532FB804289C7FFE009E7DFB /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
-		53462E3E28B157AB007C5259 /* GameScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewModel.swift; sourceTree = "<group>"; };
 		53601D92289E1CDD00141B50 /* HorizontalWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWin.swift; sourceTree = "<group>"; };
 		53601D98289E217300141B50 /* LeftDiagonalWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDiagonalWin.swift; sourceTree = "<group>"; };
 		53601D9A289E217D00141B50 /* RightDiagonalWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightDiagonalWin.swift; sourceTree = "<group>"; };
 		53601D9C289E26B900141B50 /* VerticalWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalWin.swift; sourceTree = "<group>"; };
 		53601DA6289F370800141B50 /* TwoPlayerOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerOptionsView.swift; sourceTree = "<group>"; };
 		5382000128B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerOptionsViewModel.swift; sourceTree = "<group>"; };
-		5382000528B32857000EA0E9 /* Color2SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color2SelectorView.swift; sourceTree = "<group>"; };
 		5382000928B415B4000EA0E9 /* ColorSelectorView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorView2.swift; sourceTree = "<group>"; };
 		5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
 		5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePlayerOptionsViewModel.swift; sourceTree = "<group>"; };
@@ -76,7 +72,7 @@
 		53A4C5302895BC8000499BB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53A4C5332895BC8000499BB8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		53C87CEB28A0519900FC5D40 /* GAMERIA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GAMERIA.ttf; sourceTree = "<group>"; };
-		53C87CED28A0554B00FC5D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		53C87CED28A0554B00FC5D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53C87CEE28A0664500FC5D40 /* Castle-Rock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Castle-Rock.ttf"; sourceTree = "<group>"; };
 		53E27970289D962D009A538D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		53E27972289D9DB1009A538D /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
@@ -116,6 +112,55 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		5382000D28B5E58B000EA0E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				532FB7E128978BDC009E7DFB /* MainMenuView.swift */,
+				532FB7EB2897AE76009E7DFB /* OnePlayerOptionsView.swift */,
+				5382FFFF28B2C696000EA0E9 /* ColorSelectorView.swift */,
+				53601DA6289F370800141B50 /* TwoPlayerOptionsView.swift */,
+				5382000928B415B4000EA0E9 /* ColorSelectorView2.swift */,
+				532FB7F3289A16E1009E7DFB /* GameScreen.swift */,
+				532FB7F9289B71FE009E7DFB /* AnimatedCircleView.swift */,
+				532FB7FB289B7923009E7DFB /* AnimatedXmarkView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5382000F28B5E5BF000EA0E9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */,
+				5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */,
+				5382000128B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift */,
+				5382001128B5E6C0000EA0E9 /* WinTypes */,
+				532FB7CD2895D7E1009E7DFB /* Alerts.swift */,
+				53E27976289DABE0009A538D /* BackgroundMusic.swift */,
+				532FB7D128962473009E7DFB /* ComputerMoves.swift */,
+				532FB7CF289621DC009E7DFB /* WinLoseDrawConditions.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5382001028B5E5C5000EA0E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				532FB7ED2897B08C009E7DFB /* Setup.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5382001128B5E6C0000EA0E9 /* WinTypes */ = {
+			isa = PBXGroup;
+			children = (
+				53601D9C289E26B900141B50 /* VerticalWin.swift */,
+				53601D9A289E217D00141B50 /* RightDiagonalWin.swift */,
+				53601D98289E217300141B50 /* LeftDiagonalWin.swift */,
+				53601D92289E1CDD00141B50 /* HorizontalWin.swift */,
+			);
+			path = WinTypes;
+			sourceTree = "<group>";
+		};
 		53A4C5202895BC7E00499BB8 = {
 			isa = PBXGroup;
 			children = (
@@ -137,29 +182,10 @@
 			isa = PBXGroup;
 			children = (
 				53C87CED28A0554B00FC5D40 /* Info.plist */,
-				532FB7ED2897B08C009E7DFB /* Setup.swift */,
-				532FB7E128978BDC009E7DFB /* MainMenuView.swift */,
-				5382FFFB28B18AE6000EA0E9 /* MainMenuViewModel.swift */,
-				532FB7EB2897AE76009E7DFB /* OnePlayerOptionsView.swift */,
-				5382FFFD28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift */,
-				5382FFFF28B2C696000EA0E9 /* ColorSelectorView.swift */,
-				5382000528B32857000EA0E9 /* Color2SelectorView.swift */,
-				53462E3E28B157AB007C5259 /* GameScreenViewModel.swift */,
-				532FB7F3289A16E1009E7DFB /* GameScreen.swift */,
-				53601DA6289F370800141B50 /* TwoPlayerOptionsView.swift */,
-				5382000928B415B4000EA0E9 /* ColorSelectorView2.swift */,
-				5382000128B31543000EA0E9 /* TwoPlayerOptionsViewModel.swift */,
-				53601D92289E1CDD00141B50 /* HorizontalWin.swift */,
-				53601D98289E217300141B50 /* LeftDiagonalWin.swift */,
-				53601D9A289E217D00141B50 /* RightDiagonalWin.swift */,
-				53601D9C289E26B900141B50 /* VerticalWin.swift */,
-				532FB7F9289B71FE009E7DFB /* AnimatedCircleView.swift */,
-				532FB7FB289B7923009E7DFB /* AnimatedXmarkView.swift */,
-				532FB7CD2895D7E1009E7DFB /* Alerts.swift */,
-				53E27976289DABE0009A538D /* BackgroundMusic.swift */,
-				532FB7D128962473009E7DFB /* ComputerMoves.swift */,
-				532FB7CF289621DC009E7DFB /* WinLoseDrawConditions.swift */,
 				53A4C52C2895BC7E00499BB8 /* tictactoeApp.swift */,
+				5382001028B5E5C5000EA0E9 /* Model */,
+				5382000D28B5E58B000EA0E9 /* Views */,
+				5382000F28B5E5BF000EA0E9 /* ViewModel */,
 				53C87CEA28A050D100FC5D40 /* Fonts */,
 				532FB7FF289BC0FF009E7DFB /* Sounds */,
 				53A4C5302895BC8000499BB8 /* Assets.xcassets */,
@@ -283,11 +309,9 @@
 				53601D9D289E26B900141B50 /* VerticalWin.swift in Sources */,
 				532FB7CE2895D7E1009E7DFB /* Alerts.swift in Sources */,
 				532FB7FC289B7923009E7DFB /* AnimatedXmarkView.swift in Sources */,
-				53462E3F28B157AB007C5259 /* GameScreenViewModel.swift in Sources */,
 				5382FFFC28B18AE6000EA0E9 /* MainMenuViewModel.swift in Sources */,
 				532FB7FA289B71FE009E7DFB /* AnimatedCircleView.swift in Sources */,
 				532FB7F4289A16E1009E7DFB /* GameScreen.swift in Sources */,
-				5382000628B32857000EA0E9 /* Color2SelectorView.swift in Sources */,
 				532FB7D0289621DC009E7DFB /* WinLoseDrawConditions.swift in Sources */,
 				5382FFFE28B29968000EA0E9 /* OnePlayerOptionsViewModel.swift in Sources */,
 				532FB7EE2897B08C009E7DFB /* Setup.swift in Sources */,

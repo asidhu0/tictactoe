@@ -33,14 +33,6 @@ struct AnimatedXmarkView: View {
     }
 }
 
-//struct AnimatedXmarkView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        AnimatedXmarkView(sound: .constant(false), color: .yellow)
-////        AnimatedXmarkView(sound: false, color: .yellow)
-//        AnimatedXmarkView(color: .yellow)
-//    }
-//}
-
 struct Xmark: Shape {
     func path(in rect: CGRect) -> Path {
         let width = rect.size.width
@@ -55,3 +47,8 @@ struct Xmark: Shape {
     }
 }
 
+struct AnimatedXmarkView_Previews: PreviewProvider {
+    static var previews: some View {
+        AnimatedXmarkView(sound: true, color: .yellow)
+    }
+}
