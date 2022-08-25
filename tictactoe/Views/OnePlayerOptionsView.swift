@@ -3,7 +3,6 @@
 //  tictactoe
 //
 //  Created by Avnoor Singh Sidhu on 7/31/22.
-//
 
 import SwiftUI
 import CoreMedia
@@ -12,71 +11,89 @@ struct OnePlayerOptionsView: View {
     
     @ObservedObject var mainMenuViewModel: MainMenuViewModel
     @StateObject var viewModel = OnePlayerOptionsViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
             viewModel.background
                 .ignoresSafeArea(.all)
-            VStack {
-                Spacer()
+            ScrollView {
                 VStack {
-                    SelectDifficultySubtitleView()
-                    Slider(optionsOnePlayerViewModel: viewModel)
-                }
-                Spacer()
-                VStack {
-                    PickASideSubtitleView()
-                    HStack {
-                        Spacer()
-                        Button  {
-                            viewModel.processXmarkClick()
-                        } label: {
-                            ZStack {
-                                if viewModel.clickedX {
-                                    UnderlineSelectedPiece()
-                                }
-                                XmarkButtonView(optionsOnePlayerViewModel: viewModel)
-                            }
-                        }
-                        Spacer()
                         Button {
-                            viewModel.processCircleClick()
+                            presentationMode.wrappedValue.dismiss()
                         } label: {
-                            ZStack {
-                                if !viewModel.clickedX {
-                                    UnderlineSelectedPiece()
-                                }
-                                CircleButtonView(optionsOnePlayerViewModel: viewModel)
+                            HStack {
+                                Image(systemName: "chevron.backward")
+                                    .resizable()
+                                    .frame(width: 11, height: 20)
+                                    .padding(.top, 12)
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                                    .padding(.leading, 9)
+                                Spacer()
                             }
                         }
-                        Spacer()
-                    }
-                }
-                Spacer()
-                VStack {
-                    ChangeNameSubtitleView()
-                    VStack {
-                        HStack {
-                            ZStack {
-                                if viewModel.clickedX {
-                                    XmarkTextField(optionsOnePlayerViewModel: viewModel)
+                    Spacer()
+                        VStack {
+                            SelectDifficultySubtitleView()
+                            Slider(optionsOnePlayerViewModel: viewModel)
+                        }
+                    Spacer()
+                        VStack {
+                            PickASideSubtitleView()
+                            HStack {
+                                Spacer()
+                                Button  {
+                                    viewModel.processXmarkClick()
+                                } label: {
+                                    ZStack {
+                                        if viewModel.clickedX {
+                                            UnderlineSelectedPiece()
+                                        }
+                                        XmarkButtonView(optionsOnePlayerViewModel: viewModel)
+                                    }
                                 }
-                                else {
-                                    CircleTextField(optionsOnePlayerViewModel: viewModel)
+                                Spacer()
+                                Button {
+                                    viewModel.processCircleClick()
+                                } label: {
+                                    ZStack {
+                                        if !viewModel.clickedX {
+                                            UnderlineSelectedPiece()
+                                        }
+                                        CircleButtonView(optionsOnePlayerViewModel: viewModel)
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
+                    Spacer()
+                        VStack {
+                            ChangeNameSubtitleView()
+                            VStack {
+                                HStack {
+                                    ZStack {
+                                        if viewModel.clickedX {
+                                            XmarkTextField(optionsOnePlayerViewModel: viewModel)
+                                        }
+                                        else {
+                                            CircleTextField(optionsOnePlayerViewModel: viewModel)
+                                        }
+                                    }
+                                    TextFieldView(optionsOnePlayerViewModel: viewModel)
+                                }
+                                NavigationLink(destination: GameScreen(mainMenuViewModel: mainMenuViewModel, modeOfDifficulty: viewModel.returnDiffLevel(), onePlayerPieceDecider: viewModel.clickedX, player1Name: viewModel.textFieldText, player2Name: viewModel.pieceType, color0: viewModel.color0, colorX: viewModel.colorX, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
+                                    ContinueView()
                                 }
                             }
-                            TextFieldView(optionsOnePlayerViewModel: viewModel)
                         }
-                        NavigationLink(destination: GameScreen(mainMenuViewModel: mainMenuViewModel, modeOfDifficulty: viewModel.returnDiffLevel(), onePlayerPieceDecider: viewModel.clickedX, player1Name: viewModel.textFieldText, player2Name: viewModel.pieceType, color0: viewModel.color0, colorX: viewModel.colorX, twoPlayerTurnDecider: true, twoPlayerTurnDeciderForResetFunc: true)) {
-                            ContinueView()
-                        }
-                    }
+                    Spacer()
                 }
-                Spacer()
+                .frame(height: UIScreen.main.bounds.height * 0.88)
             }
             ColorPickerPopup(onePlayerOptionsViewModel: viewModel)
         }
-        .navigationTitle("")
+                .navigationTitle("")
+                .navigationBarHidden(true)
     }
 }
 
@@ -257,14 +274,14 @@ struct CircleTextField: View {
 struct TextFieldView: View {
     @ObservedObject var optionsOnePlayerViewModel: OnePlayerOptionsViewModel
     var body: some View {
-            TextField("Player", text: $optionsOnePlayerViewModel.textFieldText)
-                .overlay(
-                    TextfieldLineView()
-                )
-                .padding()
-                .accentColor(.blue)
-                .padding(.trailing, nil)
-                .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
+        TextField("Player", text: $optionsOnePlayerViewModel.textFieldText)
+            .overlay(
+                TextfieldLineView()
+            )
+            .padding()
+            .accentColor(.blue)
+            .padding(.trailing, nil)
+            .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
             .foregroundColor(optionsOnePlayerViewModel.colorScheme == .dark ? Color.gray : Color.gray)
     }
 }

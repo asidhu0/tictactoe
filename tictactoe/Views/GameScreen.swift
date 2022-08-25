@@ -42,6 +42,7 @@ struct GameScreen: View {
     
     @State var twoPlayerTurnDecider: Bool
     @State var twoPlayerTurnDeciderForResetFunc: Bool
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
@@ -49,6 +50,19 @@ struct GameScreen: View {
                 .ignoresSafeArea(.all)
             GeometryReader  { geometry in
                 VStack {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                                .resizable()
+                                .frame(width: 11, height: 20)
+                                .padding(.top, -5)
+                                .foregroundColor(Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1)))
+                                .padding(.leading, -7)
+                            Spacer()
+                        }
+                    }
                     Spacer()
                     ZStack {
                         LazyVGrid(columns: layout, spacing: 10) {
@@ -298,6 +312,7 @@ struct GameScreen: View {
                 })
             }
         }
+        .navigationBarHidden(true)
     }
     
     ////////////////////////////////////////////////////////////////      FUNCTIONS //////////////////////////////// ////////////////////////////////
