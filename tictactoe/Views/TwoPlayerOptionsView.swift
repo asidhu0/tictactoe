@@ -77,6 +77,31 @@ struct ColorPickerPopup2: View {
                     }
                 ColorSelectorView2(twoPlayerOptionsViewModel: twoPlayerOptionsViewModel)
                     .transition(.move(edge: .bottom))
+                    .offset(y: twoPlayerOptionsViewModel.currentDragOffset)
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                withAnimation(.easeInOut) {
+                                    if twoPlayerOptionsViewModel.currentDragOffset < 0 {
+                                        return
+                                    }
+                                    else {
+                                        twoPlayerOptionsViewModel.currentDragOffset = value.translation.height
+                                    }
+                                }
+                            }
+                            .onEnded { value in
+                                withAnimation(.easeInOut) {
+                                    if twoPlayerOptionsViewModel.currentDragOffset < 0 {
+                                        twoPlayerOptionsViewModel.currentDragOffset = 0
+                                    }
+                                    else {
+                                        twoPlayerOptionsViewModel.currentDragOffset = 0
+                                        twoPlayerOptionsViewModel.isShowingColorPopup = false
+                                    }
+                                }
+                            }
+                    )
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
@@ -166,7 +191,7 @@ struct TextFieldView2: View {
             .accentColor(.blue)
             .padding(.trailing, nil)
             .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
-            .foregroundColor(Color.gray)
+            .foregroundColor(twoPlayerOptionsViewModel.colorScheme == .dark ? Color.gray : Color.gray)
     }
 }
 

@@ -257,15 +257,15 @@ struct CircleTextField: View {
 struct TextFieldView: View {
     @ObservedObject var optionsOnePlayerViewModel: OnePlayerOptionsViewModel
     var body: some View {
-        TextField("Player", text: $optionsOnePlayerViewModel.textFieldText)
-            .overlay(
-                TextfieldLineView()
-            )
-            .padding()
-            .accentColor(.blue)
-            .padding(.trailing, nil)
-            .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
-            .foregroundColor(Color.gray)
+            TextField("Player", text: $optionsOnePlayerViewModel.textFieldText)
+                .overlay(
+                    TextfieldLineView()
+                )
+                .padding()
+                .accentColor(.blue)
+                .padding(.trailing, nil)
+                .font(.custom("Castle-Rock", size: 25, relativeTo: .largeTitle))
+            .foregroundColor(optionsOnePlayerViewModel.colorScheme == .dark ? Color.gray : Color.gray)
     }
 }
 
@@ -279,7 +279,6 @@ struct ContinueView: View {
 
 struct ColorPickerPopup: View {
     @ObservedObject var onePlayerOptionsViewModel: OnePlayerOptionsViewModel
-    @State var currentDragOffset: CGFloat = 0
     var body: some View {
         ZStack(alignment: .bottom) {
             if onePlayerOptionsViewModel.isShowingColorPopup {
@@ -290,26 +289,26 @@ struct ColorPickerPopup: View {
                     }
                 ColorSelectorView(onePlayerOptionsViewModel: onePlayerOptionsViewModel)
                     .transition(.move(edge: .bottom))
-                    .offset(y: currentDragOffset)
+                    .offset(y: onePlayerOptionsViewModel.currentDragOffset)
                     .gesture(
                         DragGesture()
                             .onChanged { value in
                                 withAnimation(.easeInOut) {
-                                    if currentDragOffset < 0 {
+                                    if onePlayerOptionsViewModel.currentDragOffset < 0 {
                                         return
                                     }
                                     else {
-                                        currentDragOffset = value.translation.height
+                                        onePlayerOptionsViewModel.currentDragOffset = value.translation.height
                                     }
                                 }
                             }
                             .onEnded { value in
                                 withAnimation(.easeInOut) {
-                                    if currentDragOffset < 0 {
-                                        currentDragOffset = 0
+                                    if onePlayerOptionsViewModel.currentDragOffset < 0 {
+                                        onePlayerOptionsViewModel.currentDragOffset = 0
                                     }
                                     else {
-                                        currentDragOffset = 0
+                                        onePlayerOptionsViewModel.currentDragOffset = 0
                                         onePlayerOptionsViewModel.isShowingColorPopup = false
                                     }
                                 }
@@ -324,6 +323,9 @@ struct ColorPickerPopup: View {
 
 struct OptionsOnePlayer_Previews: PreviewProvider {
     static var previews: some View {
-        OnePlayerOptionsView(mainMenuViewModel: MainMenuViewModel())
+        Group {
+            OnePlayerOptionsView(mainMenuViewModel: MainMenuViewModel())
+                .preferredColorScheme(.light)
+        }
     }
 }

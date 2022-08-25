@@ -8,6 +8,7 @@
 import SwiftUI
 
 final class TwoPlayerOptionsViewModel: ObservableObject {
+    @Environment(\.colorScheme) var colorScheme
     @Published var textFieldText1: String = ""
     @Published var textFieldText2: String = ""
     @Published var pickedX: Bool = true
@@ -15,6 +16,7 @@ final class TwoPlayerOptionsViewModel: ObservableObject {
     @Published var color0: Color = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
     @Published var colorX: Color = Color(#colorLiteral(red: 0.6145727634, green: 0.4697432518, blue: 0.8619191647, alpha: 1))
     @Published var isShowingColorPopup: Bool = false
+    @Published var currentDragOffset: CGFloat = 0
     
     func processXmarkClick2() {
         pickedX = true

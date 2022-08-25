@@ -98,6 +98,11 @@ struct SoundButtonView: View {
 
 struct MainMenu_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuView()
+        Group {
+            MainMenuView()
+                .preferredColorScheme(.light)
+            MainMenuView()
+                .preferredColorScheme(.dark)
+        }
     }
 }
