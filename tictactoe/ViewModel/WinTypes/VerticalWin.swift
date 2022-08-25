@@ -10,13 +10,13 @@ import SwiftUI
 struct VerticalWin: View {
     @State private var innerTrimEnd: CGFloat = 1.0
     @State var animationDuration: Double = 0.35
-    let spacing: Int
-//    let spacing: CGFloat
+    let spacing: CGFloat
+    let frameDimensions: CGFloat
     var body: some View {
         Vertical()
             .trim(from: 0, to: innerTrimEnd)
             .stroke(Color.black, style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
-            .frame(height: 310)
+            .frame(height: frameDimensions)
             .offset(x: CGFloat(spacing))
             .onAppear() {
                 innerTrimEnd = 0
@@ -36,7 +36,7 @@ struct VerticalWin: View {
 
 struct VerticalWin_Previews: PreviewProvider {
     static var previews: some View {
-        VerticalWin(spacing: 0)
+        VerticalWin(spacing: 0, frameDimensions: 310)
     }
 }
 

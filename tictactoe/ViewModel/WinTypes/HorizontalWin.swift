@@ -10,13 +10,14 @@ import SwiftUI
 struct HorizontalWin: View {
     @State private var innerTrimEnd: CGFloat = 1.0
     @State var animationDuration: Double = 0.35
-    let spacing: Int
+    let spacing: CGFloat
+    let frameDimensions: CGFloat
     var body: some View {
         Horizontal()
             .trim(from: 0, to: innerTrimEnd)
             .stroke(Color.black, style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
-            .frame(width: 310, height: 310)
-            .offset(y: CGFloat(spacing))
+            .frame(width: frameDimensions, height: frameDimensions)
+            .offset(y: spacing)
             .onAppear() {
                 innerTrimEnd = 0
                 animate()
@@ -35,7 +36,7 @@ struct HorizontalWin: View {
 
 struct WinningLine_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalWin(spacing: 0)
+        HorizontalWin(spacing: 0, frameDimensions: 310)
     }
 }
 

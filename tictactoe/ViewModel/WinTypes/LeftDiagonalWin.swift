@@ -10,12 +10,12 @@ import SwiftUI
 struct LeftDiagonalWin: View {
     @State private var innerTrimEnd: CGFloat = 1.0
     let color: UIColor = #colorLiteral(red: 0.955021441, green: 0.7766728401, blue: 0.6494518518, alpha: 1)
-    
+    let frameDimensions: CGFloat
     var body: some View {
         LeftDiagonal()
             .trim(from: 0, to: innerTrimEnd)
             .stroke(Color.black, style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
-            .frame(width: 310, height: 310)
+            .frame(width: frameDimensions, height: frameDimensions)
             .onAppear() {
                 innerTrimEnd = 0
                 animate()
@@ -36,7 +36,7 @@ struct LeftDiagonalWin: View {
 
 struct LeftDiagonalWin_Previews: PreviewProvider {
     static var previews: some View {
-        LeftDiagonalWin()
+        LeftDiagonalWin(frameDimensions: 310)
     }
 }
 

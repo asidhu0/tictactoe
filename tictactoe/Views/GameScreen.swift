@@ -131,31 +131,31 @@ struct GameScreen: View {
                         /// END OF LAZY V GRID
                         
                         if leftdwin {
-                            LeftDiagonalWin()
+                            LeftDiagonalWin(frameDimensions: geometry.size.width * 0.8)
                         }
                         else if rightdwin {
-                            RightDiagonalWin()
+                            RightDiagonalWin(frameDimensions: geometry.size.width * 0.8)
                         }
                         else if horizwin {
                             if line == 0 {
-                                HorizontalWin(spacing: Int(((geometry.size.width/3) * -1) + 5))
+                                HorizontalWin(spacing: ((geometry.size.width/3) * -1) + 5, frameDimensions: geometry.size.width * 0.8)
                             }
                             else if line == 1 {
-                                HorizontalWin(spacing: 0)
+                                HorizontalWin(spacing: 0, frameDimensions: geometry.size.width * 0.8)
                             }
                             else if line == 2 {
-                                HorizontalWin(spacing: Int(geometry.size.width/3 - 5))
+                                HorizontalWin(spacing: geometry.size.width/3 - 5, frameDimensions: geometry.size.width * 0.8)
                             }
                         }
                         else if vertwin {
                             if line == 3 {
-                                VerticalWin(spacing: Int(((geometry.size.width/3) * -1) + 7.5))
+                                VerticalWin(spacing: ((geometry.size.width/3) * -1) + 7.5, frameDimensions: geometry.size.width * 0.8)
                             }
                             else if line == 4 {
-                                VerticalWin(spacing: 0)
+                                VerticalWin(spacing: 0, frameDimensions: geometry.size.width * 0.8)
                             }
                             else if line == 5 {
-                                VerticalWin(spacing: Int(geometry.size.width/3 - 7.5))
+                                VerticalWin(spacing: geometry.size.width/3 - 7.5, frameDimensions: geometry.size.width * 0.8)
                             }
                         }
                     }
