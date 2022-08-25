@@ -82,41 +82,41 @@ struct OnePlayerOptionsView: View {
 
 struct SelectDifficultySubtitleView: View {
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
-                .frame(width: 340, height: 80)
-            Text("Select Difficulty")
-                .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
-                .foregroundColor(.cyan)
-        }
+        Text("Select Difficulty")
+            .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+            .foregroundColor(.cyan)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            )
     }
 }
 
 struct PickASideSubtitleView: View {
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
-                .frame(width: 250, height: 75)
-            Text("Pick a Side")
-                .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
-                .foregroundColor(.cyan)
-        }
+        Text("Pick a Side")
+            .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+            .foregroundColor(.cyan)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            )
         .padding(.bottom, nil)
     }
 }
 
 struct ChangeNameSubtitleView: View {
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
-                .frame(width: 290, height: 75)
-            Text("Change Name")
-                .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
-                .foregroundColor(.cyan)
-        }
+        Text("Change Name")
+            .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+            .foregroundColor(.cyan)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            )
     }
 }
 

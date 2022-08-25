@@ -15,6 +15,7 @@ struct MainMenuView: View {
                     viewModel.background
                         .ignoresSafeArea(.all)
                     VStack {
+                        Spacer()
                         TicTacToeTitle()
                         NavigationLink(destination: OnePlayerOptionsView(mainMenuViewModel: viewModel)) {
                             OnePlayerButtonView()
@@ -22,6 +23,7 @@ struct MainMenuView: View {
                         NavigationLink(destination: OptionsTwoPlayers(mainMenuViewModel: viewModel)) {
                             TwoPlayerButtonView()
                         }
+                        Spacer()
                         Button {
                             viewModel.sound.toggle()
                             viewModel.sound ? MusicPlayer.shared.startBackgroundMusic(backgroundMusicFileName: "background") : MusicPlayer.shared.stopBackgroundMusic()
@@ -53,15 +55,14 @@ struct TicTacToeTitle: View {
 
 struct OnePlayerButtonView: View {
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
-                .frame(width: 250)
-            Text("One Player")
-                .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
-                .foregroundColor(.cyan)
-                .padding()
-        }
+        Text("One Player")
+            .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+            .foregroundColor(.cyan)
+            .padding(30)
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            )
         .navigationBarHidden(true)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -69,16 +70,14 @@ struct OnePlayerButtonView: View {
 
 struct TwoPlayerButtonView: View {
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
-                .frame(width: 250)
-            Text("Two Player")
-                .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
-                .foregroundColor(.cyan)
-                .padding()
-            
-        }
+        Text("Two Player")
+            .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+            .foregroundColor(.cyan)
+            .padding(30)
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            )
         .navigationBarHidden(true)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -101,8 +100,6 @@ struct MainMenu_Previews: PreviewProvider {
         Group {
             MainMenuView()
                 .preferredColorScheme(.light)
-            MainMenuView()
-                .preferredColorScheme(.dark)
         }
     }
 }

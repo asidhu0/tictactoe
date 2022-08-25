@@ -111,15 +111,15 @@ struct ColorPickerPopup2: View {
 
 struct PickWhoGoesFirstView: View {
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
-                .frame(width: 280, height: 120)
-            Text("Pick who goes first")
-                .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
-                .foregroundColor(.cyan)
-                .padding()
-        }
+        Text("Pick who goes first")
+            .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+            .multilineTextAlignment(.center)
+            .foregroundColor(.cyan)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            )
     }
 }
 
@@ -156,15 +156,14 @@ struct CircleButton: View {
 
 struct ChangeNameView: View {
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
-                .frame(width: 290, height: 80)
-            Text("Change Name")
-                .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
-                .foregroundColor(.cyan)
-                .padding()
-        }
+        Text("Change Name")
+            .font(.custom("Castle-Rock", size: 50, relativeTo: .largeTitle))
+            .foregroundColor(.cyan)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(#colorLiteral(red: 0.9647727609, green: 0.9452378154, blue: 0.8428220749, alpha: 1)))
+            )
     }
 }
 
