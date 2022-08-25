@@ -11,6 +11,7 @@ struct VerticalWin: View {
     @State private var innerTrimEnd: CGFloat = 1.0
     @State var animationDuration: Double = 0.35
     let spacing: Int
+//    let spacing: CGFloat
     var body: some View {
         Vertical()
             .trim(from: 0, to: innerTrimEnd)

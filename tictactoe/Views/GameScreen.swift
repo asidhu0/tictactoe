@@ -138,24 +138,24 @@ struct GameScreen: View {
                         }
                         else if horizwin {
                             if line == 0 {
-                                HorizontalWin(spacing: -120)
+                                HorizontalWin(spacing: Int(((geometry.size.width/3) * -1) + 5))
                             }
                             else if line == 1 {
                                 HorizontalWin(spacing: 0)
                             }
                             else if line == 2 {
-                                HorizontalWin(spacing: 120)
+                                HorizontalWin(spacing: Int(geometry.size.width/3 - 5))
                             }
                         }
                         else if vertwin {
                             if line == 3 {
-                                VerticalWin(spacing: -120)
+                                VerticalWin(spacing: Int(((geometry.size.width/3) * -1) + 7.5))
                             }
                             else if line == 4 {
                                 VerticalWin(spacing: 0)
                             }
                             else if line == 5 {
-                                VerticalWin(spacing: 120)
+                                VerticalWin(spacing: Int(geometry.size.width/3 - 7.5))
                             }
                         }
                     }
