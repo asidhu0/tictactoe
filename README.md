@@ -4,10 +4,7 @@ Developed using SwiftUI <br/>
 Sounds from Zapsplat.com
 
 ## Demo
-<video src='https://user-images.githubusercontent.com/85960421/187058056-0953ab6d-5def-43b3-8ae6-5d4441cffd14.mov' width=200></video>
-
-
-
+https://www.youtube.com/shorts/0diOXYJWXpM
 
 ## Screenshots
 
